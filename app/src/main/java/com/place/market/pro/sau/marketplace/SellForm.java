@@ -20,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.place.market.pro.sau.marketplace.ImageUploading.VolleyMultipartRequest;
 
@@ -307,26 +308,32 @@ public class SellForm extends AppCompatActivity {
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
+
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview1);
                                     } if (pic2 == 1) {
                                         editor.putString("image2",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview2);
                                     } if (pic3 == 1) {
                                         editor.putString("image3",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview3);
                                     } if (pic4 == 1) {
                                         editor.putString("image4",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview4);
                                     } if (pic5 == 1) {
                                         editor.putString("image5",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview5);
                                     }
 editor.apply();
                                 }
