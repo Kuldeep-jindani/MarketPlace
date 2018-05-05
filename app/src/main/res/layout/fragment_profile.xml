@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--    <View
+        android:layout_width="match_parent"
+        android:background="@color/colorBlack"
+        android:layout_height="2dp"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="30dp"
+            android:textColor="@color/colorBlack"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:id="@+id/logout"
+            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/logout"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/colorBlack"
+        android:layout_height="2dp"/>
+    <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_margin="15dp"
+                android:id="@+id/edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_edit"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/profile_pic"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="3dp"
+                android:background="@drawable/border"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/boy"
+                />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Sagar Patel"
+    android:textColor="@color/colorBlack"
+    android:textSize="15dp"
+    android:id="@+id/name"
+    android:layout_margin="10dp"
+    />
+    <EditText
+
+        android:textColor="@color/colorBlack"
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sagar.patel@gmail.com"
+        android:textSize="15dp"
+        android:layout_margin="10dp"
+        />
+        <EditText
+            android:id="@+id/bdate"
+            android:textColor="@color/colorBlack"
+
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="16 july 1996"
+        android:textSize="15dp"
+        android:layout_margin="10dp"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/colorBlack"
+            android:text="Gender:"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
+        <RadioGroup
+
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBlack"
+                android:checked="true"
+                android:text="Male"
+                android:textColor="@color/colorBlack" />
+
+            <RadioButton
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBlack"
+                android:buttonTint="@color/colorBlack"
+                android:text="Female"
+                android:textColor="@color/colorBlack" />
+        </RadioGroup>
+    <EditText
+        android:textColor="@color/colorBlack"
+android:id="@+id/cnum"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="96452 51112"
+    android:textSize="15dp"
+    android:layout_margin="10dp"
+    />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+            <Button
+                android:layout_margin="5dp"
+                android:text="Change Password"
+                android:layout_weight="1"
+                android:textAlignment="viewEnd"
+                android:textColor="@android:color/holo_blue_dark"
+                android:id="@+id/change_pwd"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+       <!-- <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="edit"
+            android:layout_margin="20dp"
+            android:id="@+id/edit"
+            android:textSize="20dp"
+
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/gradient"
+            />-->
+    </LinearLayout>
+</ScrollView>

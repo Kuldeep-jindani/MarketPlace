@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:id="@+id/cate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bottomnav_category_list"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+
+        android:layout_weight="1"
+        android:layout_height="50dp"></android.support.v7.widget.RecyclerView>
+            <EditText
+                android:visibility="gone"
+                android:inputType="textFilter"
+                android:id="@+id/search_edittext"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        <RelativeLayout
+            android:layout_weight="5"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <ImageView
+                android:id="@+id/search"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_margin="15dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_search"/>
+        </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <com.srx.widget.PullToLoadView
+        android:id="@+id/recyclar"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.srx.widget.PullToLoadView>
+</LinearLayout>
