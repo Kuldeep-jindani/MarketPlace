@@ -80,11 +80,6 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
 
 */
 
-
-
-
-
-
         imageView = findViewById(R.id.camera_icon);
         bottomnav_menu = findViewById(R.id.bottomnav_menu);
         imageView.setOnClickListener(new View.OnClickListener() {

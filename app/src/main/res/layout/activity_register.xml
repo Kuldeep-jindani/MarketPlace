@@ -268,7 +268,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:background="@drawable/gradient"
-            android:text="Register"
+            android:text="New User? Register Here"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
             android:textSize="20dp" />
