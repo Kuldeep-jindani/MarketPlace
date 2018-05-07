@@ -42,7 +42,6 @@
         <activity android:name=".PreviewProducts" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".History" />
-        <activity android:name=".OTP"></activity>
     </application>
 
 </manifest>

@@ -9,24 +9,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
+import java.time.OffsetTime;
 import java.util.ArrayList;
 
 public class PreviewProducts extends AppCompatActivity {
-    Button imageView;
+    Button contact_buy;
     RecyclerView preview_imagescroll;
     TextView txt_name,txt_desc,txt_price,sell_name,sell_date,preview_tags,preview_remark;
+    RelativeLayout ln;
+    PinEntryEditText pinEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_products);
-        imageView = findViewById(R.id.buy_now);
+        contact_buy = findViewById(R.id.buy_now);
         preview_imagescroll = findViewById(R.id.preview_imagescroll);
+
 
 
 
@@ -40,10 +47,26 @@ preview_imagescroll.setLayoutManager(linearLayoutManager);
 
         preview_imagescroll.setAdapter(preview_imageSlider_adapter);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        contact_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ln= findViewById(R.id.ln_opt);
+                ln.setVisibility(View.VISIBLE);
+                pinEntry = findViewById(R.id.txt_pin_entry);
+                if (pinEntry != null) {
+                    pinEntry.setOnPinEnteredListener(new PinEntryEditText.OnPinEnteredListener() {
+                        @Override
+                        public void onPinEntered(CharSequence str) {
+                            if (str.toString().equals("123456")) {
+                                Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+                                ln.setVisibility(View.INVISIBLE);
+                            } else {
+                                Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
+                                pinEntry.setText(null);
+                            }
+                        }
+                    });
+                }
 
             }
         });

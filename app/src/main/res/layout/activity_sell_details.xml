@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-<<<<<<< HEAD
+
             android:theme="@style/TextLabel">
 
             <EditText
@@ -177,7 +177,7 @@
             android:textSize="15dp" />
     </android.support.design.widget.TextInputLayout>
 
-   <!-- <android.support.design.widget.TextInputLayout
+   <!- <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -206,7 +206,7 @@
             android:textAllCaps="false"
             android:src="@drawable/upld" />
     </LinearLayout>
-=======
+<!--=======
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/colorBlack"
             android:hint="Category"
@@ -214,7 +214,7 @@
             android:textColor="@color/colorBlack"
             android:textColorHint="@color/colorBlack"
             android:textSize="15dp" />
-    </android.support.design.widget.TextInputLayout>-->
+    </android.support.design.widget.TextInputLayout>&ndash;&gt;-->
 
 
     <TextView
@@ -245,7 +245,7 @@
         android:text="Upload"
         android:textSize="20dp"
         android:textAllCaps="false"
-        android:src="@drawable/upld" />
-</LinearLayout>
->>>>>>> 3906f14cd8e0358ba331f4dc0cb148da1e758e3a
+        android:src="@drawable/upld"
+         />
+
 </ScrollView>

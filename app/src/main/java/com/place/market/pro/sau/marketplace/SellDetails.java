@@ -35,7 +35,6 @@ public class SellDetails extends AppCompatActivity {
     EditText edt_name, edt_decr,edt_price;
     Button img_next;
     TextView txt_cat;
-    Spinner category;
     int cate_id=-1;
     ListView lv;
     Dialog dialog;
