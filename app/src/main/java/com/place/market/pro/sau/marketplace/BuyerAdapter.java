@@ -67,7 +67,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     });
 
     holder.txt_name.setText(grid_model.getName());
-    holder.txt_price.setText(grid_model.getPrice()+" Rs.");
+    holder.txt_price.setText(grid_model.getPrice()+" INR");
     }
 
     @Override
