@@ -44,6 +44,7 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             Glide.with(context).load("http://kisanunnati.com/market_place/public/uploads/"+obj.getString("image")).into(holder.cate_img);
 
             holder.category_id.setText(obj.getString("id"));
+            holder.category_name.setText(obj.getString("name"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -57,13 +58,14 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView category_id;
+        TextView category_id,category_name;
         ImageView cate_img;
 
         public ViewHolder(View itemView) {
             super(itemView);
             cate_img = itemView.findViewById(R.id.cate_img);
             category_id = itemView.findViewById(R.id.category_id);
+            category_name = itemView.findViewById(R.id.category_name);
 
         }
     }

@@ -102,6 +102,8 @@
             android:background="@drawable/color_gradient"
             android:text="Login"
             android:textAllCaps="false"
+            style="?android:attr/borderlessButtonStyle"
+            android:shadowColor="@color/colorWhite"
             android:textColor="@color/colorWhite"
             android:textSize="20dp" />
 
@@ -111,25 +113,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/login_fpwd"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="Forgot Password?"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="OR"
+                android:textColor="@color/colorBlack"
+                android:textSize="30dp" />
+
+            <Button
                 android:textAlignment="center"
                 android:id="@+id/login_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/holo_orange_dark"
                 android:gravity="center"
-                android:text="New User? Register here."
+                android:textAllCaps="false"
+                android:text="New User? Register here"
                 android:textColor="@color/colorBlack"
+                android:shadowColor="@color/colorWhite"
                 android:textSize="15dp" />
-        <TextView
-            android:layout_margin="15dp"
-            android:id="@+id/login_fpwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:text="Forgot Password"
-            android:textColor="@color/colorBlack"
-            android:textSize="15dp" />
+
 
 
 

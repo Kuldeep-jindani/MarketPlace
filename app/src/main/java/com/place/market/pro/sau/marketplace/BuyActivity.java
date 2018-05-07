@@ -133,7 +133,7 @@ public class BuyActivity extends Fragment {
             }
         });
 
-
+        search_edittext.setFocusable(true);
         search_edittext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
