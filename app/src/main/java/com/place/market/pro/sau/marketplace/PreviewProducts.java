@@ -59,6 +59,7 @@ preview_imagescroll.setLayoutManager(linearLayoutManager);
                         public void onPinEntered(CharSequence str) {
                             if (str.toString().equals("123456")) {
                                 Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+
                                 ln.setVisibility(View.INVISIBLE);
                             } else {
                                 Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
