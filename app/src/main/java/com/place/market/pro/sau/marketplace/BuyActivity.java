@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -38,6 +39,8 @@ public class BuyActivity extends Fragment {
     EditText search_edittext;
     ImageView search;
 
+    RelativeLayout pricrfilter;
+
     int searchbit = 0;
 
     @Override
@@ -55,6 +58,7 @@ public class BuyActivity extends Fragment {
         cate_layout = view.findViewById(R.id.cate_layout);
         search_edittext = view.findViewById(R.id.search_edittext);
         search = view.findViewById(R.id.search);
+        pricrfilter= view.findViewById(R.id.pricrfilter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         bottomnav_category_list.setLayoutManager(linearLayoutManager);
 
@@ -65,12 +69,16 @@ public class BuyActivity extends Fragment {
 
                 if (searchbit == 0) {
                     bottomnav_category_list.setVisibility(View.GONE);
+                    bottomnav_category_list.animate().alpha(0.0f);
+                    search_edittext.animate().alpha(1.0f);
                     search_edittext.setVisibility(View.VISIBLE);
                     search.setImageDrawable(getResources().getDrawable(R.drawable.ic_cancel));
                     searchbit = 1;
                 } else {
                     search_edittext.setText("");
                     new Paginator(getContext(), recyclar).initializePagination();
+                    search_edittext.animate().alpha(0.0f);
+                    bottomnav_category_list.animate().alpha(1.0f);
                     bottomnav_category_list.setVisibility(View.VISIBLE);
                     search_edittext.setVisibility(View.GONE);
                     search.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
