@@ -42,6 +42,8 @@ public class Paginator {
 
     String editText="";
 
+    int prizebit=0;
+
     public Paginator(Context c, PullToLoadView pullToLoadView) {
         this.c = c;
         this.pullToLoadView = pullToLoadView;
@@ -70,6 +72,35 @@ public class Paginator {
 
         initializePagination();
     }
+
+    public Paginator(Context c, PullToLoadView pullToLoadView,String editText,int prizebit) {
+        this.c = c;
+        this.pullToLoadView = pullToLoadView;
+        this.editText=editText;
+        this.prizebit=prizebit;
+
+        rv = pullToLoadView.getRecyclerView();
+        rv.setLayoutManager(new GridLayoutManager(c, 2));
+
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        rv.setAdapter(adapter);
+
+        initializePagination();
+    }
+    public Paginator(Context c, PullToLoadView pullToLoadView,int prizebit) {
+        this.c = c;
+        this.pullToLoadView = pullToLoadView;
+        this.prizebit=prizebit;
+
+        rv = pullToLoadView.getRecyclerView();
+        rv.setLayoutManager(new GridLayoutManager(c, 2));
+
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        rv.setAdapter(adapter);
+
+        initializePagination();
+    }
+
 
 
     public void initializePagination() {
@@ -103,7 +134,7 @@ public class Paginator {
     }
 
 
-    public void LoadData(final int page) {
+    private void LoadData(final int page) {
 
         isLoading=true;
         new Handler().postDelayed(new Runnable() {
@@ -114,7 +145,7 @@ public class Paginator {
 
                 String URL="";
                 if (editText.equals(""))
-            URL="http://kisanunnati.com/market_place/Product_list?user_id="+pre.getString("id","")+"&category_id=&last_product_id="+page*10;
+            URL="http://kisanunnati.com/market_place/Product_list?user_id="+pre.getString("id","")+"&category_id=&last_product_id="+page*10+"&price_filter="+prizebit;
                 else URL="http://kisanunnati.com/market_place/Search?name="+editText;
                 Log.e("Grid service url", URL);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {

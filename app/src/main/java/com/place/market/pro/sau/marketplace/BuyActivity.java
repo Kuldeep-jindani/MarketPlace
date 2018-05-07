@@ -41,7 +41,10 @@ public class BuyActivity extends Fragment {
 
     RelativeLayout pricrfilter;
 
+    LinearLayout lowtohigh,hightolow;
+
     int searchbit = 0;
+    int pricebit= 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,22 +66,48 @@ public class BuyActivity extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         bottomnav_category_list.setLayoutManager(linearLayoutManager);
 
+        lowtohigh=view.findViewById(R.id.lowtohigh);
+        hightolow=view.findViewById(R.id.hightolow);
+
+
+        lowtohigh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Paginator(getContext(), recyclar,0).initializePagination();
+                pricebit=0;
+                pricrfilter.setVisibility(View.GONE);
+            }
+        });
+
+
+        hightolow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Paginator(getContext(), recyclar,1).initializePagination();
+                pricebit=1;
+                pricrfilter.setVisibility(View.GONE);
+            }
+        });
+
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (pricrfilter.getVisibility() == View.VISIBLE) {
                     pricrfilter.setVisibility(View.GONE);
-                    pricrfilter.animate()
+                   /* pricrfilter.animate()
                             .translationY(pricrfilter.getHeight())
-                            .setListener(null);
+                            .setListener(null);*/
                 } else {
                     pricrfilter.setVisibility(View.VISIBLE);
-                    pricrfilter.animate()
+                  /*  pricrfilter.animate()
                             .translationY(pricrfilter.getHeight())
-                            .setListener(null);
+                            .setListener(null);*/
                 }
             }
         });
+
+
+
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +142,7 @@ public class BuyActivity extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                new Paginator(getContext(), recyclar,s.toString()).initializePagination();
+                new Paginator(getContext(), recyclar,s.toString(),pricebit).initializePagination();
             }
 
             @Override
