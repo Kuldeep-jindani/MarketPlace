@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 public class PreviewProducts extends AppCompatActivity {
     Button contact_buy;
-    RecyclerView preview_imagescroll;
+    RecyclerView preview_imagescroll, similarProd;
     TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark;
     RelativeLayout ln;
     PinEntryEditText pinEntry;
@@ -43,13 +45,84 @@ public class PreviewProducts extends AppCompatActivity {
         setContentView(R.layout.activity_preview_products);
         contact_buy = findViewById(R.id.buy_now);
         preview_imagescroll = findViewById(R.id.preview_imagescroll);
+        similarProd = findViewById(R.id.similarProd);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 
         preview_imagescroll.setLayoutManager(linearLayoutManager);
+        similarProd.setLayoutManager(linearLayoutManager1);
 
-        Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext());
+
+        String similarProdUrl = "http://kisanunnati.com/market_place/similar_product?prod_id=" + getIntent().getStringExtra("id");
+        Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, similarProdUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("similar prod resp", response);
+                Toast.makeText(getApplicationContext(), "response " + response, Toast.LENGTH_SHORT).show();
+
+                ArrayList<Grid_model> grid_models = new ArrayList<Grid_model>();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+//                                JSONObject dataObject = jsonObject.getJSONObject("data");
+
+                    JSONArray array = jsonObject.getJSONArray("data");
+
+
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject o = (JSONObject) array.get(i);
+//                                if (o.getInt("id")!=315635) {
+                        Grid_model grid_model = new Grid_model();
+                        grid_model.setId(o.getString("id"));
+                        grid_model.setUploader_id(o.getString("uploader_id"));
+//                        grid_model.setUploader_name(o.getString("name"));
+                        grid_model.setName(o.getString("name"));
+                        grid_model.setDescription(o.getString("description"));
+                        grid_model.setPrice(o.getString("price"));
+                        grid_model.setImage1(o.getString("image1"));
+                        grid_model.setImage2(o.getString("image2"));
+                        grid_model.setImage3(o.getString("image3"));
+                        grid_model.setImage4(o.getString("image4"));
+                        grid_model.setImage5(o.getString("image5"));
+                        grid_model.setRemarks(o.getString("remarks"));
+                        grid_model.setTime(o.getString("created_at"));
+
+                        grid_models.add(grid_model);
+//                                }
+
+                    }
+
+                    BuyerAdapter adapter = new BuyerAdapter(getApplicationContext(), grid_models);
+                    similarProd.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }));
+
+
+        ArrayList<String> pics = new ArrayList<>();
+
+        pics.add(getIntent().getStringExtra("image1"));
+        if (!getIntent().getStringExtra("image2").equals(""))
+            pics.add(getIntent().getStringExtra("image2"));
+        if (!getIntent().getStringExtra("image3").equals(""))
+            pics.add(getIntent().getStringExtra("image3"));
+        if (!getIntent().getStringExtra("image4").equals(""))
+            pics.add(getIntent().getStringExtra("image4"));
+        if (!getIntent().getStringExtra("image5").equals(""))
+            pics.add(getIntent().getStringExtra("image5"));
+
+        Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext(), pics);
 
         preview_imagescroll.setAdapter(preview_imageSlider_adapter);
 
