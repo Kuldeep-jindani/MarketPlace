@@ -37,7 +37,7 @@ public class BuyActivity extends Fragment {
 
     LinearLayout cate_layout;
     EditText search_edittext;
-    ImageView search;
+    ImageView search,filter;
 
     RelativeLayout pricrfilter;
 
@@ -58,10 +58,27 @@ public class BuyActivity extends Fragment {
         cate_layout = view.findViewById(R.id.cate_layout);
         search_edittext = view.findViewById(R.id.search_edittext);
         search = view.findViewById(R.id.search);
+        filter = view.findViewById(R.id.filter);
         pricrfilter= view.findViewById(R.id.pricrfilter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         bottomnav_category_list.setLayoutManager(linearLayoutManager);
 
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (pricrfilter.getVisibility() == View.VISIBLE) {
+                    pricrfilter.setVisibility(View.GONE);
+                    pricrfilter.animate()
+                            .translationY(pricrfilter.getHeight())
+                            .setListener(null);
+                } else {
+                    pricrfilter.setVisibility(View.VISIBLE);
+                    pricrfilter.animate()
+                            .translationY(pricrfilter.getHeight())
+                            .setListener(null);
+                }
+            }
+        });
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
