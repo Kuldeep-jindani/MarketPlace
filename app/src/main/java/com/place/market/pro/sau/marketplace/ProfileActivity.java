@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,6 +80,7 @@ public class ProfileActivity extends Fragment {
             }
         });
         SharedPreferences pre=getContext().getSharedPreferences("status", MODE_PRIVATE);
+        Log.e("Profile Pic",pre.getString("propic",""));
         Glide.with(getContext()).load(pre.getString("propic","")).into(profile_pic);
         profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -333,7 +335,8 @@ public class ProfileActivity extends Fragment {
 
                                     SharedPreferences preferences=getContext().getSharedPreferences("status", MODE_PRIVATE);
                                     SharedPreferences.Editor editor=preferences.edit();
-
+                                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                    fragmentTransaction.replace(R.id.viewpager, new ProfileActivity()).commit();
                                     editor.putString("propic",obj.getString("imageurl"));
 
                                     editor.apply();
