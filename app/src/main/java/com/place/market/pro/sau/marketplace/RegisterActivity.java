@@ -38,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText edt_email,edt_uname,edt_pwd,edt_cnum;
     Button btn_register;
     public int mYear, mMonth, mDay;
+    TextView txt_back_login;
     ImageView img_calender;
     TextView txt_setdate;
     private RadioGroup radioGroup,radioGroup1;
@@ -47,6 +48,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        txt_back_login = findViewById(R.id.login_reg);
+        txt_back_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         edt_uname = findViewById(R.id.register_user);
         edt_email = findViewById(R.id.register_email);
         edt_cnum = findViewById(R.id.register_cnum);
