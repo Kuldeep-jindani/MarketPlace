@@ -31,11 +31,12 @@ import java.time.OffsetTime;
 import java.util.ArrayList;
 
 public class PreviewProducts extends AppCompatActivity {
-    Button contact_buy;
+    Button contact_buy,ok;
     RecyclerView preview_imagescroll;
     TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark;
     RelativeLayout ln;
     PinEntryEditText pinEntry;
+    TextView contact_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +76,42 @@ public class PreviewProducts extends AppCompatActivity {
                                         if (str.toString().equals(otp)) {
                                             Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
                                             ln.setVisibility(View.INVISIBLE);
-
+                                            str.toString().equals("");
 
                                             final Dialog dialog = new Dialog(PreviewProducts.this);
                                             dialog.setContentView(R.layout.contact);
+                                            contact_number =  dialog.findViewById(R.id.contact_number);
+                                            String url1 = "http://192.168.1.200/market/Contact?otp="+otp +
+                                                    "&user_id=1&uploader_id=1";
+                                            StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    try {
+                                                        JSONObject resp = new JSONObject(response);
+                                                       String number =  resp.getString("uploader_phone_number");
+                                                        contact_number.setText(number);
+
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            }, new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+
+                                                }
+                                            });
+
+                                            Volley.newRequestQueue(getApplicationContext()).add(stringRequest1);
+
+
+                                            ok = dialog.findViewById(R.id.btn_ok);
+                                            ok.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
                                             dialog.show();
 
                                         } else {
@@ -101,11 +134,7 @@ public class PreviewProducts extends AppCompatActivity {
 
                     }
                 });
-                Volley.newRequestQueue(
-
-                        getApplicationContext()).
-
-                        add(stringRequest);
+                Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
 
 
             }
@@ -140,14 +169,10 @@ public class PreviewProducts extends AppCompatActivity {
 
         sell_name.setText(
 
-                getIntent().
-
-                        getStringExtra("uploader_name"));
+                getIntent().getStringExtra("uploader_name"));
         txt_name.setText(
 
-                getIntent().
-
-                        getStringExtra("product_name"));
+                getIntent().getStringExtra("product_name"));
         txt_desc.setText(
 
                 getIntent().
@@ -163,11 +188,7 @@ public class PreviewProducts extends AppCompatActivity {
                 getIntent().
 
                         getStringExtra("remarks"));
-        sell_date.setText(
-
-                getIntent().
-
-                        getStringExtra("created_at"));
+        sell_date.setText(getIntent().getStringExtra("created_at"));
 
 
     }

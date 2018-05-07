@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Congratulations.."
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textStyle="bold"
         android:textColor="@color/colorGreen"
         android:textAlignment="center"
@@ -16,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="9578455412"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:id="@+id/contact_number"
         android:textStyle="bold"
         android:textAlignment="center"
