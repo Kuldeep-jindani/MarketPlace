@@ -173,7 +173,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                                 String cdate = formatter.format(dx);
                                 txt_setdate.setText(cdate);
-                                txt_setdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                               // txt_setdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                txt_setdate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year );
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
