@@ -1,5 +1,6 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,10 +34,11 @@ import java.util.ArrayList;
 public class SellDetails extends AppCompatActivity {
     EditText edt_name, edt_decr,edt_price;
     Button img_next;
+    TextView txt_cat;
     Spinner category;
-int cate_id=-1;
-
-
+    int cate_id=-1;
+    ListView lv;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +46,22 @@ int cate_id=-1;
         edt_name = findViewById(R.id.sell_product_name);
         edt_decr = findViewById(R.id.sell_product_desc);
         edt_price = findViewById(R.id.sell_product_price);
-        category = findViewById(R.id.category);
+        txt_cat = findViewById(R.id.select_category);
 
+
+        dialog = new Dialog(SellDetails.this);
+        dialog.setContentView(R.layout.list);
+        lv = dialog.findViewById(R.id.lv);
+        dialog.setCancelable(true);
+
+        txt_cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.show();
+
+            }
+        });
 
         String url="http://kisanunnati.com/market_place/getCategoryData";
         Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -55,12 +73,11 @@ int cate_id=-1;
 
                     if (resObj.getInt("status")==0){
 
-                        JSONArray array=resObj.getJSONArray("data");
+                        final JSONArray array=resObj.getJSONArray("data");
 
-                        ArrayList<String> ary=new ArrayList<>();
+                        final ArrayList<String> ary=new ArrayList<>();
                         final ArrayList<Integer> aryint=new ArrayList<>();
                         for (int i=0;i<array.length();i++){
-
 
                             JSONObject jsonObject=array.getJSONObject(i);
                             ary.add(jsonObject.getString("name"));
@@ -68,26 +85,18 @@ int cate_id=-1;
 
                         }
                         ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(),R.layout.spinner_text,ary);
-                        category.setAdapter(arrayAdapter);
+                        lv.setAdapter(arrayAdapter);
 
 
-                        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                cate_id=aryint.get(position);
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                               cate_id = aryint.get(i);
+                               txt_cat.setText(ary.get(i));
+                                dialog.dismiss();
                             }
                         });
-
-
-
-
-
-                    }
+             }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -102,10 +111,7 @@ int cate_id=-1;
             }
         }));
 
-
-
-
-        img_next = findViewById(R.id.next_sell_details);
+  img_next = findViewById(R.id.next_sell_details);
         img_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
