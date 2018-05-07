@@ -29,7 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class SellDetails extends AppCompatActivity {
-    EditText edt_name, edt_decr,edt_price,sell_product_remarks;
+    EditText edt_name, edt_decr,edt_price;
     Button img_next;
     Spinner category;
 int cate_id=-1;
@@ -42,7 +42,6 @@ int cate_id=-1;
         edt_name = findViewById(R.id.sell_product_name);
         edt_decr = findViewById(R.id.sell_product_desc);
         edt_price = findViewById(R.id.sell_product_price);
-        sell_product_remarks = findViewById(R.id.sell_product_remarks);
         category = findViewById(R.id.category);
 
 
@@ -118,10 +117,9 @@ int cate_id=-1;
                 else if (edt_decr.getText().toString().equals("")){
                     edt_decr.setError("Fill Something");
 
-                }  else if (sell_product_remarks.getText().toString().equals("")){
-                    sell_product_remarks.setError("Fill Something");
+                }
 
-                }else if (edt_price.getText().toString().equals("")){
+                else if (edt_price.getText().toString().equals("")){
                     edt_price.setError("Fill Something");
 
                 }else if (cate_id==-1){
@@ -135,7 +133,6 @@ int cate_id=-1;
                             "&name="+edt_name.getText().toString().replace(" ","%20") +
                             "&description="+edt_decr.getText().toString() .replace(" ","%20")+
                             "&price="+edt_price.getText().toString().replace(" ","%20") +
-                            "&remarks="+sell_product_remarks.getText().toString().replace(" ","%20") +
                             "&image1="+preferences.getString("image1","") +
                             "&image2="+preferences.getString("image2","") +
                             "&image3="+preferences.getString("image3","") +
