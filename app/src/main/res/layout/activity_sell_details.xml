@@ -102,6 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+<<<<<<< HEAD
             android:theme="@style/TextLabel">
 
             <EditText
@@ -145,11 +146,51 @@
 
 
         <!--<Spinner
+=======
+            android:backgroundTint="@color/colorBlack"
+            android:hint="Product Price (INR)"
+            android:inputType="number"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:theme="@style/TextLabel">
+
+        <EditText
+            android:id="@+id/sell_product_remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorBlack"
+            android:hint="Remarks"
+            android:inputType="text"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+   <!-- <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:theme="@style/TextLabel">
+
+        <EditText
+>>>>>>> 3906f14cd8e0358ba331f4dc0cb148da1e758e3a
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
+<<<<<<< HEAD
             android:layout_height="wrap_content"/>
     -->
         <Button
@@ -165,4 +206,46 @@
             android:textAllCaps="false"
             android:src="@drawable/upld" />
     </LinearLayout>
+=======
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorBlack"
+            android:hint="Category"
+            android:inputType="text"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>-->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="18dp"
+        android:textSize="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/colorBlack"
+        />
+    <Spinner
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/next_sell_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/color_gradient"
+        android:text="Upload"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:src="@drawable/upld" />
+</LinearLayout>
+>>>>>>> 3906f14cd8e0358ba331f4dc0cb148da1e758e3a
 </ScrollView>
