@@ -102,7 +102,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/colorBlack"
-            android:hint="Product Price"
+            android:hint="Product Price (INR)"
             android:inputType="number"
             android:textColor="@color/colorBlack"
             android:textColorHint="@color/colorBlack"
@@ -124,7 +124,6 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/colorBlack"
-
             android:hint="Remarks"
             android:inputType="text"
             android:textColor="@color/colorBlack"
