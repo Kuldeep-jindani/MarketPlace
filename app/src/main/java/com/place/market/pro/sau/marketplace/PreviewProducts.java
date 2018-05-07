@@ -1,5 +1,6 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -74,6 +75,12 @@ public class PreviewProducts extends AppCompatActivity {
                                         if (str.toString().equals(otp)) {
                                             Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
                                             ln.setVisibility(View.INVISIBLE);
+
+
+                                            final Dialog dialog = new Dialog(PreviewProducts.this);
+                                            dialog.setContentView(R.layout.contact);
+                                            dialog.show();
+
                                         } else {
                                             Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
                                             pinEntry.setText(null);
@@ -86,82 +93,82 @@ public class PreviewProducts extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                    },new Response.ErrorListener()
+                }, new Response.ErrorListener()
 
-                    {
-                        @Override
-                        public void onErrorResponse (VolleyError error){
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
                     }
-                    });
+                });
                 Volley.newRequestQueue(
 
-                    getApplicationContext()).
+                        getApplicationContext()).
 
-                    add(stringRequest);
-
-
-                }
-            });
-            txt_desc=
-
-            findViewById(R.id.preview_desc);
-
-            txt_name=
-
-            findViewById(R.id.preview_name);
-
-            txt_price=
-
-            findViewById(R.id.preview_price);
-
-            sell_name=
-
-            findViewById(R.id.sell_name);
-
-            sell_date=
-
-            findViewById(R.id.sell_date);
-
-            preview_tags=
-
-            findViewById(R.id.preview_tags);
-
-            preview_remark=
-
-            findViewById(R.id.preview_remark);
-
-sell_name.setText(
-
-            getIntent().
-
-            getStringExtra("uploader_name"));
-txt_name.setText(
-
-            getIntent().
-
-            getStringExtra("product_name"));
-txt_desc.setText(
-
-            getIntent().
-
-            getStringExtra("description"));
-txt_price.setText(
-
-            getIntent().
-
-            getStringExtra("price"));
-preview_remark.setText(
-
-            getIntent().
-
-            getStringExtra("remarks"));
-sell_date.setText(
-
-            getIntent().
-
-            getStringExtra("created_at"));
+                        add(stringRequest);
 
 
-        }
+            }
+        });
+        txt_desc =
+
+                findViewById(R.id.preview_desc);
+
+        txt_name =
+
+                findViewById(R.id.preview_name);
+
+        txt_price =
+
+                findViewById(R.id.preview_price);
+
+        sell_name =
+
+                findViewById(R.id.sell_name);
+
+        sell_date =
+
+                findViewById(R.id.sell_date);
+
+        preview_tags =
+
+                findViewById(R.id.preview_tags);
+
+        preview_remark =
+
+                findViewById(R.id.preview_remark);
+
+        sell_name.setText(
+
+                getIntent().
+
+                        getStringExtra("uploader_name"));
+        txt_name.setText(
+
+                getIntent().
+
+                        getStringExtra("product_name"));
+        txt_desc.setText(
+
+                getIntent().
+
+                        getStringExtra("description"));
+        txt_price.setText(
+
+                getIntent().
+
+                        getStringExtra("price"));
+        preview_remark.setText(
+
+                getIntent().
+
+                        getStringExtra("remarks"));
+        sell_date.setText(
+
+                getIntent().
+
+                        getStringExtra("created_at"));
+
+
     }
+}
