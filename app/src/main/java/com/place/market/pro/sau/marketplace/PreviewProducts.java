@@ -44,16 +44,10 @@ public class PreviewProducts extends AppCompatActivity {
         setContentView(R.layout.activity_preview_products);
         contact_buy = findViewById(R.id.buy_now);
         preview_imagescroll = findViewById(R.id.preview_imagescroll);
-
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-
         preview_imagescroll.setLayoutManager(linearLayoutManager);
-
         Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext());
-
         preview_imagescroll.setAdapter(preview_imageSlider_adapter);
-
         contact_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +98,6 @@ public class PreviewProducts extends AppCompatActivity {
 
                                             Volley.newRequestQueue(getApplicationContext()).add(stringRequest1);
 
-
                                             ok = dialog.findViewById(R.id.btn_ok);
                                             ok.setOnClickListener(new View.OnClickListener() {
                                                 @Override
@@ -131,63 +124,23 @@ public class PreviewProducts extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 });
                 Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
-
-
             }
         });
-        txt_desc =
-
-                findViewById(R.id.preview_desc);
-
-        txt_name =
-
-                findViewById(R.id.preview_name);
-
-        txt_price =
-
-                findViewById(R.id.preview_price);
-
-        sell_name =
-
-                findViewById(R.id.sell_name);
-
-        sell_date =
-
-                findViewById(R.id.sell_date);
-
-        preview_tags =
-
-                findViewById(R.id.preview_tags);
-
-        preview_remark =
-
-                findViewById(R.id.preview_remark);
-
-        sell_name.setText(
-
-                getIntent().getStringExtra("uploader_name"));
-        txt_name.setText(
-
-                getIntent().getStringExtra("product_name"));
-        txt_desc.setText(
-
-                getIntent().
-
-                        getStringExtra("description"));
-        txt_price.setText(
-
-                getIntent().
-
-                        getStringExtra("price"));
-        preview_remark.setText(
-
-                getIntent().
-
-                        getStringExtra("remarks"));
+        txt_desc = findViewById(R.id.preview_desc);
+        txt_name = findViewById(R.id.preview_name);
+        txt_price = findViewById(R.id.preview_price);
+        sell_name = findViewById(R.id.sell_name);
+        sell_date = findViewById(R.id.sell_date);
+        preview_tags = findViewById(R.id.preview_tags);
+        preview_remark = findViewById(R.id.preview_remark);
+        sell_name.setText(getIntent().getStringExtra("uploader_name"));
+        txt_name.setText(getIntent().getStringExtra("product_name"));
+        txt_desc.setText(getIntent().getStringExtra("description"));
+        txt_price.setText(getIntent().getStringExtra("price"));
+        preview_remark.setText(getIntent().getStringExtra("remarks"));
         sell_date.setText(getIntent().getStringExtra("created_at"));
 
 
