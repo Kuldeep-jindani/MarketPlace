@@ -1,6 +1,7 @@
 package com.place.market.pro.sau.marketplace;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.time.OffsetTime;
 import java.util.ArrayList;
@@ -53,20 +62,43 @@ preview_imagescroll.setLayoutManager(linearLayoutManager);
                 ln= findViewById(R.id.ln_opt);
                 ln.setVisibility(View.VISIBLE);
                 pinEntry = findViewById(R.id.txt_pin_entry);
-                if (pinEntry != null) {
-                    pinEntry.setOnPinEnteredListener(new PinEntryEditText.OnPinEnteredListener() {
-                        @Override
-                        public void onPinEntered(CharSequence str) {
-                            if (str.toString().equals("123456")) {
-                                Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                                ln.setVisibility(View.INVISIBLE);
-                            } else {
-                                Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
-                                pinEntry.setText(null);
+                String url = "http://192.168.1.200/market/Send_otp?user_id=1";
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject resp = new JSONObject(response);
+                      final String otp=resp.getString("otp");
+
+                            if (pinEntry != null) {
+                                pinEntry.setOnPinEnteredListener(new PinEntryEditText.OnPinEnteredListener() {
+                                    @Override
+                                    public void onPinEntered(CharSequence str) {
+                                        if (str.toString().equals(otp)) {
+                                            Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+                                            ln.setVisibility(View.INVISIBLE);
+                                        } else {
+                                            Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
+                                            pinEntry.setText(null);
+                                        }
+                                    }
+                                });
                             }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+
+
+
 
             }
         });
