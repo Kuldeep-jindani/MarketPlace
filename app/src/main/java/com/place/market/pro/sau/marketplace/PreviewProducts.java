@@ -62,7 +62,6 @@ public class PreviewProducts extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.e("similar prod resp", response);
-                Toast.makeText(getApplicationContext(), "response " + response, Toast.LENGTH_SHORT).show();
 
                 ArrayList<Grid_model> grid_models = new ArrayList<Grid_model>();
 
@@ -155,7 +154,8 @@ public class PreviewProducts extends AppCompatActivity {
                                             dialog.setContentView(R.layout.contact);
                                             contact_number =  dialog.findViewById(R.id.contact_number);
                                             String url1 = "http://192.168.1.200/market/Contact?otp="+otp +
-                                                    "&user_id=1&uploader_id=1";
+                                                    "&user_id="+getSharedPreferences("status",MODE_PRIVATE).getString("id","")+
+                                                    "&uploader_id="+getIntent().getStringExtra("id");
                                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
                                                 @Override
                                                 public void onResponse(String response) {
