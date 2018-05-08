@@ -138,6 +138,7 @@ public class SellDetails extends AppCompatActivity {
                             "&name="+edt_name.getText().toString().replace(" ","%20") +
                             "&description="+edt_decr.getText().toString() .replace(" ","%20")+
                             "&price="+edt_price.getText().toString().replace(" ","%20") +
+                            "&remarks=asd"+
                             "&image1="+preferences.getString("image1","") +
                             "&image2="+preferences.getString("image2","") +
                             "&image3="+preferences.getString("image3","") +

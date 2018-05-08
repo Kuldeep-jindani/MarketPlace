@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
-
 import java.util.ArrayList;
 
 public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
@@ -42,10 +40,8 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         final Grid_model grid_model=grid_models.get(position);
-
         Glide.with(context).load(grid_model.getImage1()).into(holder.imageView);
-
-    holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(),PreviewProducts.class);
