@@ -27,7 +27,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
 import com.place.market.pro.sau.marketplace.Adapters.SlidingImage_Adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
@@ -140,7 +139,6 @@ public class PreviewProducts extends AppCompatActivity {
         if (!getIntent().getStringExtra("image5").equals(""))
             pics.add(getIntent().getStringExtra("image5"));
 
-        Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext(), pics);
 
 
       /*  for (int i=0;i<pics.size();i++){

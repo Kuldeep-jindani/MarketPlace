@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 import java.util.ArrayList;
@@ -63,8 +65,8 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
         }
     });
 
-    holder.txt_name.setText(grid_model.getName());
-    holder.txt_price.setText(grid_model.getPrice()+" INR");
+        holder.txt_name.setText(grid_model.getName());
+        holder.txt_price.setText(grid_model.getPrice()+" INR");
     }
 
     @Override
@@ -74,7 +76,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txt_name,txt_price;
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.buy_img);
             txt_name = itemView.findViewById(R.id.buy_name);

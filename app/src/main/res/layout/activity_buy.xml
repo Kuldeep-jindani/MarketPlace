@@ -19,13 +19,13 @@
             <LinearLayout
                 android:id="@+id/cate_layout"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="80dp"
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/bottomnav_category_list"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
 
                     android:layout_margin="5dp"
                     android:layout_weight="1.3">
