@@ -41,7 +41,7 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             JSONObject obj=array.getJSONObject(position);
 
 
-            Glide.with(context).load("http://kisanunnati.com/market_place/public/uploads/"+obj.getString("image")).into(holder.cate_img);
+            Glide.with(context).load(/*"http://kisanunnati.com/market_place/public/uploads/"+*/obj.getString("image")).into(holder.cate_img);
 
             holder.category_id.setText(obj.getString("id"));
             holder.category_name.setText(obj.getString("name"));
