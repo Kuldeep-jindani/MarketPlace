@@ -42,12 +42,9 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_nav);
 
-
         /*bottomnav_category_list=findViewById(R.id.bottomnav_category_list);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         bottomnav_category_list.setLayoutManager(linearLayoutManager);
-
-
 
         String url="http://kisanunnati.com/market_place/getCategoryData";
         Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
