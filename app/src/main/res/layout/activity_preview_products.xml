@@ -57,7 +57,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="30dp" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <ViewFlipper
                         android:id="@+id/preview_imagescroll"
                         android:layout_width="match_parent"
                         android:layout_height="270dp"
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="OPT will be send to your Register Mobile Number"
+                    android:text="OTP will be send to your Register Mobile Number"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 
@@ -237,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="Enter OPT"
+                    android:text="Enter OTP"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 

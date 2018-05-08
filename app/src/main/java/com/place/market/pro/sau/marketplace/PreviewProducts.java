@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.android.volley.Request;
@@ -22,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
@@ -34,7 +36,8 @@ import java.util.ArrayList;
 
 public class PreviewProducts extends AppCompatActivity {
     Button contact_buy,ok;
-    RecyclerView preview_imagescroll, similarProd;
+    RecyclerView  similarProd;
+    ViewFlipper preview_imagescroll;
     TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark;
     RelativeLayout ln;
     PinEntryEditText pinEntry;
@@ -47,13 +50,13 @@ public class PreviewProducts extends AppCompatActivity {
         contact_buy = findViewById(R.id.buy_now);
         preview_imagescroll = findViewById(R.id.preview_imagescroll);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        preview_imagescroll.setLayoutManager(linearLayoutManager);
+//        preview_imagescroll.setLayoutManager(linearLayoutManager);
         similarProd = findViewById(R.id.similarProd);
 
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 
-        preview_imagescroll.setLayoutManager(linearLayoutManager);
+//        preview_imagescroll.setLayoutManager(linearLayoutManager);
         similarProd.setLayoutManager(linearLayoutManager1);
 
 
@@ -125,7 +128,14 @@ public class PreviewProducts extends AppCompatActivity {
 
         Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext(), pics);
 
-        preview_imagescroll.setAdapter(preview_imageSlider_adapter);
+
+        for (int i=0;i<pics.size();i++){
+            ImageView img=new ImageView(getApplicationContext());
+            Glide.with(getApplicationContext()).load(pics.get(i)).into(img);
+            preview_imagescroll.addView(img);
+        }
+
+//        preview_imagescroll.setAdapter(preview_imageSlider_adapter);
         contact_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,7 +228,8 @@ public class PreviewProducts extends AppCompatActivity {
         sell_name.setText(getIntent().getStringExtra("uploader_name"));
         txt_name.setText(getIntent().getStringExtra("product_name"));
         txt_desc.setText(getIntent().getStringExtra("description"));
-        txt_price.setText(getIntent().getStringExtra("price")+" INR");
+        String price=getIntent().getStringExtra("price")+" INR";
+        txt_price.setText(price);
         preview_remark.setText(getIntent().getStringExtra("remarks"));
         sell_date.setText(getIntent().getStringExtra("created_at"));
 
