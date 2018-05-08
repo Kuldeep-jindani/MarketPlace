@@ -62,7 +62,7 @@
                             android:id="@+id/filter"
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
-                            android:src="@mipmap/filter" />
+                            android:src="@drawable/filter" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
