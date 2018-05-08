@@ -26,7 +26,8 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
     EditText edt_email,edt_pwd;
     Button btn_login;
-   TextView txt_register,txt_forgotpwd;
+   TextView txt_forgotpwd;
+   Button txt_register;
    TextInputLayout login_email_wrapper,login_pwd_wrapper;
 
     @Override

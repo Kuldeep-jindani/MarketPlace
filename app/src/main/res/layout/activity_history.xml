@@ -31,7 +31,7 @@
         android:layout_height="40dp"
         android:text="Uploaded Product"
 
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textColor="@color/colorBlack"
         android:layout_margin="10dp"
         />

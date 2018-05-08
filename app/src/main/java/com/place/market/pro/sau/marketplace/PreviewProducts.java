@@ -218,7 +218,7 @@ public class PreviewProducts extends AppCompatActivity {
         sell_name.setText(getIntent().getStringExtra("uploader_name"));
         txt_name.setText(getIntent().getStringExtra("product_name"));
         txt_desc.setText(getIntent().getStringExtra("description"));
-        txt_price.setText(getIntent().getStringExtra("price"));
+        txt_price.setText(getIntent().getStringExtra("price")+" INR");
         preview_remark.setText(getIntent().getStringExtra("remarks"));
         sell_date.setText(getIntent().getStringExtra("created_at"));
 
