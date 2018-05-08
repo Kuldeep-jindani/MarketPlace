@@ -55,7 +55,7 @@
                         android:layout_margin="10dp"
                         android:text="Product"
                         android:textColor="@color/colorBlack"
-                        android:textSize="30dp" />
+                        android:textSize="20dp" />
 <!--
                     <ViewFlipper
                         android:id="@+id/preview_imagescroll"
