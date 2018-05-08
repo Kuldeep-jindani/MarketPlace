@@ -157,7 +157,7 @@ public class Paginator {
 //                                JSONObject dataObject = jsonObject.getJSONObject("data");
 
                             JSONArray array = jsonObject.getJSONArray("data");
-
+Log.e("paginator response",response);
                             Log.e("page IN ASYNC TASK ", String.valueOf(page));
 
                             for (int i = 0; i < array.length(); i++) {

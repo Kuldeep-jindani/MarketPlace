@@ -3,11 +3,15 @@ package com.place.market.pro.sau.marketplace;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +27,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Adapters.Preview_imageSlider_adapter;
+import com.place.market.pro.sau.marketplace.Adapters.SlidingImage_Adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
 import org.json.JSONArray;
@@ -33,6 +37,8 @@ import org.json.JSONObject;
 
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PreviewProducts extends AppCompatActivity {
     Button contact_buy,ok;
@@ -42,13 +48,21 @@ public class PreviewProducts extends AppCompatActivity {
     RelativeLayout ln;
     PinEntryEditText pinEntry;
     TextView contact_number;
+    private GestureDetector mGestureDetector;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_products);
         contact_buy = findViewById(R.id.buy_now);
-        preview_imagescroll = findViewById(R.id.preview_imagescroll);
+//        preview_imagescroll = findViewById(R.id.preview_imagescroll);
+//        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
+//        preview_imagescroll.setOutAnimation(this, android.R.anim.fade_out);
+
+        /*CustomGestureDetector customGestureDetector = new CustomGestureDetector();
+        mGestureDetector = new GestureDetector(this, customGestureDetector);*/
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 //        preview_imagescroll.setLayoutManager(linearLayoutManager);
         similarProd = findViewById(R.id.similarProd);
@@ -129,11 +143,11 @@ public class PreviewProducts extends AppCompatActivity {
         Preview_imageSlider_adapter preview_imageSlider_adapter = new Preview_imageSlider_adapter(getApplicationContext(), pics);
 
 
-        for (int i=0;i<pics.size();i++){
+      /*  for (int i=0;i<pics.size();i++){
             ImageView img=new ImageView(getApplicationContext());
             Glide.with(getApplicationContext()).load(pics.get(i)).into(img);
             preview_imagescroll.addView(img);
-        }
+        }*/
 
 //        preview_imagescroll.setAdapter(preview_imageSlider_adapter);
         contact_buy.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +157,7 @@ public class PreviewProducts extends AppCompatActivity {
                 ln.setVisibility(View.VISIBLE);
                 pinEntry = findViewById(R.id.txt_pin_entry);
 
-                String url = "http://192.168.1.200/market/Send_otp?user_id=1";
+                String url = "http://kisanunnati.com/market_place/Send_otp?user_id=1";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -163,7 +177,7 @@ public class PreviewProducts extends AppCompatActivity {
                                             final Dialog dialog = new Dialog(PreviewProducts.this);
                                             dialog.setContentView(R.layout.contact);
                                             contact_number =  dialog.findViewById(R.id.contact_number);
-                                            String url1 = "http://192.168.1.200/market/Contact?otp="+otp +
+                                            String url1 = "http://kisanunnati.com/market_place/Contact?otp="+otp +
                                                     "&user_id="+getSharedPreferences("status",MODE_PRIVATE).getString("id","")+
                                                     "&uploader_id="+getIntent().getStringExtra("id");
                                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
@@ -234,5 +248,37 @@ public class PreviewProducts extends AppCompatActivity {
         sell_date.setText(getIntent().getStringExtra("created_at"));
 
 
+
+        ViewPager   mPager = (ViewPager) findViewById(R.id.pager);
+
+
+        mPager.setAdapter(new SlidingImage_Adapter(PreviewProducts.this,pics));
+
+
+
     }
+    /*class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+            // Swipe left (next)
+            if (e1.getX() > e2.getX()) {
+                preview_imagescroll.showNext();
+            }
+
+            // Swipe right (previous)
+            if (e1.getX() < e2.getX()) {
+                preview_imagescroll.showPrevious();
+            }
+
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+
+        return super.onTouchEvent(event);
+    }*/
 }
