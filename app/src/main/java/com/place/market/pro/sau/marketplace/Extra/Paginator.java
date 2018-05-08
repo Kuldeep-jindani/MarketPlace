@@ -44,6 +44,23 @@ public class Paginator {
 
     int prizebit=0;
 
+    int cat_id;
+
+   /* public Paginator(Context c, PullToLoadView pullToLoadView, int cat_id) {
+        this.c = c;
+        this.pullToLoadView = pullToLoadView;
+        this.cat_id = cat_id;
+        rv = pullToLoadView.getRecyclerView();
+        rv.setLayoutManager(new GridLayoutManager(c, 2));
+
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        rv.setAdapter(adapter);
+
+        initializePagination();
+    }*/
+
+
+
     public Paginator(Context c, PullToLoadView pullToLoadView) {
         this.c = c;
         this.pullToLoadView = pullToLoadView;
@@ -157,7 +174,7 @@ public class Paginator {
 //                                JSONObject dataObject = jsonObject.getJSONObject("data");
 
                             JSONArray array = jsonObject.getJSONArray("data");
-Log.e("paginator response",response);
+                            Log.e("paginator response",response);
                             Log.e("page IN ASYNC TASK ", String.valueOf(page));
 
                             for (int i = 0; i < array.length(); i++) {

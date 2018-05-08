@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.place.market.pro.sau.marketplace.Extra.Paginator;
 import com.place.market.pro.sau.marketplace.R;
 
 import org.json.JSONArray;
@@ -45,6 +47,12 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
 
             holder.category_id.setText(obj.getString("id"));
             holder.category_name.setText(obj.getString("name"));
+
+            holder.category_root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -60,12 +68,14 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
 
         TextView category_id,category_name;
         ImageView cate_img;
+        LinearLayout category_root;
 
         public ViewHolder(View itemView) {
             super(itemView);
             cate_img = itemView.findViewById(R.id.cate_img);
             category_id = itemView.findViewById(R.id.category_id);
             category_name = itemView.findViewById(R.id.category_name);
+            category_root= itemView.findViewById(R.id.category_root);
 
         }
     }
