@@ -52,7 +52,6 @@ public class BuyActivity extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_buy, container, false);
         recyclar = view.findViewById(R.id.recyclar);
-
 /*
         recyclar.setLayoutManager(new GridLayoutManager(getContext(),2));
         BuyerAdapter buyerAdapter=new  BuyerAdapter(getContext());
@@ -60,6 +59,7 @@ public class BuyActivity extends Fragment {
         bottomnav_category_list = view.findViewById(R.id.bottomnav_category_list);
         cate_layout = view.findViewById(R.id.cate_layout);
         search_edittext = view.findViewById(R.id.search_edittext);
+
         search = view.findViewById(R.id.search);
         filter = view.findViewById(R.id.filter);
         pricrfilter= view.findViewById(R.id.pricrfilter);
@@ -106,9 +106,6 @@ public class BuyActivity extends Fragment {
             }
         });
 
-
-
-
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,9 +115,11 @@ public class BuyActivity extends Fragment {
                     bottomnav_category_list.animate().alpha(0.0f);
                     search_edittext.animate().alpha(1.0f);
                     search_edittext.setVisibility(View.VISIBLE);
+                    search_edittext.setCursorVisible(true);
                     search.setImageDrawable(getResources().getDrawable(R.drawable.ic_cancel));
                     searchbit = 1;
                 } else {
+
                     search_edittext.setText("");
                     new Paginator(getContext(), recyclar).initializePagination();
                     search_edittext.animate().alpha(0.0f);

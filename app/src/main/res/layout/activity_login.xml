@@ -140,7 +140,7 @@
                 android:id="@+id/login_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_orange_dark"
+                android:background="#ff5b00"
                 android:gravity="center"
                 android:textAllCaps="false"
                 android:text="New User? Register here"

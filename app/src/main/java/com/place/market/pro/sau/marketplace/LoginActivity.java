@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.putString("birthdate", object.getString("birthdate"));
                                     editor.putString("contact",object.getString("contact")).apply();
                                     hud.dismiss();
-                                    Toast.makeText(LoginActivity.this, "Login Successfull.", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this, BottomNav.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);

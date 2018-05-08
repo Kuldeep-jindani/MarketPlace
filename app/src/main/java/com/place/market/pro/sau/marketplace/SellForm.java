@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +37,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SellForm extends AppCompatActivity {
-    ImageView img_camera, img_preview1,img_preview2,img_preview3,img_preview4,img_preview5,img_next;
+    ImageView img_camera, img_preview1,img_preview2,img_preview3,img_preview4,img_preview5;
     String userChoosenTask;
     int CAMERA_REQUEST = 1001;
     int GALLERY_REQUEST = 1002;
+    Button img_next;
     TextView addimg_uid, addimg_uid2, addimg_uid3;
 
 
