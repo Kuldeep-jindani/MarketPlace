@@ -28,13 +28,7 @@
             android:textColor="@color/colorBlack"
             android:layout_margin="10dp"
             />
-        <ImageView
-            android:layout_weight="5"
-            android:layout_width="match_parent"
 
-            android:padding="10dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/logout"/>
 
     </LinearLayout>
     <View
@@ -65,7 +59,6 @@
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:padding="3dp"
-                android:src="@drawable/boy"
                 />
             </LinearLayout>
         </RelativeLayout>

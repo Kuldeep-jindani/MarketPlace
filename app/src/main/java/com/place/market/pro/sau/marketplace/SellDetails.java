@@ -157,6 +157,8 @@ public class SellDetails extends AppCompatActivity {
                             Log.e("url   ",url);
                             Log.e("responmse ",response);
                             hud.dismiss();
+                            SharedPreferences.Editor editor=preferences.edit();
+                            editor.clear().apply();
                             Intent i=new Intent(getApplicationContext(),BottomNav.class);
                             startActivity(i);
                         }

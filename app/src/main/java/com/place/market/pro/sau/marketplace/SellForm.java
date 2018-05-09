@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SellForm extends AppCompatActivity {
-    ImageView img_camera, img_preview1,img_preview2,img_preview3,img_preview4,img_preview5;
+    ImageView  img_preview1,img_preview2,img_preview3,img_preview4,img_preview5;
     String userChoosenTask;
     int CAMERA_REQUEST = 1001;
     int GALLERY_REQUEST = 1002;
@@ -51,11 +51,18 @@ public class SellForm extends AppCompatActivity {
     int pic4 = 0;
     int pic5 = 0;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_form);
-        img_camera = findViewById(R.id.camera);
+
+        preferences=getSharedPreferences("image",MODE_PRIVATE);
+        editor=preferences.edit();
+
+editor.clear().apply();
+
         img_preview1 = findViewById(R.id.preview_img1);
         img_preview2 = findViewById(R.id.preview_img2);
         img_preview3 = findViewById(R.id.preview_img3);
@@ -68,8 +75,19 @@ public class SellForm extends AppCompatActivity {
         img_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SellForm.this,SellDetails.class);
-                startActivity(intent);
+
+              
+
+                    if (!preferences.contains("image1") &&
+                        !preferences.contains("image2") &&
+                        !preferences.contains("image3") &&
+                        !preferences.contains("image4") &&
+                        !preferences.contains("image5") ){
+                    Toast.makeText(SellForm.this, "Please upload atleast one image.", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(SellForm.this, SellDetails.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -301,8 +319,6 @@ public class SellForm extends AppCompatActivity {
                                 Log.e("response", obj.toString());
                                 if (obj.getInt("status") == 1) {
 
-                                    SharedPreferences preferences=getSharedPreferences("image",MODE_PRIVATE);
-                                    SharedPreferences.Editor editor=preferences.edit();
 
 
                                     if (pic1 == 1) {
