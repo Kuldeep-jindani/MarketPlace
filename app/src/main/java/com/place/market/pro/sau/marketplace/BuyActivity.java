@@ -38,7 +38,7 @@ public class BuyActivity extends Fragment {
     BuyerAdapter buyerAdapter;
     RecyclerView bottomnav_category_list;
 
-    LinearLayout cate_layout;
+    LinearLayout cate_layout,search_edittextlayout;
     EditText search_edittext;
     ImageView search,filter;
 
@@ -63,6 +63,7 @@ public class BuyActivity extends Fragment {
         recyclar.setAdapter(buyerAdapter);*/
         bottomnav_category_list = view.findViewById(R.id.bottomnav_category_list);
         cate_layout = view.findViewById(R.id.cate_layout);
+        search_edittextlayout = view.findViewById(R.id.search_edittextlayout);
         search_edittext = view.findViewById(R.id.search_edittext);
 
         search = view.findViewById(R.id.search);
@@ -118,8 +119,8 @@ public class BuyActivity extends Fragment {
                 if (searchbit == 0) {
                     bottomnav_category_list.setVisibility(View.GONE);
                     bottomnav_category_list.animate().alpha(0.0f);
-                    search_edittext.animate().alpha(1.0f);
-                    search_edittext.setVisibility(View.VISIBLE);
+                    search_edittextlayout.animate().alpha(1.0f);
+                    search_edittextlayout.setVisibility(View.VISIBLE);
                     search_edittext.setCursorVisible(true);
                     search.setImageDrawable(getResources().getDrawable(R.drawable.ic_cancel));
                     searchbit = 1;
@@ -127,10 +128,10 @@ public class BuyActivity extends Fragment {
 
                     search_edittext.setText("");
                     new Paginator(getContext(), recyclar).initializePagination();
-                    search_edittext.animate().alpha(0.0f);
+                    search_edittextlayout.animate().alpha(0.0f);
                     bottomnav_category_list.animate().alpha(1.0f);
                     bottomnav_category_list.setVisibility(View.VISIBLE);
-                    search_edittext.setVisibility(View.GONE);
+                    search_edittextlayout.setVisibility(View.GONE);
                     search.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
                     searchbit = 0;
                 }
@@ -138,7 +139,7 @@ public class BuyActivity extends Fragment {
         });
 
         search_edittext.setFocusable(true);
-        search_edittext.addTextChangedListener(new TextWatcher() {
+        /*search_edittext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -152,6 +153,21 @@ public class BuyActivity extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });*/
+
+        ImageView search_go=view.findViewById(R.id.search_go);
+        search_go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Paginator(getContext(), recyclar,search_edittext.getText().toString(),pricebit).initializePagination();
+                search_edittext.setText("");
+                search_edittextlayout.animate().alpha(0.0f);
+                bottomnav_category_list.animate().alpha(1.0f);
+                bottomnav_category_list.setVisibility(View.VISIBLE);
+                search_edittextlayout.setVisibility(View.GONE);
+                search.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
+                searchbit = 0;
             }
         });
 
