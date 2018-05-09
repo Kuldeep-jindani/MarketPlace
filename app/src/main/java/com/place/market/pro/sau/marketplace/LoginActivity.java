@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (edt_email.getText().toString().equals("") ){
                     login_email_wrapper.setErrorEnabled(true);
-                    edt_email.setError("Please enter Email");
+                    edt_email.setError("Please enter Contact Number");
 
                 }else if(edt_pwd.getText().toString().equals("")){
                     login_pwd_wrapper.setErrorEnabled(true);
@@ -53,14 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                 else if (edt_pwd.getText().toString().length()<6){
                     edt_pwd.setError("Password must be greater than 6 characters.");
                 }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(edt_email.getText().toString()).matches()){
+               /* else if (!Patterns.EMAIL_ADDRESS.matcher(edt_email.getText().toString()).matches()){
                     edt_email.setError("Please enter valid Email");
-                }
+                }*/
 
                 else {
 
                     String url = "http://kisanunnati.com/market_place/userlogin?"+
-                             "email=" +edt_email.getText().toString()+
+                             "contact=" +edt_email.getText().toString()+
                             "&password="+ edt_pwd.getText().toString();
                     final KProgressHUD hud = KProgressHUD.create(LoginActivity.this)
                             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)

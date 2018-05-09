@@ -82,7 +82,6 @@
         android:layout_height="wrap_content"
         android:text="sagar.patel@gmail.com"
         android:textSize="15dp"
-        android:focusable="false"
         android:layout_margin="10dp"
         />
         <EditText
@@ -139,6 +138,7 @@ android:id="@+id/cnum"
         android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="96452 51112"
+        android:focusable="false"
     android:textSize="15dp"
     android:layout_margin="10dp"
     />
