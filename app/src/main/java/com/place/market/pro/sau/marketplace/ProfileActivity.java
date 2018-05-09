@@ -52,7 +52,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class ProfileActivity extends Fragment {
-    ImageView img1;
+    Button img1;
     ImageView edit;
     Button btn_change_pwd;
     EditText edt_name,edt_cnum,edt_email,edt_bdate;
@@ -113,7 +113,7 @@ public class ProfileActivity extends Fragment {
                 if (edit.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_edit).getConstantState())
                 {
                     edt_name.setClickable(true);
-                    edt_email.setClickable(true);
+                    edt_email.setClickable(false);
                     edt_cnum.setClickable(true);
                     edt_bdate.setClickable(true);
                     edt_gender.setClickable(true);

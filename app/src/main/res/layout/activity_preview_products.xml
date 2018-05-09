@@ -159,10 +159,7 @@
                             android:text="23 sep 2017 5:00 pm"
                             android:textSize="15dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/colorBlack" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -178,6 +175,7 @@
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="5dp"
+                                android:layout_marginBottom="7dp"
                                 android:text="Description "
                                 android:textSize="15dp" />
 
@@ -206,13 +204,19 @@
                             android:text="Remarks"
                             android:textSize="15dp" />
 
-
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@color/colorBlack" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layout_weight="1"
                             android:singleLine="true"
+                            android:layout_marginTop="5dp"
                             android:text="Similar Products"
                             android:textColor="@color/colorBlack"
                             android:textSize="20dp" />

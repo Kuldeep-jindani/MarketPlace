@@ -45,9 +45,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Details"
+                    android:text=" Product Details"
                     android:textColor="@color/colorBlack"
-                    android:textSize="30dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/select_category"
@@ -127,7 +127,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="@color/colorBlack"
-                        android:hint="Product Price"
+                        android:hint="Product Price(INR)"
                         android:inputType="number"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorBlack"
