@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Paginator;
@@ -53,6 +54,7 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             holder.category_root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Toast.makeText(context, "category name "+holder.category_name.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (JSONException e) {
