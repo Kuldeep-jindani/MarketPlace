@@ -76,7 +76,7 @@ editor.clear().apply();
             @Override
             public void onClick(View v) {
 
-              
+
 
                     if (!preferences.contains("image1") &&
                         !preferences.contains("image2") &&
