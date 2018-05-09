@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Uploaded Product"
+        android:text="My Products"
 
         android:textSize="20dp"
         android:textColor="@color/colorBlack"

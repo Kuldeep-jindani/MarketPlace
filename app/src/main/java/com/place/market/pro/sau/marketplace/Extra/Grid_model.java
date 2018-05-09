@@ -22,6 +22,16 @@ public  class Grid_model {
   private  String remarks;
   private  String time;
 
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    private  String from;
+
     public String getUploader_id() {
         return uploader_id;
     }

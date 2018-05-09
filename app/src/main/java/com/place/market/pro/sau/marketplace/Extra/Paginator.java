@@ -198,6 +198,7 @@ public class Paginator {
                                 grid_model.setImage5(o.getString("image5"));
                                 grid_model.setRemarks(o.getString("remarks"));
                                 grid_model.setTime(o.getString("created_at"));
+                                grid_model.setFrom("dashboard");
 
 
                                 adapter.add(grid_model);

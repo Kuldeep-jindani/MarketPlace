@@ -79,7 +79,7 @@ public class BuyActivity extends Fragment {
         lowtohigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,0).initializePagination();
+                new Paginator(getContext(), recyclar,0);
                 pricebit=0;
                 pricrfilter.setVisibility(View.GONE);
             }
@@ -89,7 +89,7 @@ public class BuyActivity extends Fragment {
         hightolow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,1).initializePagination();
+                new Paginator(getContext(), recyclar,1);
                 pricebit=1;
                 pricrfilter.setVisibility(View.GONE);
             }
@@ -127,7 +127,7 @@ public class BuyActivity extends Fragment {
                 } else {
 
                     search_edittext.setText("");
-                    new Paginator(getContext(), recyclar).initializePagination();
+                    new Paginator(getContext(), recyclar);
                     search_edittextlayout.animate().alpha(0.0f);
                     bottomnav_category_list.animate().alpha(1.0f);
                     bottomnav_category_list.setVisibility(View.VISIBLE);
@@ -147,7 +147,7 @@ public class BuyActivity extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                new Paginator(getContext(), recyclar,s.toString(),pricebit).initializePagination();
+                new Paginator(getContext(), recyclar,s.toString(),pricebit);
             }
 
             @Override
@@ -160,7 +160,7 @@ public class BuyActivity extends Fragment {
         search_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,search_edittext.getText().toString(),pricebit).initializePagination();
+                new Paginator(getContext(), recyclar,search_edittext.getText().toString(),pricebit);
                 search_edittext.setText("");
                 search_edittextlayout.animate().alpha(0.0f);
                 bottomnav_category_list.animate().alpha(1.0f);
@@ -216,7 +216,7 @@ public class BuyActivity extends Fragment {
         }));
 
 
-        new Paginator(getContext(), recyclar).initializePagination();
+        new Paginator(getContext(), recyclar);
 
         return view;
     }

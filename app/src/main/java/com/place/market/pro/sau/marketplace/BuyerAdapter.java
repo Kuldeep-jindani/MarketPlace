@@ -62,6 +62,10 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
             intent.putExtra("image5",grid_model.getImage4());
             intent.putExtra("remarks",grid_model.getRemarks());
             intent.putExtra("created_at",grid_model.getTime());
+
+            if (grid_model.getFrom().equals("history"))
+                intent.putExtra("from","history");
+            else intent.putExtra("from","dashboard");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }

@@ -102,10 +102,10 @@ Handler mHandler;
 */
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         DrawerModel[] drawerItem = new DrawerModel[4];
-        drawerItem[0] = new DrawerModel(/*R.drawable.home, */"History");
+        drawerItem[0] = new DrawerModel(/*R.drawable.home, */"My Products");
         drawerItem[1] = new DrawerModel(/*R.drawable.calendar, */"About Us");
         drawerItem[2] = new DrawerModel(/*R.drawable.desiretour, */"Contact Us");
-        drawerItem[3] = new DrawerModel(/*R.drawable.paypal, */"About Kisan Unnati");
+        drawerItem[3] = new DrawerModel(/*R.drawable.paypal, */"About KU");
 
 
 

@@ -55,6 +55,9 @@ public class PreviewProducts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_products);
         contact_buy = findViewById(R.id.buy_now);
+
+        if (getIntent().getStringExtra("from").equals("history"))
+            contact_buy.setVisibility(View.GONE);
 //        preview_imagescroll = findViewById(R.id.preview_imagescroll);
 //        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
 //        preview_imagescroll.setOutAnimation(this, android.R.anim.fade_out);

@@ -57,7 +57,7 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             holder.category_root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString())).initializePagination();
+                    new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString()));
                 }
             });
         } catch (JSONException e) {

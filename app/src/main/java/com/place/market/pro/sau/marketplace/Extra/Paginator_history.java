@@ -1,6 +1,7 @@
 package com.place.market.pro.sau.marketplace.Extra;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -90,7 +91,8 @@ public class Paginator_history {
             @Override
             public void run() {
                 RequestQueue requestQueue = Volley.newRequestQueue(c);
-            String URL="http://kisanunnati.com/market_place/ProdUploadList?id=1";
+                SharedPreferences preferences=c.getSharedPreferences("status",Context.MODE_PRIVATE);
+            String URL="http://kisanunnati.com/market_place/ProdUploadList?id="+preferences.getString("id","");
                 Log.e("Grid service url", URL);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
@@ -108,9 +110,9 @@ public class Paginator_history {
 //                                if (o.getInt("id")!=315635) {
                                     Grid_model grid_model = new Grid_model();
                                 grid_model.setId(o.getString("id"));
-                                grid_model.setUploader_id(o.getString("uploader_id"));
-                                grid_model.setUploader_name(o.getString("uploader_name"));
-                                grid_model.setName(o.getString("product_name"));
+                                grid_model.setUploader_id(preferences.getString("id",""));
+                                grid_model.setUploader_name(preferences.getString("name",""));
+                                grid_model.setName(o.getString("name"));
                                 grid_model.setDescription(o.getString("description"));
                                 grid_model.setPrice(o.getString("price"));
                                 grid_model.setImage1(o.getString("image1"));
@@ -120,6 +122,7 @@ public class Paginator_history {
                                 grid_model.setImage5(o.getString("image5"));
                                 grid_model.setRemarks(o.getString("remarks"));
                                 grid_model.setTime(o.getString("created_at"));
+                                grid_model.setFrom("history");
 
                                     adapter.add(grid_model);
 //                                }
