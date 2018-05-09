@@ -66,11 +66,33 @@
                 android:textColorHint="@color/colorBlack"
                 android:textSize="15dp" />
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:theme="@style/TextLabel">
 
+            <EditText
+                android:id="@+id/register_cnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorBlack"
+                android:hint="Contact Number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorBlack"
+                android:textSize="15dp" />
+        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             android:theme="@style/TextLabel">
 
             <EditText
@@ -162,28 +184,7 @@
             android:layout_marginRight="18dp"
             android:background="@color/colorBlack" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:theme="@style/TextLabel">
 
-            <EditText
-                android:id="@+id/register_cnum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/colorBlack"
-                android:hint="Contact Number"
-                android:inputType="number"
-                android:maxLength="10"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorBlack"
-                android:textSize="15dp" />
-        </android.support.design.widget.TextInputLayout>
         <!--<TextView
             android:textColor="@color/colorBlack"
             android:backgroundTint="@color/colorBlack"
@@ -249,7 +250,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/colorBlack"
-                android:text="25-02-1995"
+                android:text="1995-02-25"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorBlack"
                 android:textSize="15dp" />

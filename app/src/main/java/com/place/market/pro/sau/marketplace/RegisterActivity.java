@@ -78,12 +78,12 @@ public class RegisterActivity extends AppCompatActivity {
                         radioButtonc.getText(), Toast.LENGTH_SHORT).show();
 */
                 if (edt_uname.getText().toString().equals("") ||
-                        edt_email.getText().toString().equals("") ||
+//                        edt_email.getText().toString().equals("") ||
                         edt_pwd.getText().toString().equals("") ||
                         edt_cnum.getText().toString().equals(""))
                 {
                     edt_uname.setError("Enter Name");
-                    edt_email.setError("Enter Email");
+//                    edt_email.setError("Enter Email");
                     edt_pwd.setError("Enter Password");
                     edt_cnum.setError("Enter Contact Number");
                 }else if (edt_pwd.getText().toString().length()<6){
@@ -92,9 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
                 else if (edt_cnum.getText().toString().length()<10){
                     edt_cnum.setError("Enter valid Contact Number");
                 }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(edt_email.getText().toString()).matches()){
+            /*    else if (!Patterns.EMAIL_ADDRESS.matcher(edt_email.getText().toString()).matches()){
                     edt_email.setError("Enter Valid Email");
-                }
+                }*/
 
 
 
@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                 else {
                     String url = " http://kisanunnati.com/market_place/registration?" +
                             "name=" +edt_uname.getText().toString()+
-                            "&email="+ edt_email.getText().toString()+
+                            "&email="+ "k@gmail.com"+
                             "&password="+edt_pwd.getText().toString()+
                             "&gender=" + radioButtong.getText()+
                             "&contact=" +edt_cnum.getText().toString()+
@@ -179,11 +179,11 @@ public class RegisterActivity extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
 
                                 Date dx = new Date(year - 1900, monthOfYear, dayOfMonth);
-                                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                                 String cdate = formatter.format(dx);
                                 txt_setdate.setText(cdate);
                                // txt_setdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
-                                txt_setdate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year );
+                                txt_setdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
