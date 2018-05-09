@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Paginator;
+import com.place.market.pro.sau.marketplace.Extra.RecyclerViewClickListener;
 import com.place.market.pro.sau.marketplace.R;
 
 import org.json.JSONArray;
@@ -23,9 +24,10 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
     Context context;
     JSONArray array;
 
-    public BottomNav_CategoryList_Adapter(Context context, JSONArray array) {
+    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener) {
         this.context = context;
         this.array = array;
+        this.mListener=mListener;
     }
 
     @NonNull
@@ -63,12 +65,15 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
     public int getItemCount() {
         return array.length();
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    private RecyclerViewClickListener mListener;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView category_id,category_name;
         ImageView cate_img;
         LinearLayout category_root;
+
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +82,12 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             category_name = itemView.findViewById(R.id.category_name);
             category_root= itemView.findViewById(R.id.category_root);
 
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v, getAdapterPosition());
         }
     }
 }

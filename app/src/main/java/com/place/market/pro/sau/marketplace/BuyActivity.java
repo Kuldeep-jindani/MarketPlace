@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.place.market.pro.sau.marketplace.Adapters.BottomNav_CategoryList_Adapter;
 import com.place.market.pro.sau.marketplace.Extra.Paginator;
+import com.place.market.pro.sau.marketplace.Extra.RecyclerViewClickListener;
 import com.srx.widget.PullToLoadView;
 
 import org.json.JSONArray;
@@ -47,11 +49,13 @@ public class BuyActivity extends Fragment {
     int searchbit = 0;
     int pricebit= 0;
 
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_buy, container, false);
+       view = inflater.inflate(R.layout.activity_buy, container, false);
         recyclar = view.findViewById(R.id.recyclar);
 /*
         recyclar.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -166,7 +170,19 @@ public class BuyActivity extends Fragment {
 
                         JSONArray array = resObj.getJSONArray("data");
 
-                        BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array);
+
+                        RecyclerViewClickListener listener = (view, position) -> {
+                            Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
+                            /*try {
+                                JSONObject o=array.getJSONObject(position);
+
+                                Toast.makeText(getContext(), "category "+o.getString("name"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }*/
+                        };
+
+                        BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener);
                         bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
                     }
 

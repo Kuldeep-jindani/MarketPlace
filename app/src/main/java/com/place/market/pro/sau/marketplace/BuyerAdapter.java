@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
+import com.place.market.pro.sau.marketplace.Extra.RecyclerViewClickListener;
+
 import java.util.ArrayList;
 
 public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
@@ -73,14 +75,21 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     public int getItemCount() {
         return grid_models.size();
     }
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         ImageView imageView;
         TextView txt_name,txt_price;
+
+
+
         ViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.buy_img);
             txt_name = itemView.findViewById(R.id.buy_name);
             txt_price = itemView.findViewById(R.id.buy_price);
+
+
         }
+
+
     }
 }
