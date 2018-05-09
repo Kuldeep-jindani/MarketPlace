@@ -182,7 +182,7 @@ public class BuyActivity extends Fragment {
                             }*/
                         };
 
-                        BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener);
+                        BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
                         bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
                     }
 

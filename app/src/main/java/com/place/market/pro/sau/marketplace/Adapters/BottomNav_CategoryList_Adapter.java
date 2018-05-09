@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Paginator;
 import com.place.market.pro.sau.marketplace.Extra.RecyclerViewClickListener;
 import com.place.market.pro.sau.marketplace.R;
+import com.srx.widget.PullToLoadView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,11 +25,13 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
 
     Context context;
     JSONArray array;
+    PullToLoadView recyclar;
 
-    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener) {
+    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener, PullToLoadView recyclar) {
         this.context = context;
         this.array = array;
         this.mListener=mListener;
+        this.recyclar=recyclar;
     }
 
     @NonNull
@@ -54,7 +57,7 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
             holder.category_root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "category name "+holder.category_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                    new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString())).initializePagination();
                 }
             });
         } catch (JSONException e) {

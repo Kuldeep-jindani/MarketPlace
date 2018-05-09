@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,10 +47,10 @@ public class Paginator {
 
     int cat_id;
 
-   /* public Paginator(Context c, PullToLoadView pullToLoadView, int cat_id) {
+    public Paginator(Context c, PullToLoadView pullToLoadView, float cat_id) {
         this.c = c;
         this.pullToLoadView = pullToLoadView;
-        this.cat_id = cat_id;
+        this.cat_id = (int)cat_id;
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
@@ -57,7 +58,7 @@ public class Paginator {
         rv.setAdapter(adapter);
 
         initializePagination();
-    }*/
+    }
 
 
     public Paginator(Context c, PullToLoadView pullToLoadView) {
@@ -159,8 +160,11 @@ public class Paginator {
                 SharedPreferences pre = c.getSharedPreferences("status", MODE_PRIVATE);
 
                 String URL = "";
-                if (editText.equals(""))
+                if (editText.equals("")) {
+                 if (cat_id==0)
                     URL = "http://kisanunnati.com/market_place/Product_list?user_id=" + pre.getString("id", "") + "&category_id=&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
+                else URL = "http://kisanunnati.com/market_place/Product_list?user_id=" + pre.getString("id", "") + "&category_id="+cat_id+"&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
+                }
                 else URL = "http://kisanunnati.com/market_place/Search?name=" + editText;
                 Log.e("Grid service url", URL);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -175,6 +179,8 @@ public class Paginator {
                             Log.e("paginator response", response);
                             Log.e("page IN ASYNC TASK ", String.valueOf(page));
 
+                            if (array.length()==0)
+                                Toast.makeText(c, "No product with this category", Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject o = (JSONObject) array.get(i);
 //                                if (o.getInt("id")!=315635) {
