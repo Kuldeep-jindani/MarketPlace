@@ -33,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@drawable/gradient"
+                    style="?android:attr/borderlessButtonStyle"
                     >
 
                     <RelativeLayout

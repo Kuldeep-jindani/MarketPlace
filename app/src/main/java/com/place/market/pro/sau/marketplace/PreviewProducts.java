@@ -1,9 +1,8 @@
 package com.place.market.pro.sau.marketplace;
 
 import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,14 +30,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.OffsetTime;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 public class PreviewProducts extends AppCompatActivity {
-    Button contact_buy,ok;
-    RecyclerView  similarProd;
+    Button contact_buy, ok;
+    RecyclerView similarProd;
     ViewFlipper preview_imagescroll;
     TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark;
     RelativeLayout ln;
@@ -50,6 +49,7 @@ public class PreviewProducts extends AppCompatActivity {
     private GestureDetector mGestureDetector;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +107,7 @@ public class PreviewProducts extends AppCompatActivity {
                         grid_model.setImage4(o.getString("image4"));
                         grid_model.setImage5(o.getString("image5"));
                         grid_model.setRemarks(o.getString("remarks"));
-                        Log.e("date",o.getString("created_at"));
+                        Log.e("date", o.getString("created_at"));
                         grid_model.setTime(o.getString("created_at"));
 
                         grid_models.add(grid_model);
@@ -144,6 +144,10 @@ public class PreviewProducts extends AppCompatActivity {
             pics.add(getIntent().getStringExtra("image5"));
 
 
+        TextView total_pics = findViewById(R.id.total_pics);
+        total_pics.setText(String.valueOf(pics.size())+" photos");
+
+
 
       /*  for (int i=0;i<pics.size();i++){
             ImageView img=new ImageView(getApplicationContext());
@@ -178,16 +182,16 @@ public class PreviewProducts extends AppCompatActivity {
 
                                             final Dialog dialog = new Dialog(PreviewProducts.this);
                                             dialog.setContentView(R.layout.contact);
-                                            contact_number =  dialog.findViewById(R.id.contact_number);
-                                            String url1 = "http://kisanunnati.com/market_place/Contact?otp="+otp +
-                                                    "&user_id="+getSharedPreferences("status",MODE_PRIVATE).getString("id","")+
-                                                    "&uploader_id="+getIntent().getStringExtra("id");
+                                            contact_number = dialog.findViewById(R.id.contact_number);
+                                            String url1 = "http://kisanunnati.com/market_place/Contact?otp=" + otp +
+                                                    "&user_id=" + getSharedPreferences("status", MODE_PRIVATE).getString("id", "") +
+                                                    "&uploader_id=" + getIntent().getStringExtra("id");
                                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
                                                 @Override
                                                 public void onResponse(String response) {
                                                     try {
                                                         JSONObject resp = new JSONObject(response);
-                                                       String number =  resp.getString("uploader_phone_number");
+                                                        String number = resp.getString("uploader_phone_number");
                                                         contact_number.setText(number);
 
                                                     } catch (JSONException e) {
@@ -244,18 +248,33 @@ public class PreviewProducts extends AppCompatActivity {
         sell_name.setText(getIntent().getStringExtra("uploader_name"));
         txt_name.setText(getIntent().getStringExtra("product_name"));
         txt_desc.setText(getIntent().getStringExtra("description"));
-        String price=getIntent().getStringExtra("price")+" INR";
+        String price = getIntent().getStringExtra("price") + " INR";
         txt_price.setText(price);
         preview_remark.setText(getIntent().getStringExtra("remarks"));
-        sell_date.setText(getIntent().getStringExtra("created_at"));
+
+
+        String d = getIntent().getStringExtra("created_at");
+   /*     SimpleDateFormat dt = new SimpleDateFormat("dd-MMM-yyyy");
+        String stringdate = null;
+        try {
+            stringdate = String.valueOf(dt.parse(d));
+            sell_date.setText(stringdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*/
+
+
+            sell_date.setText(d);
 
 
 
-        ViewPager   mPager = (ViewPager) findViewById(R.id.pager);
 
 
-        mPager.setAdapter(new SlidingImage_Adapter(PreviewProducts.this,pics));
 
+        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+
+
+        mPager.setAdapter(new SlidingImage_Adapter(PreviewProducts.this, pics));
 
 
     }

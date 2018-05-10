@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PreviewProducts">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/gradient"
+        android:translationZ="5dp"
         android:gravity="center">
 
         <ImageView
@@ -19,6 +21,7 @@
             android:layout_margin="5dp"
             android:src="@drawable/cdrfinallogo" />
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -48,21 +51,65 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/preview_name"
+
+
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Product"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="20dp" />
-<!--
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/preview_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:text="Product"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:orientation="horizontal"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:padding="5dp">
+
+
+                          <!--  <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_camera_white"
+                                android:layout_marginRight="5dp"/>-->
+
+                            <TextView
+                                android:id="@+id/total_pics"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorBlack"
+                                android:text="" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <!--
                     <ViewFlipper
                         android:id="@+id/preview_imagescroll"
                         android:layout_width="match_parent"
                         android:layout_height="270dp"
                         android:src="@drawable/gradient" />-->
 
+
+                    <!-- <LinearLayout
+
+                         android:layout_width="match_parent"
+                         android:layout_height="250dp"
+                         android:orientation="vertical" />-->
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
 
@@ -74,7 +121,7 @@
 
                         <RelativeLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="250dp" >
+                            android:layout_height="250dp">
 
                             <android.support.v4.view.ViewPager
                                 android:id="@+id/pager"
@@ -82,59 +129,54 @@
                                 android:layout_height="fill_parent"
                                 android:layout_alignParentTop="true" />
 
-                          <!--  <com.viewpagerindicator.CirclePageIndicator
-                                android:id="@+id/indicator"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="bottom"
-                                android:padding="10dip"
-                                app:centered="true"
-                                app:fillColor="#ff0099"
-                                app:pageColor="#FF0000"
-                                app:snap="false" />-->
+                            <!--  <com.viewpagerindicator.CirclePageIndicator
+                                  android:id="@+id/indicator"
+                                  android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_alignParentBottom="true"
+                                  android:layout_centerHorizontal="true"
+                                  android:gravity="bottom"
+                                  android:padding="10dip"
+                                  app:centered="true"
+                                  app:fillColor="#ff0099"
+                                  app:pageColor="#FF0000"
+                                  app:snap="false" />-->
                         </RelativeLayout>
 
                     </LinearLayout>
-
-
-                    <!-- <LinearLayout
-
-                         android:layout_width="match_parent"
-                         android:layout_height="250dp"
-                         android:orientation="vertical" />-->
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/colorWhite"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <TextView
-                                android:layout_weight="1"
                                 android:id="@+id/sell_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:singleLine="true"
                                 android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:singleLine="true"
                                 android:text="John Miller"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="20dp" />
+
                             <TextView
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
-
                                 android:singleLine="true"
+
                                 android:text="Product Name"
                                 android:textColor="@color/colorBlack"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/preview_price"
@@ -160,29 +202,26 @@
                             android:textSize="15dp" />
 
 
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
 
-
                             <TextView
                                 android:id="@+id/preview_desc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="7dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="5dp"
-                                android:layout_marginBottom="7dp"
                                 android:text="Description "
                                 android:textSize="15dp" />
 
                         </LinearLayout>
 
                         <TextView
-                            android:visibility="gone"
                             android:id="@+id/preview_tags"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -190,10 +229,10 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Tags"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:visibility="gone" />
 
                         <TextView
-                            android:visibility="gone"
                             android:id="@+id/preview_remark"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -202,7 +241,8 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Remarks"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:visibility="gone" />
 
                         <View
                             android:layout_width="match_parent"
@@ -210,13 +250,14 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@color/colorBlack" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
+                            android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:singleLine="true"
-                            android:layout_marginTop="5dp"
                             android:text="Similar Products"
                             android:textColor="@color/colorBlack"
                             android:textSize="20dp" />
@@ -224,7 +265,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/similarProd"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
                 </LinearLayout>

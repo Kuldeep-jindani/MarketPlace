@@ -84,6 +84,13 @@ public class BuyActivity extends Fragment {
                 pricrfilter.setVisibility(View.GONE);
             }
         });
+        pricrfilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                pricebit=0;
+                pricrfilter.setVisibility(View.GONE);
+            }
+        });
 
 
         hightolow.setOnClickListener(new View.OnClickListener() {
