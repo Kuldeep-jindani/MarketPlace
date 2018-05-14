@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <string name="app_name">બજારના સ્થળે</string>
+    <string name="title_activity_bottom_nav">તળિયું નેવિગેશન</string>
+    <string name="title_home">હોમ</string>
+    <string name="title_dashboard">ડેશબોર્ડ</string>
+    <string name="title_notifications">સૂચનાઓ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">ખાલી ટુકડો હેલો</string>
+
+
+    <string name="navigation_drawer_open">સંશોધક ડ્રોવરને ખોલો</string>
+    <string name="navigation_drawer_close">નેવિગેશન ડ્રોવર બંધ કરો</string>
+    <string name="openDrawer">ઓપન ડ્રોવર</string>
+    <string name="closeDrawer">બંધ ડ્રોઅર</string>
+
+
+    <string name="similar_products">સમાન પ્રોડક્ટ્સ</string>
+    <string name="Contact_Seller">સંપર્ક વિક્રેતા</string>
+    <string name="Buy">ખરીદો</string>
+    <string name="Profile">પ્રોફાઇલ</string>
+
+    <!--Change Password-->
+
+    <string name="Change_Password">પાસવર્ડ બદલો</string>
+    <string name="Current_Password">અત્યારનો પાસવર્ડ</string>
+    <string name="New_Password">નવો પાસવર્ડ</string>
+    <string name="Retype_New_Password">નવો પાસવર્ડ ફરીથી નાંખો</string>
+
+    <!--Forgot Password-->
+    <string name="Forgot_Password">પાસવર્ડ ભૂલી ગયા છો</string>
+    <string name="E_mail">ઇ-મેઇલ</string>
+    <string name="Send_Email">ઈ - મેલ મોકલો</string>
+    <string name="Back_To_Login">લોગિન પાછા</string>
+
+
+    <!--History-->
+    <string name="My_Products">મારા પ્રોડક્ટ્સ</string>
+
+    <!--Login-->
+    <string name="Login">લૉગિન</string>
+    <string name="Mobile_Number">મોબાઇલ નંબર</string>
+    <string name="Password">પાસવર્ડ</string>
+    <string name="Forgot_Password_login">પાસવર્ડ ભૂલી ગયા છો?</string>
+    <string name="OR">અથવા</string>
+    <string name="New_User">નવા વપરાશકર્તા? અહીં નોંધણી કરો</string>
+
+    <!--Profile-->
+
+    <string name="Gender">જાતિ</string>
+    <string name="Male">પુરૂષ</string>
+    <string name="Female">સ્ત્રી</string>
+    <string name="Logout">લૉગ આઉટ</string>
+
+
+    <!--Registration-->
+    <string name="Registration">નોંધણી</string>
+    <string name="Name">નામ</string>
+    <string name="Contact_Number">સંપર્ક નંબર</string>
+    <string name="Date_of_Birth">જન્મ તારીખ:</string>
+
+    <!--Sell Details-->
+    <string name="Product_Details"> ઉત્પાદન વિગતો</string>
+    <string name="Select_Category">  કેટેગરી પસંદ કરો</string>
+    <string name="Product_Name">  ઉત્પાદન નામ</string>
+    <string name="Product_Description">ઉત્પાદન વર્ણન</string>
+    <string name="Product_Price">પ્રોડક્ટ પ્રાઈસ</string>
+    <string name="Upload">અપલોડ કરો</string>
+
+
+    <!--Sell Form-->
+    <string name="Upload_Product_Images">ઉત્પાદન છબીઓ અપલોડ કરો</string>
+    <string name="Continue">ચાલુ રાખો</string>
+
+
+    <!--exit Dialog-->
+    <string name="Do_You_want_to_Exit">શું તમે બહાર નીકળવા માંગો છો?</string>
+    <string name="Yes">હા</string>
+    <string name="No">ના</string>
+
+
+    <!--Seller Details-->
+    <string name="Sellers_contact_number">વિક્રેતાની સંપર્ક નંબર</string>
+    <string name="OK">ઠીક છે</string>
+
+    <!--Language selection screen-->
+
+    <string name="Please_select_Language">ભાષા પસંદ કરો</string>
+
+
+    <!--Sidebar Navigation-->
+    <string name="Change_Language">ભાષા બદલો</string>
+    <string name="Contract">કરાર</string>
+    <string name="About_Us">અમારા વિશે</string>
+    <string name="Contact_Us">અમારો સંપર્ક કરો</string>
+    <string name="About_KU">કે યુ વિશે</string>
+
+    <string-array name="menu">
+        <item>મારા પ્રોડક્ટ્સ</item>
+        <item>ભાષા બદલો</item>
+        <item>અમારા વિશે</item>
+        <item>અમારો સંપર્ક કરો</item>
+        <item>KU વિશે</item>
+    </string-array>
+
+</resources>

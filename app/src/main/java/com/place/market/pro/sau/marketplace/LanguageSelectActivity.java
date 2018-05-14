@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 
 public class LanguageSelectActivity extends AppCompatActivity {
 
-    LinearLayout english_layout,hindi_layout;
+    LinearLayout english_layout,hindi_layout,gujarati_layout;
 
 
     @Override
@@ -31,6 +31,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
 
        english_layout=findViewById(R.id.english_layout);
        hindi_layout=findViewById(R.id.hindi_layout);
+        gujarati_layout=findViewById(R.id.gujarati_layout);
 
 
 
@@ -64,6 +65,19 @@ public class LanguageSelectActivity extends AppCompatActivity {
                finish();
            }
        });
+        gujarati_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","fr").apply();
+
+                setLangRecreate("fr");
+
+                Context context = LocaleHelper.setLocale(getApplicationContext(), "fr");
+                Intent i=new Intent(getApplicationContext(),BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
    }
     Locale locale;

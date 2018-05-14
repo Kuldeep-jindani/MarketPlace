@@ -27,7 +27,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SelectLanguage extends Fragment {
 
-    LinearLayout english_layout,hindi_layout;
+    LinearLayout english_layout,hindi_layout,gujarati_layout;
 
     private BroadcastReceiver mLangaugeChangedReceiver;
 
@@ -45,6 +45,7 @@ public class SelectLanguage extends Fragment {
 
         english_layout=view.findViewById(R.id.english_layout);
         hindi_layout=view.findViewById(R.id.hindi_layout);
+        gujarati_layout=view.findViewById(R.id.gujarati_layout);
 
 
 
@@ -71,6 +72,19 @@ public class SelectLanguage extends Fragment {
                 setLangRecreate("hi");
 
                 Context context = LocaleHelper.setLocale(getContext(), "hi");
+                Intent i=new Intent(getContext(),BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        gujarati_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","fr").apply();
+
+                setLangRecreate("fr");
+
+                Context context = LocaleHelper.setLocale(getContext(), "fr");
                 Intent i=new Intent(getContext(),BottomNav.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
