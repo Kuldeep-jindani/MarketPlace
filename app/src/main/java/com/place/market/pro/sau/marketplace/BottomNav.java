@@ -75,7 +75,6 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()) {
 
@@ -98,7 +97,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.contract:
-                        fragmentTransaction.replace(R.id.viewpager, new ComingSoonFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewpager, new ContractFragment()).commit();
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.Contact_Us:
