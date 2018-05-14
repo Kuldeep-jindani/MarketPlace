@@ -38,10 +38,7 @@ Button btn_send_email;
             public void onClick(View v) {
                 if (email.getText().toString().equals(""))
                 {
-                   email.setError("Enter Email Address");
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
-                    email.setError("Enter Valid Email");
+                   email.setError("Enter Contact Number");
                 }
                 else {
                     String url = "";
