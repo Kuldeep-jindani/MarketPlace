@@ -107,4 +107,9 @@
     <!--Toast msg image-->
     <string name="image_toast">Please upload atleast one image.</string>
 
+
+    <!--contract form-->
+    <string name="Contract_Form">Contract Form</string>
+
+
 </resources>
