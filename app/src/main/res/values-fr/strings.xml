@@ -32,8 +32,8 @@
 
     <!--Forgot Password-->
     <string name="Forgot_Password">પાસવર્ડ ભૂલી ગયા છો</string>
-    <string name="E_mail">ઇ-મેઇલ</string>
-    <string name="Send_Email">ઈ - મેલ મોકલો</string>
+    <string name="ContactNumber">સંપર્ક નંબર</string>
+    <string name="Send"> મોકલો</string>
     <string name="Back_To_Login">લોગિન પાછા</string>
 
 

@@ -13,8 +13,6 @@
     <string name="navigation_drawer_close">नेविगेशन ड्रॉवर बंद करें</string>
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
-
-
     <string name="similar_products">इसी तरह के उत्पादों</string>
     <string name="Contact_Seller">विक्रेता से संपर्क करें</string>
     <string name="Buy">खरीदें</string>
@@ -29,8 +27,8 @@
 
     <!--Forgot Password-->
     <string name="Forgot_Password">पासवर्ड भूल गए</string>
-    <string name="E_mail">ईमेल</string>
-    <string name="Send_Email">ईमेल भेजें</string>
+    <string name="ContactNumber">संपर्क संख्या</string>
+    <string name="Send"> भेजें</string>
     <string name="Back_To_Login">लॉगिन पर वापस जाएं</string>
 
 
