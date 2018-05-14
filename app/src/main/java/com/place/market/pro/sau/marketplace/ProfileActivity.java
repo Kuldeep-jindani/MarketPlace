@@ -1,6 +1,8 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -44,6 +47,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,10 +61,13 @@ public class ProfileActivity extends Fragment {
     Button img1;
     ImageView edit;
     Button btn_change_pwd;
-    EditText edt_name,edt_cnum,edt_email,edt_bdate;
+    EditText edt_name,edt_cnum,edt_email;
     RadioGroup edt_gender;
-    RadioButton radioButtong;
+    RadioButton radioButtong,male,female;
     ImageView profile_pic;
+
+    TextView edt_bdate;
+    public int mYear, mMonth, mDay;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +77,29 @@ public class ProfileActivity extends Fragment {
         final SharedPreferences preferences = getContext().getSharedPreferences("status", MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         img1 =view.findViewById(R.id.logout);
+        male =view.findViewById(R.id.male);
+        female =view.findViewById(R.id.female);
+
+        edit = view.findViewById(R.id.edit);
+        edt_name = view.findViewById(R.id.name);
+        edt_email = view.findViewById(R.id.email);
+        edt_gender = view.findViewById(R.id.gender);
+        edt_cnum = view.findViewById(R.id.cnum);
+        edt_bdate = view.findViewById(R.id.bdate);
+        edt_name.setClickable(false);
+        edt_email.setClickable(false);
+        edt_cnum.setClickable(false);
+        edt_bdate.setClickable(false);
+        edt_gender.setClickable(false);
+
+
+        edt_name.setFocusable(false);
+        edt_email.setFocusable(false);
+        edt_cnum.setFocusable(false);
+        edt_bdate.setFocusable(false);
+        edt_gender.setFocusable(false);
+
+
         profile_pic=view.findViewById(R.id.profile_pic);
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,17 +128,49 @@ public class ProfileActivity extends Fragment {
                 startActivity(intent);
             }
         });
-        edit = view.findViewById(R.id.edit);
-        edt_name = view.findViewById(R.id.name);
-        edt_email = view.findViewById(R.id.email);
-        edt_gender = view.findViewById(R.id.gender);
-        edt_cnum = view.findViewById(R.id.cnum);
-        edt_bdate = view.findViewById(R.id.bdate);
-        edt_name.setClickable(false);
-        edt_email.setClickable(false);
-        edt_cnum.setClickable(false);
-        edt_bdate.setClickable(false);
-        edt_gender.setClickable(false);
+
+
+
+        edt_name.setText(preferences.getString("name",""));
+        edt_cnum.setText(preferences.getString("contact",""));
+        edt_bdate.setText(preferences.getString("birthdate",""));
+
+        if (preferences.getString("gender","").equals("Male"))
+            male.setChecked(true);
+        else female.setChecked(true);
+
+
+        edt_bdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                @SuppressLint("ResourceType")
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                Date dx = new Date(year - 1900, monthOfYear, dayOfMonth);
+                                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                                String cdate = formatter.format(dx);
+                                edt_bdate.setText(cdate);
+                                // txt_setdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                edt_bdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                datePickerDialog.show();
+
+            }
+        });
+
+
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,12 +181,31 @@ public class ProfileActivity extends Fragment {
                     edt_cnum.setClickable(true);
                     edt_bdate.setClickable(true);
                     edt_gender.setClickable(true);
+
+                    edt_name.setFocusableInTouchMode(true);
+                    edt_email.setFocusableInTouchMode(true);
+                    edt_cnum.setFocusableInTouchMode(true);
+                    edt_bdate.setFocusableInTouchMode(true);
+                    edt_gender.setFocusableInTouchMode(true);
+
+
+                    edt_name.setFocusable(true);
+                    edt_email.setFocusable(false);
+                    edt_cnum.setFocusable(false);
+                    edt_bdate.setFocusable(true);
+                    edt_gender.setFocusable(true);
                     edit.setImageDrawable(getResources().getDrawable(R.drawable.ic_save));
                 }
                 else {
                     edit.setImageDrawable(getResources().getDrawable(R.drawable.ic_edit));
                     int selectedId = edt_gender.getCheckedRadioButtonId();
                     radioButtong =  edt_gender.findViewById(selectedId);
+
+                    edt_name.setFocusable(false);
+                    edt_email.setFocusable(false);
+                    edt_cnum.setFocusable(false);
+                    edt_bdate.setFocusable(false);
+                    edt_gender.setFocusable(false);
 
         String url = "http://kisanunnati.com/market_place/edit_profile?id="+preferences.getString("id","") +
         "&name=" +edt_name.getText().toString()+
@@ -135,6 +218,8 @@ public class ProfileActivity extends Fragment {
                         public void onResponse(String response) {
                             try {
                                 JSONObject resp = new JSONObject(response);
+                                Log.e("Update profiole url ",url);
+                                Log.e("Update profiole response",response);
                                 if (resp.getInt("status") == 0) {
                                     JSONArray data = resp.getJSONArray("data");
                                     JSONObject object = (JSONObject) data.get(0);

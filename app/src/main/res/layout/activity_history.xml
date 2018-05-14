@@ -11,6 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:translationZ="5dp"
         android:orientation="horizontal"
         android:background="@drawable/gradient"
         android:gravity="center">
