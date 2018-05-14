@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -34,6 +35,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class SellForm extends AppCompatActivity {
@@ -62,6 +64,19 @@ public class SellForm extends AppCompatActivity {
         editor=preferences.edit();
 
 editor.clear().apply();
+
+
+        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+
+        String lang = langPref.getString("lang", "");
+        if (! "".equals(lang) && ! config.locale.getLanguage().equals(lang)) {
+            Locale locale = new Locale(lang);
+            Locale.setDefault(locale);
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        }
+
 
         img_preview1 = findViewById(R.id.preview_img1);
         img_preview2 = findViewById(R.id.preview_img2);

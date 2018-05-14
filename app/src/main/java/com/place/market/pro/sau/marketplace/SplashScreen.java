@@ -64,66 +64,77 @@ public class SplashScreen extends AppCompatActivity {
                         if (report.areAllPermissionsGranted()) {
                             // do you work now
 //                            Toast.makeText(SplashScreen.this, "granted", Toast.LENGTH_SHORT).show();
-                            SharedPreferences preferences = SplashScreen.this.getSharedPreferences("status", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            if (preferences.contains("email") && preferences.contains("password")) {
-                                String url = "http://kisanunnati.com/market_place/userlogin?contact=" + preferences.getString("contact", "") + "&password=" + preferences.getString("password", "");
-                                final KProgressHUD hud = KProgressHUD.create(SplashScreen.this)
-                                        .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                                        .setCancellable(false)
-                                        .setAnimationSpeed(2)
-                                        .setDimAmount(0.5f)
-                                        .show();
-                                Log.e("login url", url);
-                                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        Log.e("fgsdgb", response);
-                                        try {
-                                            JSONObject resp = new JSONObject(response);
-                                            if (resp.getInt("status") == 0) {
-                                                JSONArray data = resp.getJSONArray("data");
-                                                JSONObject object = (JSONObject) data.get(0);
 
-                                                hud.dismiss();SharedPreferences preferences = getApplicationContext().getSharedPreferences("status", MODE_PRIVATE);
-                                                SharedPreferences.Editor editor = preferences.edit();
-                                                preferences.getString("email","email");
-                                                preferences.getString("password","password");
-                                                editor.apply();
-                                                Intent intent = new Intent(SplashScreen.this, BottomNav.class);
-                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                startActivity(intent);
-
-                                            } else
-                                            {
-                                                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                                                startActivity(intent);
-                                                hud.dismiss();
-                                                Toast.makeText(SplashScreen.this, "Invalid Login", Toast.LENGTH_SHORT).show();
-                                            }
-
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-
-                                    }
-                                });
-
-                                Volley.newRequestQueue(SplashScreen.this).add(stringRequest);
-
+                            SharedPreferences langPref = getSharedPreferences("langPref", MODE_PRIVATE);
+//                            Toast.makeText(SplashScreen.this, "lang? " + langPref.contains("lang"), Toast.LENGTH_SHORT).show();
+                            if (!langPref.contains("lang")) {
+                                Intent intent = new Intent(SplashScreen.this, LanguageSelectActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
-                                mHandler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }, SPLASH_TIME_OUT);
+                                SharedPreferences preferences = SplashScreen.this.getSharedPreferences("status", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                if (preferences.contains("email") && preferences.contains("password")) {
+                                    String url = "http://kisanunnati.com/market_place/userlogin?contact=" + preferences.getString("contact", "") + "&password=" + preferences.getString("password", "");
+                                    final KProgressHUD hud = KProgressHUD.create(SplashScreen.this)
+                                            .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                                            .setCancellable(false)
+                                            .setAnimationSpeed(2)
+                                            .setDimAmount(0.5f)
+                                            .show();
+                                    Log.e("login url", url);
+                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.e("fgsdgb", response);
+                                            try {
+                                                JSONObject resp = new JSONObject(response);
+                                                if (resp.getInt("status") == 0) {
+                                                    JSONArray data = resp.getJSONArray("data");
+                                                    JSONObject object = (JSONObject) data.get(0);
+
+                                                    hud.dismiss();
+                                                    SharedPreferences preferences = getApplicationContext().getSharedPreferences("status", MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = preferences.edit();
+                                                    preferences.getString("email", "email");
+                                                    preferences.getString("password", "password");
+                                                    editor.apply();
+                                                    Intent intent = new Intent(SplashScreen.this, BottomNav.class);
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(intent);
+
+                                                } else {
+                                                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                    hud.dismiss();
+                                                    Toast.makeText(SplashScreen.this, "Invalid Login", Toast.LENGTH_SHORT).show();
+                                                }
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+
+                                        }
+                                    });
+
+                                    Volley.newRequestQueue(SplashScreen.this).add(stringRequest);
+
+                                } else {
+                                    mHandler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                            Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+
+                                        }
+                                    }, SPLASH_TIME_OUT);
+                                }
                             }
                         }
 

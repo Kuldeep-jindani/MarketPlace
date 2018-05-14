@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/my_products"
+            android:title="@string/My_Products" />
+        <item
+            android:id="@+id/Change_Language"
+            android:title="@string/Change_Language" />
+
+        <item
+            android:id="@+id/contract"
+            android:title="@string/Contract" />
+        <item
+            android:id="@+id/About_Us"
+            android:title="@string/About_Us" />
+        <item
+            android:id="@+id/Contact_Us"
+            android:title="@string/Contact_Us" />
+
+        <item
+            android:id="@+id/About_KU"
+            android:title="@string/About_KU" />
+    </group>
+</menu>

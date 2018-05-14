@@ -109,6 +109,7 @@ public class PreviewProducts extends AppCompatActivity {
                         grid_model.setRemarks(o.getString("remarks"));
                         Log.e("date", o.getString("created_at"));
                         grid_model.setTime(o.getString("created_at"));
+                        grid_model.setFrom("dashboard");
 
                         grid_models.add(grid_model);
 //                                }

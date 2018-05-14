@@ -63,7 +63,9 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
             intent.putExtra("remarks",grid_model.getRemarks());
             intent.putExtra("created_at",grid_model.getTime());
 
-            if (grid_model.getFrom().equals("history"))
+
+//            Toast.makeText(context, "from "+grid_model.getFrom(), Toast.LENGTH_SHORT).show();
+            if (grid_model.getFrom().equalsIgnoreCase("history"))
                 intent.putExtra("from","history");
             else intent.putExtra("from","dashboard");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

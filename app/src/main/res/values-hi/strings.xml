@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">MarketPlace</string>
+    <string name="title_activity_bottom_nav">BottomNav</string>
+    <string name="title_home">होम</string>
+    <string name="title_dashboard">डैशबोर्ड</string>
+    <string name="title_notifications">सूचनाएं</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="navigation_drawer_open">खुला नेविगेशन ड्रॉवर</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रॉवर बंद करें</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+
+    <string name="similar_products">इसी तरह के उत्पादों</string>
+    <string name="Contact_Seller">विक्रेता से संपर्क करें</string>
+    <string name="Buy">खरीदें</string>
+    <string name="Profile">प्रोफाइल</string>
+
+    <!--Change Password-->
+
+    <string name="Change_Password">पासवर्ड बदलें</string>
+    <string name="Current_Password">वर्तमान पासवर्ड</string>
+    <string name="New_Password">नया पासवर्ड</string>
+    <string name="Retype_New_Password">नया पासवर्ड दोबारा टाइप करें</string>
+
+    <!--Forgot Password-->
+    <string name="Forgot_Password">पासवर्ड भूल गए</string>
+    <string name="E_mail">ईमेल</string>
+    <string name="Send_Email">ईमेल भेजें</string>
+    <string name="Back_To_Login">लॉगिन पर वापस जाएं</string>
+
+
+    <!--History-->
+    <string name="My_Products">मेरे उत्पाद</string>
+
+    <!--Login-->
+    <string name="Login">लॉग इन करें</string>
+    <string name="Mobile_Number">मोबाइल नंबर</string>
+    <string name="Password">पासवर्ड</string>
+    <string name="Forgot_Password_login">पासवर्ड भूल गए?</string>
+    <string name="OR">या</string>
+    <string name="New_User">नया उपयोगकर्ता? यहां रजिस्टर करें</string>
+
+    <!--Profile-->
+
+    <string name="Gender">लिंग</string>
+    <string name="Male">नर</string>
+    <string name="Female">महिला</string>
+    <string name="Logout">लोग आउट</string>
+
+
+    <!--Registration-->
+    <string name="Registration">पंजीकरण</string>
+    <string name="Name">नाम</string>
+    <string name="Contact_Number">संपर्क संख्या</string>
+    <string name="Date_of_Birth">जन्म की तारीख:</string>
+
+    <!--Sell Details-->
+    <string name="Product_Details"> उत्पाद विवरण</string>
+    <string name="Select_Category">  श्रेणी का चयन करें</string>
+    <string name="Product_Name">  उत्पाद का नाम</string>
+    <string name="Product_Description">उत्पाद वर्णन</string>
+    <string name="Product_Price">उत्पाद की कीमत</string>
+    <string name="Upload">अपलोड</string>
+
+
+    <!--Sell Form-->
+    <string name="Upload_Product_Images">उत्पाद छवियां अपलोड करें</string>
+    <string name="Continue">जारी रहना</string>
+
+
+    <!--exit Dialog-->
+    <string name="Do_You_want_to_Exit">क्या बाहर जाना चाहते हो?</string>
+    <string name="Yes">हाँ</string>
+    <string name="No">नहीं</string>
+
+
+
+    <!--Seller Details-->
+    <string name="Sellers_contact_number">
+विक्रेता का संपर्क नंबर</string>
+    <string name="OK">ठीक</string>
+
+
+    <!--Sidebar Navigation-->
+    <string name="Change_Language">भाषा बदलो</string>
+    <string name="Contract">अनुबंध</string>
+    <string name="About_Us">हमारे बारे में</string>
+    <string name="Contact_Us">हमसे संपर्क करें</string>
+    <string name="About_KU">KU के बारे में</string>
+
+
+    <!--Language selection screen-->
+
+    <string name="Please_select_Language">कृपया भाषा का चयन करें </string>
+
+    <string-array name="menu">
+    <item>मेरे उत्पाद</item>
+    <item>भाषा बदलो</item>
+    <item>हमारे बारे में</item>
+    <item>हमसे संपर्क करें</item>
+    <item>KU के बारे में</item>
+    </string-array>
+
+</resources>

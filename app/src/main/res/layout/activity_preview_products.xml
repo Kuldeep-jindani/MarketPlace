@@ -258,7 +258,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:singleLine="true"
-                            android:text="Similar Products"
+                            android:text="@string/similar_products"
                             android:textColor="@color/colorBlack"
                             android:textSize="20dp" />
 
@@ -282,7 +282,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/color_gradient"
                 android:contentDescription="TODO"
-                android:text="Contact Seller"
+                android:text="@string/Contact_Seller"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="20dp" />

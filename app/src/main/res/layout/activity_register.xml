@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Registration"
+            android:text="@string/Registration"
             android:textColor="@color/colorBlack"
             android:textSize="30dp"
             />
@@ -59,7 +59,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/colorBlack"
-                android:hint="Name"
+                android:hint="@string/Name"
 
                 android:inputType="text"
                 android:textColor="@color/colorBlack"
@@ -81,7 +81,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/colorBlack"
-                android:hint="Contact Number"
+                android:hint="@string/Contact_Number"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textColor="@color/colorBlack"
@@ -129,7 +129,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/colorBlack"
-                android:hint="Password"
+                android:hint="@string/Password"
 
                 android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
@@ -143,7 +143,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginRight="15dp"
             android:backgroundTint="@color/colorBlack"
-            android:text="Gender:"
+            android:text="@string/Gender"
             android:textColor="@color/colorBlack"
             android:textSize="15dp" />
 
@@ -163,7 +163,7 @@
                 android:layout_weight="1"
                 android:buttonTint="@color/colorBlack"
                 android:checked="true"
-                android:text="Male"
+                android:text="@string/Male"
                 android:textColor="@color/colorBlack" />
 
             <RadioButton
@@ -173,7 +173,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorBlack"
                 android:buttonTint="@color/colorBlack"
-                android:text="Female"
+                android:text="@string/Female"
                 android:textColor="@color/colorBlack" />
         </RadioGroup>
 
@@ -231,7 +231,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
             android:backgroundTint="@color/colorBlack"
-            android:text="Date of Birth:"
+            android:text="@string/Date_of_Birth"
             android:textColor="@color/colorBlack"
             android:textSize="15dp" />
 
@@ -269,7 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:background="@drawable/color_gradient"
-            android:text="Register"
+            android:text="@string/Registration"
             style="?android:attr/borderlessButtonStyle"
             android:textAllCaps="false"
             android:shadowColor="@color/colorWhite"
@@ -283,7 +283,7 @@
             android:gravity="right"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Back To Login"
+            android:text="@string/Back_To_Login"
             android:textColor="@color/colorBlack"
             android:textSize="15dp" />
     </LinearLayout>

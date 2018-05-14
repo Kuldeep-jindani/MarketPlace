@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -45,16 +46,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     ImageView imageView, bottomnav_menu;
     private TextView mTextMessage;
 
-    ListView mDrawerList;
+    //    ListView mDrawerList;
     Toolbar toolbar;
-Handler mHandler;
+    Handler mHandler;
 
     ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,58 @@ Handler mHandler;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                switch (item.getItemId()) {
+
+                    case R.id.my_products:
+
+                        Intent intent = new Intent(BottomNav.this, History.class);
+                        startActivity(intent);
+//                    fragment = new Tablayout_with_viewpager(1);
+
+                        break;
+                    case R.id.Change_Language:
+                        /*Intent i=new Intent(getApplicationContext(),SelectLanguage.class);
+                        startActivity(i);*/
+                        fragmentTransaction.replace(R.id.viewpager, new SelectLanguage()).commit();
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.About_Us:
+                        fragmentTransaction.replace(R.id.viewpager, new ComingSoonFragment()).commit();
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.contract:
+                        fragmentTransaction.replace(R.id.viewpager, new ComingSoonFragment()).commit();
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.Contact_Us:
+                        fragmentTransaction.replace(R.id.viewpager, new ComingSoonFragment()).commit();
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.About_KU:
+                        fragmentTransaction.replace(R.id.viewpager, new ComingSoonFragment()).commit();
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    default:
+                        break;
+
+
+                }
+
+
+                return false;
+            }
+        });
+
+
+
         /*bottomnav_category_list=findViewById(R.id.bottomnav_category_list);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         bottomnav_category_list.setLayoutManager(linearLayoutManager);
@@ -100,13 +157,13 @@ Handler mHandler;
         }));
 
 */
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        DrawerModel[] drawerItem = new DrawerModel[4];
+//        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        DrawerModel[] drawerItem = new DrawerModel[5];
         drawerItem[0] = new DrawerModel(/*R.drawable.home, */"My Products");
-        drawerItem[1] = new DrawerModel(/*R.drawable.calendar, */"About Us");
-        drawerItem[2] = new DrawerModel(/*R.drawable.desiretour, */"Contact Us");
-        drawerItem[3] = new DrawerModel(/*R.drawable.paypal, */"About KU");
-
+        drawerItem[1] = new DrawerModel(/*R.drawable.home, */"Change Language");
+        drawerItem[2] = new DrawerModel(/*R.drawable.calendar, */"About Us");
+        drawerItem[3] = new DrawerModel(/*R.drawable.desiretour, */"Contact Us");
+        drawerItem[4] = new DrawerModel(/*R.drawable.paypal, */"About KU");
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -116,7 +173,7 @@ Handler mHandler;
         mHandler = new Handler();
 
         mDrawerToggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout,toolbar , R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(mDrawerLayout);
                 mDrawerLayout.closeDrawers();
@@ -128,11 +185,14 @@ Handler mHandler;
             }
         };
 
-        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.customdrawerlayout, drawerItem);
-        mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+       /* String [] strings = new String [] {"1", "2" };
+        ArrayList<DrawerModel> stringList = new ArrayList<DrawerModel>(Arrays.<DrawerModel>asList(R.array.menu));
 
+//        @SuppressLint("ResourceType") ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(),R.layout.customdrawerlayout,R.array.menu);
+        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.customdrawerlayout, R.array.menu);
+        mDrawerList.setAdapter(adapter);
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());*/
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
         imageView = findViewById(R.id.camera_icon);
@@ -142,6 +202,10 @@ Handler mHandler;
             public void onClick(View v) {
                 Intent intent = new Intent(BottomNav.this, SellForm.class);
                 startActivity(intent);
+
+          /*      FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+                ft.addToBackStack("Dashboard");
+                ft.replace(R.id.viewpager,new SellForm()).commit();*/
             }
         });
 
@@ -256,13 +320,17 @@ Handler mHandler;
 
                     break;
                 case 1:
-                    fragment=new ComingSoonFragment();
+                    Intent i = new Intent(getApplicationContext(), SelectLanguage.class);
+                    startActivity(i);
                     break;
                 case 2:
-                    fragment=new ComingSoonFragment();
+                    fragment = new ComingSoonFragment();
                     break;
                 case 3:
-                    fragment=new ComingSoonFragment();
+                    fragment = new ComingSoonFragment();
+                    break;
+                case 4:
+                    fragment = new ComingSoonFragment();
                     break;
 
                 default:
