@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text=" Product Details"
+                    android:text="@string/Product_Details"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 
@@ -58,7 +58,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:text=" Select Category"
+                    android:text="@string/Select_Category"
                     android:textColor="@color/colorBlack"
                     android:textSize="15dp" />
                 <View
@@ -83,7 +83,7 @@
                         android:layout_marginTop="10dp"
 
                         android:backgroundTint="@color/colorBlack"
-                        android:hint="Product Name"
+                        android:hint="@string/Product_Name"
                         android:inputType="text"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorBlack"
@@ -106,7 +106,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="@color/colorBlack"
-                        android:hint="Product Description"
+                        android:hint="@string/Product_Description"
                         android:inputType="text"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorBlack"
@@ -128,7 +128,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="@color/colorBlack"
-                        android:hint="Product Price(INR)"
+                        android:hint="@string/Product_Price"
                         android:inputType="number"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorBlack"
@@ -223,7 +223,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="15dp"
                     android:background="@drawable/color_gradient"
-                    android:text="Upload"
+                    android:text="@string/Upload"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="20dp" />

@@ -24,7 +24,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,25 +33,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BottomNav"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_bottom_nav" />
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ForgotPassword"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SellForm"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SellDetails"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PreviewProducts"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ChangePassword"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".History"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".BottomNav"
+            android:label="@string/title_activity_bottom_nav"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgotPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SellForm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SellDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreviewProducts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangePassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".History"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LanguageSelectActivity"></activity>
     </application>
 
 </manifest>

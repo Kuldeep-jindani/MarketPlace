@@ -15,4 +15,15 @@
         android:src="@drawable/cdrfinallogo"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/img_logo"
+        android:layout_height="wrap_content"
+        android:text="Powered by"
+        android:layout_marginTop="60dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/powerby"
+        android:textSize="15dp"
+        android:textColor="@color/colorBlack"
+        />
     </RelativeLayout>

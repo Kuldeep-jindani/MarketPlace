@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Upload Product Images"
+            android:text="@string/Upload_Product_Images"
             android:textColor="@color/colorBlack"
             android:textSize="20dp" />
 
@@ -150,7 +150,7 @@
             android:layout_margin="15dp"
             android:background="@drawable/color_gradient"
             android:padding="10dp"
-            android:text="Continue"
+            android:text="@string/Continue"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="15dp" />

@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/appbar"
             android:layout_margin="15dp"
-            android:text="Login"
+            android:text="@string/Login"
             android:textColor="@color/colorBlack"
             android:textSize="30dp" />
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:backgroundTint="@color/colorBlack"
-                android:hint="Mobile Number"
+                android:hint="@string/Mobile_Number"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textColor="@color/colorBlack"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:backgroundTint="@color/colorBlack"
-                android:hint="Password"
+                android:hint="@string/Password"
                 android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorBlack"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:background="@drawable/color_gradient"
-            android:text="Login"
+            android:text="@string/Login"
             android:textAllCaps="false"
             style="?android:attr/borderlessButtonStyle"
             android:shadowColor="@color/colorWhite"
@@ -120,7 +120,7 @@
                 android:gravity="right"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:text="Forgot Password?"
+                android:text="@string/Forgot_Password_login"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
 
@@ -131,7 +131,7 @@
                 android:gravity="right"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:text="OR"
+                android:text="@string/OR"
                 android:textColor="@color/colorBlack"
                 android:textSize="30dp" />
 
@@ -143,7 +143,7 @@
                 android:background="#ff5b00"
                 android:gravity="center"
                 android:textAllCaps="false"
-                android:text="New User? Register here"
+                android:text="@string/New_User"
                 android:textColor="@color/colorBlack"
                 android:shadowColor="@color/colorWhite"
                 android:textSize="15dp" />

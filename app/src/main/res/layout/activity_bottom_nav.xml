@@ -119,16 +119,18 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header"
-        app:itemIconTint="#42A1CF">
-
+        android:theme="@style/AppTheme.Drawer"
+        app:menu="@menu/sidebar_menu"
+        app:itemIconTint="#42A1CF"/>
+<!--
         <LinearLayout
             android:layout_width="230dp"
             android:layout_marginTop="57dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <!--  <include
+            &lt;!&ndash;  <include
                   android:id="@+id/headerLayout" layout="@layout/nav_header_setting_flyout" android:layout_width="200dp"
-                  android:layout_height="150dp" />-->
+                  android:layout_height="150dp" />&ndash;&gt;
 
 
             <ListView
@@ -141,5 +143,5 @@
                 android:divider="@android:color/darker_gray"
                 android:dividerHeight="1dp" />
         </LinearLayout>
-    </android.support.design.widget.NavigationView>
+    </android.support.design.widget.NavigationView>-->
 </android.support.v4.widget.DrawerLayout>
