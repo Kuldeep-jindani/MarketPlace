@@ -106,4 +106,8 @@
         <item>KU વિશે</item>
     </string-array>
 
+
+    <!--Toast msg image-->
+    <string name="image_toast">કૃપા કરીને ઓછામાં ઓછી એક છબી અપલોડ કરો.</string>
+
 </resources>

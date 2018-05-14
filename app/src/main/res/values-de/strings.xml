@@ -106,4 +106,8 @@
     <item>KU के बारे में</item>
     </string-array>
 
+
+    <!--Toast msg image-->
+    <string name="image_toast">कृपया कम से कम एक छवि अपलोड करें।.</string>
+
 </resources>

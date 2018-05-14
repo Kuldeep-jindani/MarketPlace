@@ -60,7 +60,7 @@
         android:textSize="20dp"
         android:layout_marginTop="30dp"
         android:textColor="@color/colorBlack"
-        android:text="Please select Language "
+        android:text="@string/Please_select_Language"
 
         />
     <LinearLayout

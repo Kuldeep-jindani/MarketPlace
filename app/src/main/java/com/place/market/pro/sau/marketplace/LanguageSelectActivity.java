@@ -35,36 +35,42 @@ public class LanguageSelectActivity extends AppCompatActivity {
 
 
 
+        english_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","en").apply();
 
-       english_layout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               editor.putString("lang","en").apply();
+                setLangRecreate("en");
 
-               setLangRecreate("en");
+                Configuration config = new Configuration();
+                config.locale = Locale.ENGLISH;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
-               Context context = LocaleHelper.setLocale(getApplicationContext(), "en");
-               Intent i=new Intent(getApplicationContext(),BottomNav.class);
-               i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-               startActivity(i);
-              finish();
-           }
-       });
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "en");
+                Intent i=new Intent(context,BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
-       hindi_layout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               editor.putString("lang","hi").apply();
+        hindi_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","de").apply();
 
-               setLangRecreate("hi");
+                setLangRecreate("de");
 
-               Context context = LocaleHelper.setLocale(getApplicationContext(), "hi");
-               Intent i=new Intent(getApplicationContext(),LoginActivity.class);
-               i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-               startActivity(i);
-               finish();
-           }
-       });
+                Configuration config = new Configuration();
+                config.locale = Locale.GERMANY;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "de");
+                Intent i=new Intent(context,BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
         gujarati_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +78,14 @@ public class LanguageSelectActivity extends AppCompatActivity {
 
                 setLangRecreate("fr");
 
-                Context context = LocaleHelper.setLocale(getApplicationContext(), "fr");
-                Intent i=new Intent(getApplicationContext(),BottomNav.class);
+
+                Configuration config = new Configuration();
+                config.locale = Locale.FRANCE;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "fr");
+                Intent i=new Intent(context,BottomNav.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }

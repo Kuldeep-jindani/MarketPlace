@@ -47,6 +47,8 @@ public class SellDetails extends AppCompatActivity {
         edt_price = findViewById(R.id.sell_product_price);
         txt_cat = findViewById(R.id.select_category);
 
+        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+        LocaleHelper.setLocale(getApplicationContext(), langPref.getString("lang","en"));
 
         dialog = new Dialog(SellDetails.this);
         dialog.setContentView(R.layout.list);
