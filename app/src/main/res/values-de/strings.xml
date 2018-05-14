@@ -110,6 +110,20 @@
     <!--Toast msg image-->
     <string name="image_toast">कृपया कम से कम एक छवि अपलोड करें।.</string>
 
+    <!--contract form-->
+    <string name="Contract_Form">अनुबंध खेती</string>
+    <string name="Contract_Name">नाम</string>
+    <string name="Contract_Address">पता</string>
+    <string name="Contract_Phone_Number">फ़ोन नंबर</string>
+    <string name="Contract_Mobile_Number">मोबाइल नंबर</string>
+    <string name="District">जिला</string>
+    <string name="Taluka">तालुका</string>
+    <string name="Village">गाँव</string>
+    <string name="Survey_No">सर्वेक्षण संख्या</string>
+    <string name="Area_of_Farm_in_Hector">हेक्टर में खेत का क्षेत्रफल</string>
+    <string name="Name_of_Comodity">कमोडिटी का नाम</string>
+    <string name="Expectation_Price_for_Hector">क्टर के लिए उम्मीद मूल्य</string>
+    <string name="Submit">जमा करें</string>
 
 
 </resources>

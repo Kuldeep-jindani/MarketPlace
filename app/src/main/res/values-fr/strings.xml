@@ -110,4 +110,19 @@
     <!--Toast msg image-->
     <string name="image_toast">કૃપા કરીને ઓછામાં ઓછી એક છબી અપલોડ કરો.</string>
 
+    <!--contract form-->
+    <string name="Contract_Form">કોન્ટ્રેક્ટ ફાર્મિંગ</string>
+    <string name="Contract_Name">નામ</string>
+    <string name="Contract_Address">સરનામું</string>
+    <string name="Contract_Phone_Number">ફોન નંબર</string>
+    <string name="Contract_Mobile_Number">મોબાઇલ નંબર</string>
+    <string name="District">જિલ્લા</string>
+    <string name="Taluka">તાલુકા</string>
+    <string name="Village">ગામ</string>
+    <string name="Survey_No">સર્વે નં</string>
+    <string name="Area_of_Farm_in_Hector">હેકટરમાં ફાર્મનો વિસ્તાર</string>
+    <string name="Name_of_Comodity">કોમોડીટીનું નામ</string>
+    <string name="Expectation_Price_for_Hector">હેકટર માટે અપેક્ષા ભાવ</string>
+    <string name="Submit">સબમિટ કરો</string>
+
 </resources>

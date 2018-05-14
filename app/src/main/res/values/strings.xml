@@ -90,7 +90,7 @@
 
     <!--Sidebar Navigation-->
     <string name="Change_Language">Change Language</string>
-    <string name="Contract">contract</string>
+    <string name="Contract">Contract Farming</string>
     <string name="About_Us">About Us</string>
     <string name="Contact_Us">Contact Us</string>
     <string name="About_KU">About KU</string>
@@ -109,7 +109,19 @@
 
 
     <!--contract form-->
-    <string name="Contract_Form">Contract Form</string>
+    <string name="Contract_Form">Contract Farming</string>
+    <string name="Contract_Name">Name</string>
+    <string name="Contract_Address">Address</string>
+    <string name="Contract_Phone_Number">Phone Number</string>
+    <string name="Contract_Mobile_Number">Mobile Number</string>
+    <string name="District">District</string>
+    <string name="Taluka">Taluka</string>
+    <string name="Village">Village</string>
+    <string name="Survey_No">Survey No</string>
+    <string name="Area_of_Farm_in_Hector">Area of Farm in Hector</string>
+    <string name="Name_of_Comodity">Name of Comodity</string>
+    <string name="Expectation_Price_for_Hector">Expectation Price for Hector</string>
+    <string name="Submit">Submit</string>
 
 
 </resources>
