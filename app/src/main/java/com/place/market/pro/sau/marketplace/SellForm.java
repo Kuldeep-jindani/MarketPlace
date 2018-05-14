@@ -63,10 +63,13 @@ public class SellForm extends AppCompatActivity {
         preferences=getSharedPreferences("image",MODE_PRIVATE);
         editor=preferences.edit();
 
+        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+        LocaleHelper.setLocale(getApplicationContext(), langPref.getString("lang","en"));
+
 editor.clear().apply();
 
 
-        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+//        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
         Configuration config = getBaseContext().getResources().getConfiguration();
 
         String lang = langPref.getString("lang", "");
@@ -98,7 +101,7 @@ editor.clear().apply();
                         !preferences.contains("image3") &&
                         !preferences.contains("image4") &&
                         !preferences.contains("image5") ){
-                    Toast.makeText(SellForm.this, "Please upload atleast one image.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SellForm.this, R.string.image_toast, Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent = new Intent(SellForm.this, SellDetails.class);
                     startActivity(intent);

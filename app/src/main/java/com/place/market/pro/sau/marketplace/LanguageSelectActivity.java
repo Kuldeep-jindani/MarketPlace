@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 
 public class LanguageSelectActivity extends AppCompatActivity {
 
-    LinearLayout english_layout,hindi_layout;
+    LinearLayout english_layout,hindi_layout,gujarati_layout;
 
 
     @Override
@@ -31,39 +31,65 @@ public class LanguageSelectActivity extends AppCompatActivity {
 
        english_layout=findViewById(R.id.english_layout);
        hindi_layout=findViewById(R.id.hindi_layout);
+        gujarati_layout=findViewById(R.id.gujarati_layout);
 
 
 
+        english_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","en").apply();
 
-       english_layout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               editor.putString("lang","en").apply();
+                setLangRecreate("en");
 
-               setLangRecreate("en");
+                Configuration config = new Configuration();
+                config.locale = Locale.ENGLISH;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
-               Context context = LocaleHelper.setLocale(getApplicationContext(), "en");
-               Intent i=new Intent(getApplicationContext(),BottomNav.class);
-               i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-               startActivity(i);
-              finish();
-           }
-       });
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "en");
+                Intent i=new Intent(context,BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
-       hindi_layout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               editor.putString("lang","hi").apply();
+        hindi_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","de").apply();
 
-               setLangRecreate("hi");
+                setLangRecreate("de");
 
-               Context context = LocaleHelper.setLocale(getApplicationContext(), "hi");
-               Intent i=new Intent(getApplicationContext(),LoginActivity.class);
-               i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-               startActivity(i);
-               finish();
-           }
-       });
+                Configuration config = new Configuration();
+                config.locale = Locale.GERMANY;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "de");
+                Intent i=new Intent(context,BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        gujarati_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("lang","fr").apply();
+
+                setLangRecreate("fr");
+
+
+                Configuration config = new Configuration();
+                config.locale = Locale.FRANCE;
+                getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+
+                Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "fr");
+                Intent i=new Intent(context,BottomNav.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
    }
     Locale locale;

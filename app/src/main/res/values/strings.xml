@@ -103,4 +103,8 @@
         <item>About KU</item>
     </string-array>
 
+
+    <!--Toast msg image-->
+    <string name="image_toast">Please upload atleast one image.</string>
+
 </resources>
