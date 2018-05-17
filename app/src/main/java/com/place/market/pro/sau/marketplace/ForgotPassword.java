@@ -3,13 +3,10 @@ package com.place.market.pro.sau.marketplace;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -41,7 +38,7 @@ Button btn_send_email;
                    email.setError("Enter Contact Number");
                 }
                 else {
-                    String url = "";
+                    String url = "http://kisanunnati.com/market_place/ForgotPassword?contact="+email.getText().toString();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -55,9 +52,7 @@ Button btn_send_email;
                     });
                     Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
                 }
-
             }
         });
-
     }
 }
