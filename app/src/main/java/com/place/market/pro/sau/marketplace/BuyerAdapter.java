@@ -101,7 +101,7 @@ FragmentManager fragmentManager;
     });
 
         holder.txt_name.setText(grid_model.getName());
-        holder.txt_price.setText(grid_model.getPrice()+" INR");
+        holder.txt_price.setText(grid_model.getPrice());
         holder.txt_contacted.setText(/*"Contacted: "+*/grid_model.getContacted());
     }
 
