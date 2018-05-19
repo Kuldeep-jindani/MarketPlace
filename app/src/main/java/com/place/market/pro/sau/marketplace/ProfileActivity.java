@@ -124,8 +124,11 @@ public class ProfileActivity extends Fragment {
         btn_change_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),ChangePassword.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getContext(),ChangePassword.class);
+                startActivity(intent);*/
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                fragmentTransaction.replace(R.id.viewpager, new ChangePassword()).commit();
             }
         });
 
