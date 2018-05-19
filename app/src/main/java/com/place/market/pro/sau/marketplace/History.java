@@ -17,7 +17,7 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         recyclar=findViewById(R.id.recyclar);
-        new Paginator_history(getApplication(),recyclar);
+        new Paginator_history(getApplication(),recyclar,getSupportFragmentManager());
 
     }
 }

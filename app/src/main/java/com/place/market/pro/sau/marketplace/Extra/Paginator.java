@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
-
+import android.support.v4.app.FragmentManager;
 /**
  * Created by Saubhagyam on 20/07/2017.
  */
@@ -43,54 +43,61 @@ public class Paginator {
 
     String editText = "";
 
+    FragmentManager fragmentManager;
+
+
     int prizebit = 0;
 
     int cat_id;
 
-    public Paginator(Context c, PullToLoadView pullToLoadView, float cat_id) {
+    public Paginator(Context c, PullToLoadView pullToLoadView, float cat_id,FragmentManager fragmentManager) {
         this.c = c;
         this.pullToLoadView = pullToLoadView;
+        this.fragmentManager=fragmentManager;
         this.cat_id = (int)cat_id;
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();
     }
 
 
-    public Paginator(Context c, PullToLoadView pullToLoadView) {
+    public Paginator(Context c, PullToLoadView pullToLoadView,FragmentManager fragmentManager) {
         this.c = c;
+        this.fragmentManager=fragmentManager;
         this.pullToLoadView = pullToLoadView;
 
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();
     }
 
 
-    public Paginator(Context c, PullToLoadView pullToLoadView, String editText) {
+    public Paginator(Context c, PullToLoadView pullToLoadView, String editText,FragmentManager fragmentManager) {
         this.c = c;
+        this.fragmentManager=fragmentManager;
         this.pullToLoadView = pullToLoadView;
         this.editText = editText;
 
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();
     }
 
-    public Paginator(Context c, PullToLoadView pullToLoadView, String editText, int prizebit) {
+    public Paginator(Context c, PullToLoadView pullToLoadView, String editText, int prizebit,FragmentManager fragmentManager) {
         this.c = c;
+        this.fragmentManager=fragmentManager;
         this.pullToLoadView = pullToLoadView;
         this.editText = editText;
         this.prizebit = prizebit;
@@ -98,21 +105,22 @@ public class Paginator {
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();
     }
 
-    public Paginator(Context c, PullToLoadView pullToLoadView, int prizebit) {
+    public Paginator(Context c, PullToLoadView pullToLoadView, int prizebit,FragmentManager fragmentManager) {
         this.c = c;
+        this.fragmentManager=fragmentManager;
         this.pullToLoadView = pullToLoadView;
         this.prizebit = prizebit;
 
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();

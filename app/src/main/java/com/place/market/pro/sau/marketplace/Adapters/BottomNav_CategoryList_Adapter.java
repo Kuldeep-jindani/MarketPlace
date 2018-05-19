@@ -1,7 +1,9 @@
 package com.place.market.pro.sau.marketplace.Adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +23,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomNav_CategoryList_Adapter.ViewHolder> {
 
     Context context;
     JSONArray array;
     PullToLoadView recyclar;
+    FragmentManager fragmentManager;
 
-    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener, PullToLoadView recyclar) {
+    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener, PullToLoadView recyclar,FragmentManager fragmentManager) {
         this.context = context;
+        this.fragmentManager=fragmentManager;
         this.array = array;
         this.mListener=mListener;
         this.recyclar=recyclar;
@@ -48,20 +54,29 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
         try {
             JSONObject obj=array.getJSONObject(position);
 
-
+            SharedPreferences langPref=context.getSharedPreferences("langPref",MODE_PRIVATE);
             Glide.with(context).load(/*"http://kisanunnati.com/market_place/public/uploads/"+*/obj.getString("image")).into(holder.cate_img);
 
             holder.category_id.setText(obj.getString("id"));
-            holder.category_name.setText(obj.getString("name"));
+
+            if (langPref.getString("lang","").equals("en"))
+                holder.category_name.setText(obj.getString("name"));
+            else if (langPref.getString("lang","").equals("de"))
+                holder.category_name.setText(obj.getString("hindi_name"));
+            else if (langPref.getString("lang","").equals("fr"))
+                holder.category_name.setText(obj.getString("guj_name"));
+
+
             /*holder.category_name.setText(obj.getString("guj_name"));
             holder.category_name.setText(obj.getString("hindi_name"));
 */
-            holder.category_root.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString()));
-                }
-            });
+                holder.category_root.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString()),fragmentManager);
+                    }
+                });
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

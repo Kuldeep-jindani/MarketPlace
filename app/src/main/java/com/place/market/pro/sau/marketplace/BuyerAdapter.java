@@ -1,11 +1,11 @@
 package com.place.market.pro.sau.marketplace;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +17,16 @@ import com.place.market.pro.sau.marketplace.Extra.Grid_model;
 
 import java.util.ArrayList;
 
+import static android.view.View.GONE;
+
 public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     Context context;
     ArrayList<Grid_model> grid_models;
+FragmentManager fragmentManager;
 
-    public BuyerAdapter(Context context,ArrayList<Grid_model> grid_models) {
+    public BuyerAdapter(Context context,ArrayList<Grid_model> grid_models,FragmentManager fragmentManager) {
         this.context = context;
+        this.fragmentManager=fragmentManager;
         this.grid_models=grid_models;
     }
 
@@ -46,11 +50,21 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
         final Grid_model grid_model=grid_models.get(position);
         holder.txt_name.setVisibility(View.VISIBLE);
         Glide.with(context).load(grid_model.getImage1()).into(holder.imageView);
+
+        if (grid_model.getFrom().equalsIgnoreCase("history")){
+            holder.txt_contacted.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.txt_contacted.setVisibility(GONE);
+        }
+
+
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             PreviewProducts newFragment = new PreviewProducts();
-            FragmentTransaction transaction = ((Activity) context).getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.viewpager, newFragment);
             Bundle bundle = new Bundle();
             bundle.putString("id",grid_model.getId());
@@ -76,7 +90,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
             }
             else {
                 bundle.putString("from", "dashboard");
-                holder.txt_contacted.setVisibility(View.GONE);
+                holder.txt_contacted.setVisibility(GONE);
             }
             newFragment.setArguments(bundle);
             transaction.addToBackStack("dashboard paginator");
