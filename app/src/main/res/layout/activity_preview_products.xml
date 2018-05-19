@@ -27,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <!--
             <View
                 android:layout_width="match_parent"
@@ -142,6 +141,7 @@
                                   app:fillColor="#ff0099"
                                   app:pageColor="#FF0000"
                                   app:snap="false" />-->
+                            
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -225,7 +225,6 @@
                                     android:id="@+id/contacted"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-
                                     android:text="  "
 
                                     android:textColor="@color/colorBlack" />
@@ -364,6 +363,7 @@
                     android:textSize="20sp"
                     app:pinLineStroke="2dp"
                     app:pinLineStrokeSelected="4dp" />
+
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>
