@@ -260,7 +260,7 @@ public class PreviewProducts extends Fragment {
         sell_name.setText(bundle.getString("uploader_name"));
         txt_name.setText(bundle.getString("product_name"));
         txt_desc.setText(bundle.getString("description"));
-        String price = bundle.getString("price") + " INR";
+        String price = bundle.getString("price") + R.string.currency;
         txt_price.setText(price);
         preview_remark.setText(bundle.getString("remarks"));
 

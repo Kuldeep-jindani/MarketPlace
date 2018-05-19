@@ -107,6 +107,8 @@
 
     <!--Toast msg image-->
     <string name="image_toast">कृपया कम से कम एक छवि अपलोड करें।.</string>
+    <string name="toast_contract">सभी फ़ील्ड दर्ज करें।</string>
+    <string name="currency">रुपये</string>
 
     <!--contract form-->
     <string name="Contract_Form">अनुबंध खेती</string>

@@ -54,10 +54,10 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
         try {
             JSONObject obj=array.getJSONObject(position);
 
-            SharedPreferences langPref=context.getSharedPreferences("langPref",MODE_PRIVATE);
             Glide.with(context).load(/*"http://kisanunnati.com/market_place/public/uploads/"+*/obj.getString("image")).into(holder.cate_img);
-
             holder.category_id.setText(obj.getString("id"));
+            SharedPreferences langPref=context.getSharedPreferences("langPref",MODE_PRIVATE);
+
 
             if (langPref.getString("lang","").equals("en"))
                 holder.category_name.setText(obj.getString("name"));

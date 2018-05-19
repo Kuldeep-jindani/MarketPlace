@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,12 +50,13 @@ public class BuyActivity extends Fragment {
     int pricebit= 0;
     View view;
     String hindi,gujarati;
-
+TextView txt_selected_category;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        view = inflater.inflate(R.layout.activity_buy, container, false);
+    txt_selected_category = view.findViewById(R.id.selected_category);
         recyclar = view.findViewById(R.id.recyclar);
 /*
         recyclar.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -300,7 +302,23 @@ public class BuyActivity extends Fragment {
                             JSONArray array = resObj.getJSONArray("data");
 
                             RecyclerViewClickListener listener = (view, position) -> {
+                                txt_selected_category.setVisibility(View.VISIBLE);
                                 Toast.makeText(getContext(), "position " + position, Toast.LENGTH_SHORT).show();
+                                try {
+                                    JSONObject obj=array.getJSONObject(position);
+                                    SharedPreferences langPref=getContext().getSharedPreferences("langPref",MODE_PRIVATE);
+
+
+                                    if (langPref.getString("lang","").equals("en"))
+                                        txt_selected_category.setText(obj.getString("name"));
+                                    else if (langPref.getString("lang","").equals("de"))
+                                        txt_selected_category.setText(obj.getString("hindi_name"));
+                                    else if (langPref.getString("lang","").equals("fr"))
+                                        txt_selected_category.setText(obj.getString("guj_name"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
                             /*try {
                                 JSONObject o=array.getJSONObject(position);
 

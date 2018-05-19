@@ -109,6 +109,8 @@
 
     <!--Toast msg image-->
     <string name="image_toast">કૃપા કરીને ઓછામાં ઓછી એક છબી અપલોડ કરો.</string>
+    <string name="toast_contract">બધા ફીલ્ડ્સ દાખલ કરો</string>
+    <string name="currency">રૂપિયા</string>
 
     <!--contract form-->
     <string name="Contract_Form">કોન્ટ્રેક્ટ ફાર્મિંગ</string>

@@ -322,7 +322,7 @@ public class ContractFragment extends Fragment {
                         || edt_name_of_comodity.getText().toString().equals("")
                         || edt_expectation_price_for_hector.getText().toString().equals(""))
             {
-                Toast.makeText(getContext(), "Enter All Fields.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.toast_contract, Toast.LENGTH_SHORT).show();
             }
             else {
                 String url = "http://kisanunnati.com/market_place/form_contract?"+
