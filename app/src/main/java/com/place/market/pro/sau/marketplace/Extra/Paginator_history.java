@@ -95,7 +95,7 @@ public class Paginator_history {
             public void run() {
                 RequestQueue requestQueue = Volley.newRequestQueue(c);
                 SharedPreferences preferences=c.getSharedPreferences("status",Context.MODE_PRIVATE);
-            String URL="http://kisanunnati.com/market_place/ProdUploadList?id="+preferences.getString("id","");
+            String URL="http://kisanunnati.com/market_place/ProdUploadList?id="+preferences.getString("id","")+"&last_product_id="+page*10;
                 Log.e("Grid service url", URL);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
