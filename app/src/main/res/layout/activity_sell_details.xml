@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+      <!--  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/gradient"
@@ -27,7 +27,7 @@
                 android:layout_margin="5dp"
                 android:src="@drawable/cdrfinallogo" />
         </LinearLayout>
-
+-->
         <!--    <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"

@@ -193,9 +193,11 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BottomNav.this, SellForm.class);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.viewpager, new SellForm()).commit();
+                /*Intent intent = new Intent(BottomNav.this, SellForm.class);
                 startActivity(intent);
-
+*/
           /*      FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
                 ft.addToBackStack("Dashboard");
                 ft.replace(R.id.viewpager,new SellForm()).commit();*/
