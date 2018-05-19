@@ -1,6 +1,8 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
@@ -10,7 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,7 +42,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PreviewProducts extends AppCompatActivity {
+import static android.content.Context.MODE_PRIVATE;
+
+public class PreviewProducts extends Fragment {
     Button contact_buy, ok;
     RecyclerView similarProd;
     ViewFlipper preview_imagescroll;
@@ -48,37 +54,37 @@ public class PreviewProducts extends AppCompatActivity {
     TextView contact_number;
     private GestureDetector mGestureDetector;
 
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("NewApi")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preview_products);
-        txt_contacted = findViewById(R.id.contacted);
-        contact_buy = findViewById(R.id.buy_now);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_preview_products, container, false);
+        Bundle bundle = getArguments();
+        txt_contacted = view.findViewById(R.id.contacted);
+        contact_buy = view.findViewById(R.id.buy_now);
 
-        if (getIntent().getStringExtra("from").equals("history"))
+        if (bundle.getString("from").equals("history"))
             contact_buy.setVisibility(View.GONE);
-//        preview_imagescroll = findViewById(R.id.preview_imagescroll);
+//        preview_imagescroll = view.findViewById(R.id.preview_imagescroll);
 //        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
 //        preview_imagescroll.setOutAnimation(this, android.R.anim.fade_out);
 
         /*CustomGestureDetector customGestureDetector = new CustomGestureDetector();
         mGestureDetector = new GestureDetector(this, customGestureDetector);*/
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 //        preview_imagescroll.setLayoutManager(linearLayoutManager);
-        similarProd = findViewById(R.id.similarProd);
+        similarProd = view.findViewById(R.id.similarProd);
 
 
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
 //        preview_imagescroll.setLayoutManager(linearLayoutManager);
         similarProd.setLayoutManager(linearLayoutManager1);
 
 
-        String similarProdUrl = "http://kisanunnati.com/market_place/similar_product?prod_id=" + getIntent().getStringExtra("id");
-        Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, similarProdUrl, new Response.Listener<String>() {
+        String similarProdUrl = "http://kisanunnati.com/market_place/similar_product?prod_id=" + bundle.getString("id");
+        Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, similarProdUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("similar prod resp", response);
@@ -118,7 +124,7 @@ public class PreviewProducts extends AppCompatActivity {
 
                     }
 
-                    BuyerAdapter adapter = new BuyerAdapter(getApplicationContext(), grid_models);
+                    BuyerAdapter adapter = new BuyerAdapter(getContext(), grid_models);
                     similarProd.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -135,18 +141,18 @@ public class PreviewProducts extends AppCompatActivity {
 
         ArrayList<String> pics = new ArrayList<>();
 
-        pics.add(getIntent().getStringExtra("image1"));
-        if (!getIntent().getStringExtra("image2").equals(""))
-            pics.add(getIntent().getStringExtra("image2"));
-        if (!getIntent().getStringExtra("image3").equals(""))
-            pics.add(getIntent().getStringExtra("image3"));
-        if (!getIntent().getStringExtra("image4").equals(""))
-            pics.add(getIntent().getStringExtra("image4"));
-        if (!getIntent().getStringExtra("image5").equals(""))
-            pics.add(getIntent().getStringExtra("image5"));
+        pics.add(bundle.getString("image1"));
+        if (!bundle.getString("image2").equals(""))
+            pics.add(bundle.getString("image2"));
+        if (!bundle.getString("image3").equals(""))
+            pics.add(bundle.getString("image3"));
+        if (!bundle.getString("image4").equals(""))
+            pics.add(bundle.getString("image4"));
+        if (!bundle.getString("image5").equals(""))
+            pics.add(bundle.getString("image5"));
 
 
-        TextView total_pics = findViewById(R.id.total_pics);
+        TextView total_pics = view.findViewById(R.id.total_pics);
         total_pics.setText(String.valueOf(pics.size())+" photos");
 
       /*  for (int i=0;i<pics.size();i++){
@@ -159,9 +165,9 @@ public class PreviewProducts extends AppCompatActivity {
         contact_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ln = findViewById(R.id.ln_opt);
+                ln = view.findViewById(R.id.ln_opt);
                 ln.setVisibility(View.VISIBLE);
-                pinEntry = findViewById(R.id.txt_pin_entry);
+                pinEntry = view.findViewById(R.id.txt_pin_entry);
 
                 String url = "http://kisanunnati.com/market_place/Send_otp?user_id=1";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -176,16 +182,16 @@ public class PreviewProducts extends AppCompatActivity {
                                     @Override
                                     public void onPinEntered(CharSequence str) {
                                         if (str.toString().equals(otp)) {
-                                            Toast.makeText(PreviewProducts.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                                             ln.setVisibility(View.INVISIBLE);
                                             str.toString().equals("");
 
-                                            final Dialog dialog = new Dialog(PreviewProducts.this);
+                                            final Dialog dialog = new Dialog(getContext());
                                             dialog.setContentView(R.layout.contact);
                                             contact_number = dialog.findViewById(R.id.contact_number);
                                             String url1 = "http://kisanunnati.com/market_place/Contact?otp=" + otp +
-                                                    "&user_id=" + getSharedPreferences("status", MODE_PRIVATE).getString("id", "") +
-                                                    "&uploader_id=" + getIntent().getStringExtra("id");
+                                                    "&user_id=" + getActivity().getSharedPreferences("status", MODE_PRIVATE).getString("id", "") +
+                                                    "&uploader_id=" + bundle.getString("id");
                                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
                                                 @Override
                                                 public void onResponse(String response) {
@@ -205,7 +211,7 @@ public class PreviewProducts extends AppCompatActivity {
                                                 }
                                             });
 
-                                            Volley.newRequestQueue(getApplicationContext()).add(stringRequest1);
+                                            Volley.newRequestQueue(getContext()).add(stringRequest1);
 
                                             ok = dialog.findViewById(R.id.btn_ok);
                                             ok.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +223,7 @@ public class PreviewProducts extends AppCompatActivity {
                                             dialog.show();
 
                                         } else {
-                                            Toast.makeText(PreviewProducts.this, "FAIL", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "FAIL", Toast.LENGTH_SHORT).show();
                                             pinEntry.setText(null);
                                         }
                                     }
@@ -235,25 +241,25 @@ public class PreviewProducts extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                     }
                 });
-                Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+                Volley.newRequestQueue(getContext()).add(stringRequest);
             }
         });
-        txt_desc = findViewById(R.id.preview_desc);
-        txt_name = findViewById(R.id.preview_name);
-        txt_price = findViewById(R.id.preview_price);
-        sell_name = findViewById(R.id.sell_name);
-        sell_date = findViewById(R.id.sell_date);
-        preview_tags = findViewById(R.id.preview_tags);
-        preview_remark = findViewById(R.id.preview_remark);
-        sell_name.setText(getIntent().getStringExtra("uploader_name"));
-        txt_name.setText(getIntent().getStringExtra("product_name"));
-        txt_desc.setText(getIntent().getStringExtra("description"));
-        String price = getIntent().getStringExtra("price") + " INR";
+        txt_desc = view.findViewById(R.id.preview_desc);
+        txt_name = view.findViewById(R.id.preview_name);
+        txt_price = view.findViewById(R.id.preview_price);
+        sell_name = view.findViewById(R.id.sell_name);
+        sell_date = view.findViewById(R.id.sell_date);
+        preview_tags = view.findViewById(R.id.preview_tags);
+        preview_remark = view.findViewById(R.id.preview_remark);
+        sell_name.setText(bundle.getString("uploader_name"));
+        txt_name.setText(bundle.getString("product_name"));
+        txt_desc.setText(bundle.getString("description"));
+        String price = bundle.getString("price") + " INR";
         txt_price.setText(price);
-        preview_remark.setText(getIntent().getStringExtra("remarks"));
+        preview_remark.setText(bundle.getString("remarks"));
 
 
-        String d = getIntent().getStringExtra("created_at");
+        String d = bundle.getString("created_at");
    /*     SimpleDateFormat dt = new SimpleDateFormat("dd-MMM-yyyy");
         String stringdate = null;
         try {
@@ -266,11 +272,11 @@ public class PreviewProducts extends AppCompatActivity {
 
             sell_date.setText(d);
 
-        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager mPager = (ViewPager) view.findViewById(R.id.pager);
 
 
-        mPager.setAdapter(new SlidingImage_Adapter(PreviewProducts.this, pics));
-
+        mPager.setAdapter(new SlidingImage_Adapter(getContext(), pics));
+return  view;
 
     }
     /*class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {

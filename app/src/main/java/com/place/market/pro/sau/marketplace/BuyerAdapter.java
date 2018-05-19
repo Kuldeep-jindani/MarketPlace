@@ -1,7 +1,11 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,32 +49,38 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
         holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(),PreviewProducts.class);
-            intent.putExtra("id",grid_model.getId());
-            intent.putExtra("uploader_id",grid_model.getUploader_id());
-            intent.putExtra("uploader_name",grid_model.getUploader_name());
-            intent.putExtra("product_name",grid_model.getName());
-            intent.putExtra("description",grid_model.getDescription());
-            intent.putExtra("price",grid_model.getPrice());
-            intent.putExtra("contacted",grid_model.getContacted());
-            intent.putExtra("image1",grid_model.getImage1());
-            intent.putExtra("image2",grid_model.getImage2());
-            intent.putExtra("image3",grid_model.getImage3());
-            intent.putExtra("image4",grid_model.getImage4());
-            intent.putExtra("image5",grid_model.getImage4());
-            intent.putExtra("remarks",grid_model.getRemarks());
-            intent.putExtra("created_at",grid_model.getTime());
+            PreviewProducts newFragment = new PreviewProducts();
+            FragmentTransaction transaction = ((Activity) context).getFragmentManager().beginTransaction();
+            transaction.replace(R.id.viewpager, newFragment);
+            Bundle bundle = new Bundle();
+            bundle.putString("id",grid_model.getId());
+            bundle.putString("uploader_id",grid_model.getUploader_id());
+            bundle.putString("uploader_name",grid_model.getUploader_name());
+            bundle.putString("product_name",grid_model.getName());
+            bundle.putString("description",grid_model.getDescription());
+            bundle.putString("price",grid_model.getPrice());
+            bundle.putString("contacted",grid_model.getContacted());
+            bundle.putString("image1",grid_model.getImage1());
+            bundle.putString("image2",grid_model.getImage2());
+            bundle.putString("image3",grid_model.getImage3());
+            bundle.putString("image4",grid_model.getImage4());
+            bundle.putString("image5",grid_model.getImage4());
+            bundle.putString("remarks",grid_model.getRemarks());
+            bundle.putString("created_at",grid_model.getTime());
+
+
 
 //            Toast.makeText(context, "from "+grid_model.getFrom(), Toast.LENGTH_SHORT).show();
             if (grid_model.getFrom().equalsIgnoreCase("history")){
-                intent.putExtra("from","history");
+                bundle.putString("from","history");
             }
             else {
-                intent.putExtra("from", "dashboard");
+                bundle.putString("from", "dashboard");
                 holder.txt_contacted.setVisibility(View.GONE);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
             }
+            newFragment.setArguments(bundle);
+            transaction.addToBackStack("dashboard paginator");
+            transaction.commit();
             }
     });
 

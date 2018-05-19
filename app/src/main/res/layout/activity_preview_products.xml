@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".PreviewProducts">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/gradient"
@@ -20,17 +20,8 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:src="@drawable/cdrfinallogo" />
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/navigation_header"
-            android:theme="@style/AppTheme.Drawer"
-            app:menu="@menu/sidebar_menu"
-            app:itemIconTint="#42A1CF"/>
-    </LinearLayout>
+
+    </LinearLayout>-->
 
     <FrameLayout
         android:layout_width="match_parent"
