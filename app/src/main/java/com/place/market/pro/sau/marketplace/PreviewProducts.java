@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 import com.alimuzaffar.lib.pin.PinEntryEditText;
@@ -48,6 +49,7 @@ public class PreviewProducts extends Fragment {
     TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark,txt_contacted;
     RelativeLayout ln;
     PinEntryEditText pinEntry;
+    LinearLayout buyitem_contacted_holder;
     TextView contact_number;
     private GestureDetector mGestureDetector;
 
@@ -59,13 +61,14 @@ public class PreviewProducts extends Fragment {
         Bundle bundle = getArguments();
         txt_contacted = view.findViewById(R.id.contacted);
         contact_buy = view.findViewById(R.id.buy_now);
+        buyitem_contacted_holder = view.findViewById(R.id.buyitem_contacted_holder);
 
         if (bundle.getString("from").equals("history")) {
             contact_buy.setVisibility(View.GONE);
 
-            txt_contacted.setVisibility(View.VISIBLE);
+            buyitem_contacted_holder.setVisibility(View.VISIBLE);
         }else {
-            txt_contacted.setVisibility(View.GONE);
+            buyitem_contacted_holder.setVisibility(View.GONE);
         }
 //        preview_imagescroll = view.findViewById(R.id.preview_imagescroll);
 //        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
@@ -120,7 +123,7 @@ public class PreviewProducts extends Fragment {
                         grid_model.setRemarks(o.getString("remarks"));
                         Log.e("date", o.getString("created_at"));
                         grid_model.setTime(o.getString("created_at"));
-                        txt_contacted.setText("Contacted: " + o.getString("contacted"));
+                        txt_contacted.setText(/*"Contacted: " +*/ o.getString("contacted"));
                         grid_model.setFrom("dashboard");
                         grid_models.add(grid_model);
 //                                }

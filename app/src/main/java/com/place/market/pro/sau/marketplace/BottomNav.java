@@ -77,10 +77,11 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
 
                     case R.id.my_products:
 
-                        Intent intent = new Intent(BottomNav.this, History.class);
-                        startActivity(intent);
+                       /* Intent intent = new Intent(BottomNav.this, History.class);
+                        startActivity(intent);*/
 //                    fragment = new Tablayout_with_viewpager(1);
-
+                        fragmentTransaction.replace(R.id.viewpager, new History()).commit();
+                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.Change_Language:
                         /*Intent i=new Intent(getApplicationContext(),SelectLanguage.class);
@@ -193,12 +194,11 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.viewpager, new SellForm()).commit();
-                /*Intent intent = new Intent(BottomNav.this, SellForm.class);
+               /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.viewpager, new SellForm()).commit();*/
+                Intent intent = new Intent(BottomNav.this, SellForm.class);
                 startActivity(intent);
-*/
-          /*      FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+              /*  FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
                 ft.addToBackStack("Dashboard");
                 ft.replace(R.id.viewpager,new SellForm()).commit();*/
             }
@@ -207,8 +207,10 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         bottomnav_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BottomNav.this, History.class);
-                startActivity(intent);
+               /* Intent intent = new Intent(BottomNav.this, History.class);
+                startActivity(intent);*/
+
+
             }
         });
       /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

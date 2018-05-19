@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
@@ -52,10 +53,10 @@ FragmentManager fragmentManager;
         Glide.with(context).load(grid_model.getImage1()).into(holder.imageView);
 
         if (grid_model.getFrom().equalsIgnoreCase("history")){
-            holder.txt_contacted.setVisibility(View.VISIBLE);
+            holder.buyitem_contacted_holder.setVisibility(View.VISIBLE);
         }
         else {
-            holder.txt_contacted.setVisibility(GONE);
+            holder.buyitem_contacted_holder.setVisibility(GONE);
         }
 
 
@@ -101,7 +102,7 @@ FragmentManager fragmentManager;
 
         holder.txt_name.setText(grid_model.getName());
         holder.txt_price.setText(grid_model.getPrice()+" INR");
-        holder.txt_contacted.setText("Contacted: "+grid_model.getContacted());
+        holder.txt_contacted.setText(/*"Contacted: "+*/grid_model.getContacted());
     }
 
     @Override
@@ -111,6 +112,7 @@ FragmentManager fragmentManager;
     class ViewHolder extends RecyclerView.ViewHolder  {
         ImageView imageView;
         TextView txt_contacted,txt_name,txt_price;
+        LinearLayout buyitem_contacted_holder;
 
         ViewHolder(View itemView) {
 
@@ -119,6 +121,7 @@ FragmentManager fragmentManager;
             imageView = itemView.findViewById(R.id.buy_img);
             txt_name = itemView.findViewById(R.id.buy_name);
             txt_price = itemView.findViewById(R.id.buy_price);
+            buyitem_contacted_holder = itemView.findViewById(R.id.buyitem_contacted_holder);
 
         }
     }

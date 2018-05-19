@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 import static android.support.v4.provider.FontsContractCompat.FontRequestCallback.RESULT_OK;
 
-public class SellForm extends Fragment {
+public class SellForm extends AppCompatActivity {
     ImageView  img_preview1,img_preview2,img_preview3,img_preview4,img_preview5;
     String userChoosenTask;
     int CAMERA_REQUEST = 1001;
@@ -65,16 +66,127 @@ public class SellForm extends Fragment {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    @SuppressLint("NewApi")
+
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sell_form);
+        preferences=/*getContext().*/getSharedPreferences("image",MODE_PRIVATE);
+        editor=preferences.edit();
+
+        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+        LocaleHelper.setLocale(getApplicationContext(), langPref.getString("lang","en"));
+
+        editor.clear().apply();
+
+
+//        SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+        Configuration config = getResources().getConfiguration();
+
+        String lang = langPref.getString("lang", "");
+        if (! "".equals(lang) && ! config.locale.getLanguage().equals(lang)) {
+            Locale locale = new Locale(lang);
+            Locale.setDefault(locale);
+            config.locale = locale;
+            getResources().updateConfiguration(config,  getResources().getDisplayMetrics());
+        }
+
+
+        img_preview1 =findViewById(R.id.preview_img1);
+        img_preview2 =findViewById(R.id.preview_img2);
+        img_preview3 =findViewById(R.id.preview_img3);
+        img_preview4 =findViewById(R.id.preview_img4);
+        img_preview5 =findViewById(R.id.preview_img5);
+        img_next = findViewById(R.id.next);
+        addimg_uid =findViewById(R.id.addimg_uid);
+        addimg_uid2 =findViewById(R.id.addimg_uid2);
+        addimg_uid3 = findViewById(R.id.addimg_uid3);
+        img_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                if (!preferences.contains("image1") &&
+                        !preferences.contains("image2") &&
+                        !preferences.contains("image3") &&
+                        !preferences.contains("image4") &&
+                        !preferences.contains("image5") ){
+                    Toast.makeText(getApplicationContext(), R.string.image_toast, Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), SellDetails.class);
+                    startActivity(intent);
+/*                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.viewpager, new SellDetails()).commit();*/
+
+                }
+            }
+        });
+
+
+        img_preview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pic1 = 1;
+                pic2 = 0;
+                pic3 = 0;
+                pic4 = 0;
+                pic5 = 0;
+                selectImage();
+            }
+        });  img_preview2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pic1 = 0;
+                pic2 = 1;
+                pic3 = 0;
+                pic4 = 0;
+                pic5 = 0;
+                selectImage();
+            }
+        });  img_preview3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pic1 = 0;
+                pic2 = 0;
+                pic3 = 1;
+                pic4 = 0;
+                pic5 = 0;
+                selectImage();
+            }
+        });  img_preview4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pic1 = 0;
+                pic2 = 0;
+                pic3 = 0;
+                pic4 = 1;
+                pic5 = 0;
+                selectImage();
+            }
+        });  img_preview5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pic1 = 0;
+                pic2 = 0;
+                pic3 = 0;
+                pic4 = 0;
+                pic5 = 1;
+                selectImage();
+            }
+        });
+
+    }
+
+/*    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sell_form, container, false);
 
-        preferences= Objects.requireNonNull(getContext()).getSharedPreferences("image",MODE_PRIVATE);
+        preferences=*//*getContext().*//*getSharedPreferences("image",MODE_PRIVATE);
         editor=preferences.edit();
 
-        SharedPreferences langPref=getActivity().getSharedPreferences("langPref",MODE_PRIVATE);
+        SharedPreferences langPref=getContext().getSharedPreferences("langPref",MODE_PRIVATE);
         LocaleHelper.setLocale(getContext(), langPref.getString("lang","en"));
 
 editor.clear().apply();
@@ -114,10 +226,10 @@ editor.clear().apply();
                         !preferences.contains("image5") ){
                     Toast.makeText(getContext(), R.string.image_toast, Toast.LENGTH_SHORT).show();
                 }else {
-                  /*  Intent intent = new Intent(getContext(), SellDetails.class);
-                    startActivity(intent);*/
+                  *//*  Intent intent = new Intent(getContext(), SellDetails.class);
+                    startActivity(intent);*//*
 
-                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.viewpager, new SellDetails()).commit();
                 }
             }
@@ -176,13 +288,13 @@ editor.clear().apply();
             }
         });
 return  view;
-    }
+    }*/
 
     private void selectImage() {
 
         final CharSequence[] items = {"Take Photo", "Choose from Library",
                 "Cancel"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(SellForm.this);
         builder.setTitle("Add Photo!");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -229,7 +341,7 @@ return  view;
 
                 Bitmap imageBitmap = null;
                 try {
-                    imageBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), data.getData());
+                    imageBitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
                     uploadBitmap(imageBitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -257,7 +369,7 @@ return  view;
         Bitmap bm = null;
         if (data != null) {
             try {
-                bm = MediaStore.Images.Media.getBitmap(Objects.requireNonNull(getContext()).getContentResolver(), data.getData());
+                bm = MediaStore.Images.Media.getBitmap(Objects.requireNonNull(getApplicationContext()).getContentResolver(), data.getData());
 
                 //uploadImage("data");
                 //addimg_uid.getText().toString();
@@ -332,7 +444,7 @@ return  view;
 
 
         if (!uploadURL.equals("")) {
-            final KProgressHUD hud = KProgressHUD.create(getContext())
+            final KProgressHUD hud = KProgressHUD.create(SellForm.this)
                     .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                     .setCancellable(false)
                     .setAnimationSpeed(2)
@@ -359,31 +471,31 @@ return  view;
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
 
-                                        Glide.with(getContext()).load(obj.getString("imageurl")).into(img_preview1);
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview1);
                                     } if (pic2 == 1) {
                                         editor.putString("image2",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
-                                        Glide.with(getContext()).load(obj.getString("imageurl")).into(img_preview2);
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview2);
                                     } if (pic3 == 1) {
                                         editor.putString("image3",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
-                                        Glide.with(getContext()).load(obj.getString("imageurl")).into(img_preview3);
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview3);
                                     } if (pic4 == 1) {
                                         editor.putString("image4",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
-                                        Glide.with(getContext()).load(obj.getString("imageurl")).into(img_preview4);
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview4);
                                     } if (pic5 == 1) {
                                         editor.putString("image5",obj.getString("imageurl"));
 //                                        addimg_uid.setText(obj.getString("imageurl"));
 //                                        btn_addimg1.setText("Done/Edit");
 //                                        btn_addimg1.setTextColor(getContext().getResources().getColor(R.color.green));
-                                        Glide.with(getContext()).load(obj.getString("imageurl")).into(img_preview5);
+                                        Glide.with(getApplicationContext()).load(obj.getString("imageurl")).into(img_preview5);
                                     }
 editor.apply();
                                 }
@@ -395,7 +507,7 @@ editor.apply();
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }) {
 
@@ -429,7 +541,7 @@ editor.apply();
             };
 
             //adding the request to volley
-            Volley.newRequestQueue(getContext()).add(volleyMultipartRequest);
+            Volley.newRequestQueue(getApplicationContext()).add(volleyMultipartRequest);
         }
     }
 
