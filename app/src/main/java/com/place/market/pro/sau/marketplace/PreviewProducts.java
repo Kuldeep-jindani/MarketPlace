@@ -20,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
 import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -29,11 +28,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.place.market.pro.sau.marketplace.Adapters.SlidingImage_Adapter;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -65,6 +62,7 @@ public class PreviewProducts extends Fragment {
 
         if (bundle.getString("from").equals("history"))
             contact_buy.setVisibility(View.GONE);
+
 //        preview_imagescroll = view.findViewById(R.id.preview_imagescroll);
 //        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
 //        preview_imagescroll.setOutAnimation(this, android.R.anim.fade_out);
@@ -74,6 +72,7 @@ public class PreviewProducts extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 //        preview_imagescroll.setLayoutManager(linearLayoutManager);
+
         similarProd = view.findViewById(R.id.similarProd);
 
 
@@ -104,7 +103,7 @@ public class PreviewProducts extends Fragment {
                         Grid_model grid_model = new Grid_model();
                         grid_model.setId(o.getString("id"));
                         grid_model.setUploader_id(o.getString("uploader_id"));
-//                        grid_model.setUploader_name(o.getString("name"));
+//                      grid_model.setUploader_name(o.getString("name"));
                         grid_model.setName(o.getString("name"));
                         grid_model.setDescription(o.getString("description"));
                         grid_model.setPrice(o.getString("price"));
@@ -260,6 +259,7 @@ public class PreviewProducts extends Fragment {
 
 
         String d = bundle.getString("created_at");
+
    /*     SimpleDateFormat dt = new SimpleDateFormat("dd-MMM-yyyy");
         String stringdate = null;
         try {
@@ -276,7 +276,7 @@ public class PreviewProducts extends Fragment {
 
 
         mPager.setAdapter(new SlidingImage_Adapter(getContext(), pics));
-return  view;
+        return  view;
 
     }
     /*class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
