@@ -2,8 +2,8 @@ package com.place.market.pro.sau.marketplace;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.os.Build;
+import android.support.v4.app.Fragment;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -60,9 +60,13 @@ public class PreviewProducts extends Fragment {
         txt_contacted = view.findViewById(R.id.contacted);
         contact_buy = view.findViewById(R.id.buy_now);
 
-        if (bundle.getString("from").equals("history"))
+        if (bundle.getString("from").equals("history")) {
             contact_buy.setVisibility(View.GONE);
 
+            txt_contacted.setVisibility(View.VISIBLE);
+        }else {
+            txt_contacted.setVisibility(View.GONE);
+        }
 //        preview_imagescroll = view.findViewById(R.id.preview_imagescroll);
 //        preview_imagescroll.setInAnimation(this, android.R.anim.fade_in);
 //        preview_imagescroll.setOutAnimation(this, android.R.anim.fade_out);
@@ -123,7 +127,7 @@ public class PreviewProducts extends Fragment {
 
                     }
 
-                    BuyerAdapter adapter = new BuyerAdapter(getContext(), grid_models);
+                    BuyerAdapter adapter = new BuyerAdapter(getContext(), grid_models,getFragmentManager());
                     similarProd.setAdapter(adapter);
 
                 } catch (JSONException e) {

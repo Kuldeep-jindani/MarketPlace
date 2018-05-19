@@ -17,7 +17,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_language_select);
-       SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
+           SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
        SharedPreferences.Editor editor=langPref.edit();
        english_layout=findViewById(R.id.english_layout);
        hindi_layout=findViewById(R.id.hindi_layout);

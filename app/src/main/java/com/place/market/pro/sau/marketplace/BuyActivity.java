@@ -78,7 +78,7 @@ public class BuyActivity extends Fragment {
         lowtohigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,0);
+                new Paginator(getContext(), recyclar,0,getFragmentManager());
                 pricebit=0;
                 pricrfilter.setVisibility(View.GONE);
             }
@@ -95,7 +95,7 @@ public class BuyActivity extends Fragment {
         hightolow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,1);
+                new Paginator(getContext(), recyclar,1,getFragmentManager());
                 pricebit=1;
                 pricrfilter.setVisibility(View.GONE);
             }
@@ -133,7 +133,7 @@ public class BuyActivity extends Fragment {
                 } else {
 
                     search_edittext.setText("");
-                    new Paginator(getContext(), recyclar);
+                    new Paginator(getContext(), recyclar,getFragmentManager());
                     search_edittextlayout.animate().alpha(0.0f);
                     bottomnav_category_list.animate().alpha(1.0f);
                     bottomnav_category_list.setVisibility(View.VISIBLE);
@@ -166,7 +166,7 @@ public class BuyActivity extends Fragment {
         search_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Paginator(getContext(), recyclar,search_edittext.getText().toString(),pricebit);
+                new Paginator(getContext(), recyclar,search_edittext.getText().toString(),pricebit,getFragmentManager());
                 search_edittext.setText("");
                 search_edittextlayout.animate().alpha(0.0f);
                 bottomnav_category_list.animate().alpha(1.0f);
@@ -180,7 +180,7 @@ public class BuyActivity extends Fragment {
         SharedPreferences.Editor editor=langPref.edit();
         hindi = String.valueOf(editor.putString("lang","de"));
         gujarati = String.valueOf(editor.putString("lang","fr"));
-        if (hindi == null){
+       /* if (hindi == null){
 
             String url = "http://kisanunnati.com/market_place/getCategoryData";
             Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -196,23 +196,23 @@ public class BuyActivity extends Fragment {
 
                             JSONArray array = resObj.getJSONArray("data");
                             editor.putString("hindi_name", resObj.getString("hindi_name"));
-                            /*  *//*      ;*/
-                        /*
+                            *//*  *//**//*      ;*//*
+                        *//*
                         else if (gujarati != null){
                             editor.putString("guj_name", resObj.getString("guj_name"));
                         }
                         else{
                             editor.putString("name", resObj.getString("name"));
-                        }*/
+                        }*//*
                             RecyclerViewClickListener listener = (view, position) -> {
                                 Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
-                            /*try {
+                            *//*try {
                                 JSONObject o=array.getJSONObject(position);
 
                                 Toast.makeText(getContext(), "category "+o.getString("name"), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }*/
+                            }*//*
                             };
 
                             BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
@@ -248,23 +248,23 @@ public class BuyActivity extends Fragment {
 
                             JSONArray array = resObj.getJSONArray("data");
                             editor.putString("guj_name", resObj.getString("guj_name"));
-                            /*  *//*      ;*/
-                        /*
+                            *//*  *//**//*      ;*//*
+                        *//*
                         else if (gujarati != null){
                             editor.putString("guj_name", resObj.getString("guj_name"));
                         }
                         else{
                             editor.putString("name", resObj.getString("name"));
-                        }*/
+                        }*//*
                             RecyclerViewClickListener listener = (view, position) -> {
                                 Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
-                            /*try {
+                            *//*try {
                                 JSONObject o=array.getJSONObject(position);
 
                                 Toast.makeText(getContext(), "category "+o.getString("name"), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }*/
+                            }*//*
                             };
 
                             BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
@@ -284,7 +284,7 @@ public class BuyActivity extends Fragment {
                 }
             }));
         }
-        else {
+        else {*/
             String url = "http://kisanunnati.com/market_place/getCategoryData";
             Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -310,7 +310,7 @@ public class BuyActivity extends Fragment {
                             }*/
                             };
 
-                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array, listener, recyclar);
+                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array, listener, recyclar,getFragmentManager());
                             bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
                         }
 
@@ -326,9 +326,12 @@ public class BuyActivity extends Fragment {
 
                 }
             }));
-        }
+//        }
 
-        new Paginator(getContext(), recyclar);
+
+
+
+        new Paginator(getContext(), recyclar,getFragmentManager());
 
         return view;
     }

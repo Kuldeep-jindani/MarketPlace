@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import android.support.v4.app.FragmentManager;
 
 /**
  * Created by Saubhagyam on 20/07/2017.
@@ -36,17 +37,19 @@ public class Paginator_history {
     BuyerAdapter adapter;
     boolean isLoading = false;
     boolean hasLoadAll = false;
+    FragmentManager fragmentManager;
     int nextPage;
 
 
-    public Paginator_history(Context c, PullToLoadView pullToLoadView) {
+    public Paginator_history(Context c, PullToLoadView pullToLoadView,FragmentManager fragmentManager) {
         this.c = c;
+        this.fragmentManager=fragmentManager;
         this.pullToLoadView = pullToLoadView;
 
         rv = pullToLoadView.getRecyclerView();
         rv.setLayoutManager(new GridLayoutManager(c, 2));
 
-        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>());
+        adapter = new BuyerAdapter(c, new ArrayList<Grid_model>(),fragmentManager);
         rv.setAdapter(adapter);
 
         initializePagination();
