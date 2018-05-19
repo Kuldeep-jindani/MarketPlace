@@ -20,6 +20,16 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:src="@drawable/cdrfinallogo" />
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/navigation_header"
+            android:theme="@style/AppTheme.Drawer"
+            app:menu="@menu/sidebar_menu"
+            app:itemIconTint="#42A1CF"/>
     </LinearLayout>
 
     <FrameLayout
@@ -189,6 +199,10 @@
                                 android:textAlignment="viewEnd"
                                 android:textSize="20dp" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
 
                         <TextView
@@ -198,10 +212,24 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginStart="10dp"
                             android:singleLine="true"
+                            android:layout_weight="1"
                             android:text="23 sep 2017 5:00 pm"
                             android:textSize="15dp" />
 
+                            <TextView
+                                android:layout_weight="1"
+                                android:textAlignment="viewEnd"
 
+                                android:id="@+id/contacted"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="10dp"
+                                android:singleLine="true"
+                                android:layout_margin="10dp"
+
+                                android:textSize="15dp" />
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

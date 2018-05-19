@@ -1,5 +1,6 @@
 package com.place.market.pro.sau.marketplace;
 
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -33,23 +34,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class BuyActivity extends Fragment {
     PullToLoadView recyclar;
     BuyerAdapter buyerAdapter;
     RecyclerView bottomnav_category_list;
-
     LinearLayout cate_layout,search_edittextlayout;
     EditText search_edittext;
     ImageView search,filter;
-
     RelativeLayout pricrfilter;
-
     LinearLayout lowtohigh,hightolow;
-
     int searchbit = 0;
     int pricebit= 0;
-
     View view;
+    String hindi,gujarati;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -177,25 +176,36 @@ public class BuyActivity extends Fragment {
                 searchbit = 0;
             }
         });
+        SharedPreferences langPref=getContext().getSharedPreferences("langPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor=langPref.edit();
+        hindi = String.valueOf(editor.putString("lang","de"));
+        gujarati = String.valueOf(editor.putString("lang","fr"));
+        if (hindi == null){
+
+            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    Log.e("category response",response);
+                    try {
+                        JSONObject resObj = new JSONObject(response);
 
 
-        String url = "http://kisanunnati.com/market_place/getCategoryData";
-        Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+                        if (resObj.getInt("status") == 0) {
 
-                Log.e("category response",response);
-                try {
-                    JSONObject resObj = new JSONObject(response);
-
-
-                    if (resObj.getInt("status") == 0) {
-
-                        JSONArray array = resObj.getJSONArray("data");
-
-
-                        RecyclerViewClickListener listener = (view, position) -> {
-                            Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
+                            JSONArray array = resObj.getJSONArray("data");
+                            editor.putString("hindi_name", resObj.getString("hindi_name"));
+                            /*  *//*      ;*/
+                        /*
+                        else if (gujarati != null){
+                            editor.putString("guj_name", resObj.getString("guj_name"));
+                        }
+                        else{
+                            editor.putString("name", resObj.getString("name"));
+                        }*/
+                            RecyclerViewClickListener listener = (view, position) -> {
+                                Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
                             /*try {
                                 JSONObject o=array.getJSONObject(position);
 
@@ -203,25 +213,120 @@ public class BuyActivity extends Fragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }*/
-                        };
+                            };
 
-                        BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
-                        bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
+                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
+                            bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }));
+        }
+       else if (gujarati!= null){
+
+            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    Log.e("category response",response);
+                    try {
+                        JSONObject resObj = new JSONObject(response);
 
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+                        if (resObj.getInt("status") == 0) {
 
-            }
-        }));
+                            JSONArray array = resObj.getJSONArray("data");
+                            editor.putString("guj_name", resObj.getString("guj_name"));
+                            /*  *//*      ;*/
+                        /*
+                        else if (gujarati != null){
+                            editor.putString("guj_name", resObj.getString("guj_name"));
+                        }
+                        else{
+                            editor.putString("name", resObj.getString("name"));
+                        }*/
+                            RecyclerViewClickListener listener = (view, position) -> {
+                                Toast.makeText(getContext(), "position "+position, Toast.LENGTH_SHORT).show();
+                            /*try {
+                                JSONObject o=array.getJSONObject(position);
 
+                                Toast.makeText(getContext(), "category "+o.getString("name"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }*/
+                            };
+
+                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array,listener,recyclar);
+                            bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }));
+        }
+        else {
+            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    Log.e("category response", response);
+                    try {
+                        JSONObject resObj = new JSONObject(response);
+
+
+                        if (resObj.getInt("status") == 0) {
+
+                            JSONArray array = resObj.getJSONArray("data");
+
+                            RecyclerViewClickListener listener = (view, position) -> {
+                                Toast.makeText(getContext(), "position " + position, Toast.LENGTH_SHORT).show();
+                            /*try {
+                                JSONObject o=array.getJSONObject(position);
+
+                                Toast.makeText(getContext(), "category "+o.getString("name"), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }*/
+                            };
+
+                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array, listener, recyclar);
+                            bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }));
+        }
 
         new Paginator(getContext(), recyclar);
 

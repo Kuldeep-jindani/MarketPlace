@@ -42,7 +42,7 @@ public class PreviewProducts extends AppCompatActivity {
     Button contact_buy, ok;
     RecyclerView similarProd;
     ViewFlipper preview_imagescroll;
-    TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark;
+    TextView txt_name, txt_desc, txt_price, sell_name, sell_date, preview_tags, preview_remark,txt_contacted;
     RelativeLayout ln;
     PinEntryEditText pinEntry;
     TextView contact_number;
@@ -54,6 +54,7 @@ public class PreviewProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_products);
+        txt_contacted = findViewById(R.id.contacted);
         contact_buy = findViewById(R.id.buy_now);
 
         if (getIntent().getStringExtra("from").equals("history"))
@@ -101,6 +102,7 @@ public class PreviewProducts extends AppCompatActivity {
                         grid_model.setName(o.getString("name"));
                         grid_model.setDescription(o.getString("description"));
                         grid_model.setPrice(o.getString("price"));
+                        grid_model.setContacted(o.getString("contacted"));
                         grid_model.setImage1(o.getString("image1"));
                         grid_model.setImage2(o.getString("image2"));
                         grid_model.setImage3(o.getString("image3"));
@@ -109,8 +111,8 @@ public class PreviewProducts extends AppCompatActivity {
                         grid_model.setRemarks(o.getString("remarks"));
                         Log.e("date", o.getString("created_at"));
                         grid_model.setTime(o.getString("created_at"));
+                        txt_contacted.setText("Contacted: " + o.getString("contacted"));
                         grid_model.setFrom("dashboard");
-
                         grid_models.add(grid_model);
 //                                }
 
@@ -118,7 +120,6 @@ public class PreviewProducts extends AppCompatActivity {
 
                     BuyerAdapter adapter = new BuyerAdapter(getApplicationContext(), grid_models);
                     similarProd.setAdapter(adapter);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -147,8 +148,6 @@ public class PreviewProducts extends AppCompatActivity {
 
         TextView total_pics = findViewById(R.id.total_pics);
         total_pics.setText(String.valueOf(pics.size())+" photos");
-
-
 
       /*  for (int i=0;i<pics.size();i++){
             ImageView img=new ImageView(getApplicationContext());
@@ -266,11 +265,6 @@ public class PreviewProducts extends AppCompatActivity {
 
 
             sell_date.setText(d);
-
-
-
-
-
 
         ViewPager mPager = (ViewPager) findViewById(R.id.pager);
 

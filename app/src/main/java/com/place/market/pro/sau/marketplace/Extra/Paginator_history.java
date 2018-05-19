@@ -115,6 +115,7 @@ public class Paginator_history {
                                 grid_model.setName(o.getString("name"));
                                 grid_model.setDescription(o.getString("description"));
                                 grid_model.setPrice(o.getString("price"));
+                                grid_model.setContacted(o.getString("contacted"));
                                 grid_model.setImage1(o.getString("image1"));
                                 grid_model.setImage2(o.getString("image2"));
                                 grid_model.setImage3(o.getString("image3"));

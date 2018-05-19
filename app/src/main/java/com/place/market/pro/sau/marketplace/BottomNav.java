@@ -32,7 +32,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -66,8 +65,6 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         setContentView(R.layout.activity_bottom_nav);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -112,15 +109,11 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                     default:
                         break;
 
-
                 }
-
 
                 return false;
             }
         });
-
-
 
         /*bottomnav_category_list=findViewById(R.id.bottomnav_category_list);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -146,7 +139,6 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                     e.printStackTrace();
                 }
 
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -157,6 +149,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
 
 */
 //        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
         DrawerModel[] drawerItem = new DrawerModel[5];
         drawerItem[0] = new DrawerModel(/*R.drawable.home, */"My Products");
         drawerItem[1] = new DrawerModel(/*R.drawable.home, */"Change Language");
@@ -191,6 +184,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.customdrawerlayout, R.array.menu);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());*/
+
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 

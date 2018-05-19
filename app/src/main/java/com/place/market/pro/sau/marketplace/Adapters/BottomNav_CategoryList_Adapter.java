@@ -53,7 +53,9 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
 
             holder.category_id.setText(obj.getString("id"));
             holder.category_name.setText(obj.getString("name"));
-
+            /*holder.category_name.setText(obj.getString("guj_name"));
+            holder.category_name.setText(obj.getString("hindi_name"));
+*/
             holder.category_root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

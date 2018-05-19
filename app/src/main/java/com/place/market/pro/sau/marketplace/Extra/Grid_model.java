@@ -14,6 +14,7 @@ public  class Grid_model {
   private  String uploader_name;
   private  String description;
   private  String price;
+  private  String contacted;
   private  String image1;
   private  String image2;
   private  String image3;
@@ -75,7 +76,8 @@ public  class Grid_model {
     public String getPrice() {
         return price;
     }
-
+    public String getContacted(){return contacted;}
+public  void setContacted(String contacted){this.contacted = contacted;}
     public void setPrice(String price) {
         this.price = price;
     }

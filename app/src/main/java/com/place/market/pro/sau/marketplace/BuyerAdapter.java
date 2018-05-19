@@ -2,18 +2,14 @@ package com.place.market.pro.sau.marketplace;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.place.market.pro.sau.marketplace.Extra.Grid_model;
-import com.place.market.pro.sau.marketplace.Extra.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -44,6 +40,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         final Grid_model grid_model=grid_models.get(position);
+        holder.txt_name.setVisibility(View.VISIBLE);
         Glide.with(context).load(grid_model.getImage1()).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -55,6 +52,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
             intent.putExtra("product_name",grid_model.getName());
             intent.putExtra("description",grid_model.getDescription());
             intent.putExtra("price",grid_model.getPrice());
+            intent.putExtra("contacted",grid_model.getContacted());
             intent.putExtra("image1",grid_model.getImage1());
             intent.putExtra("image2",grid_model.getImage2());
             intent.putExtra("image3",grid_model.getImage3());
@@ -63,18 +61,22 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
             intent.putExtra("remarks",grid_model.getRemarks());
             intent.putExtra("created_at",grid_model.getTime());
 
-
 //            Toast.makeText(context, "from "+grid_model.getFrom(), Toast.LENGTH_SHORT).show();
-            if (grid_model.getFrom().equalsIgnoreCase("history"))
+            if (grid_model.getFrom().equalsIgnoreCase("history")){
                 intent.putExtra("from","history");
-            else intent.putExtra("from","dashboard");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        }
+            }
+            else {
+                intent.putExtra("from", "dashboard");
+                holder.txt_contacted.setVisibility(View.GONE);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+            }
     });
 
         holder.txt_name.setText(grid_model.getName());
         holder.txt_price.setText(grid_model.getPrice()+" INR");
+        holder.txt_contacted.setText("Contacted: "+grid_model.getContacted());
     }
 
     @Override
@@ -83,19 +85,16 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.ViewHolder>{
     }
     class ViewHolder extends RecyclerView.ViewHolder  {
         ImageView imageView;
-        TextView txt_name,txt_price;
-
-
+        TextView txt_contacted,txt_name,txt_price;
 
         ViewHolder(View itemView) {
+
             super(itemView);
+            txt_contacted = itemView.findViewById(R.id.contacted);
             imageView = itemView.findViewById(R.id.buy_img);
             txt_name = itemView.findViewById(R.id.buy_name);
             txt_price = itemView.findViewById(R.id.buy_price);
 
-
         }
-
-
     }
 }

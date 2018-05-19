@@ -61,7 +61,9 @@
         <activity
             android:name=".History"
             android:screenOrientation="portrait" />
-        <activity android:name=".LanguageSelectActivity"></activity>
+        <activity android:name=".LanguageSelectActivity">
+
+        </activity>
     </application>
 
 </manifest>
