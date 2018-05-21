@@ -328,7 +328,7 @@ TextView txt_selected_category;
                             }*/
                             };
 
-                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array, listener, recyclar,getFragmentManager());
+                            BottomNav_CategoryList_Adapter bottomNav_categoryList_adapter = new BottomNav_CategoryList_Adapter(getContext(), array, listener, recyclar,getFragmentManager(),txt_selected_category);
                             bottomnav_category_list.setAdapter(bottomNav_categoryList_adapter);
                         }
 

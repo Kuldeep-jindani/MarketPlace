@@ -31,13 +31,15 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
     JSONArray array;
     PullToLoadView recyclar;
     FragmentManager fragmentManager;
+    TextView txt_selected_category;
 
-    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener, PullToLoadView recyclar,FragmentManager fragmentManager) {
+    public BottomNav_CategoryList_Adapter(Context context, JSONArray array,RecyclerViewClickListener mListener, PullToLoadView recyclar,FragmentManager fragmentManager,TextView txt_selected_category) {
         this.context = context;
         this.fragmentManager=fragmentManager;
         this.array = array;
         this.mListener=mListener;
         this.recyclar=recyclar;
+    this.txt_selected_category=txt_selected_category;
     }
 
     @NonNull
@@ -74,6 +76,8 @@ public class BottomNav_CategoryList_Adapter extends RecyclerView.Adapter<BottomN
                     @Override
                     public void onClick(View v) {
                         new Paginator(context, recyclar,Float.parseFloat(holder.category_id.getText().toString()),fragmentManager);
+                        txt_selected_category.setVisibility(View.VISIBLE);
+                        txt_selected_category.setText(holder.category_name.getText().toString());
                     }
                 });
 
