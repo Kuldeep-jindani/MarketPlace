@@ -105,18 +105,19 @@
                 android:layout_alignParentEnd="true"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="20dp"
-                    android:layout_margin="1dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginRight="1dp"
                     android:layout_gravity="center"
                     android:src="@drawable/telefone"/>
                 <TextView
                     android:id="@+id/contacted"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:text="15"
-
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="20"
+                    android:textSize="15dp"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
             </RelativeLayout>

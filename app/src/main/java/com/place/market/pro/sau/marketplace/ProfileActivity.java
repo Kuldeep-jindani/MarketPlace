@@ -113,7 +113,10 @@ public class ProfileActivity extends Fragment {
         });
         SharedPreferences pre=getContext().getSharedPreferences("status", MODE_PRIVATE);
         Log.e("Profile Pic",pre.getString("propic",""));
-        Glide.with(getContext()).load(pre.getString("propic","")).into(profile_pic);
+        Glide.with(getContext()).load(pre.getString("propic",""))
+                .placeholder(R.drawable.camera_icon)
+                .error(R.drawable.error)
+                .into(profile_pic);
         profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

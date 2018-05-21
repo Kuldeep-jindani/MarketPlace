@@ -59,6 +59,7 @@
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:padding="3dp"
+                android:src="@drawable/crop_camera"
                 />
             </LinearLayout>
         </RelativeLayout>

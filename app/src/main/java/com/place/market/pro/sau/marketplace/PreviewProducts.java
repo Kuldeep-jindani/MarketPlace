@@ -283,6 +283,9 @@ public class PreviewProducts extends Fragment {
 
 
         mPager.setAdapter(new SlidingImage_Adapter(getContext(), pics));
+
+
+
         return  view;
 
     }
