@@ -267,17 +267,16 @@ public class PreviewProducts extends Fragment {
 
         String d = bundle.getString("created_at");
 
-   /*     SimpleDateFormat dt = new SimpleDateFormat("dd-MMM-yyyy");
-        String stringdate = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss a");
         try {
-            stringdate = String.valueOf(dt.parse(d));
-            sell_date.setText(stringdate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
+            Date da = sdf.parse(d);
+            sdf.applyPattern("MMM dd, yyyy hh:mm");
+            sell_date.setText(sdf.format(da));
+        } catch (ParseException ex) {
+        }
 
 
-            sell_date.setText(d);
+//            sell_date.setText(d);
 
         ViewPager mPager = (ViewPager) view.findViewById(R.id.pager);
 

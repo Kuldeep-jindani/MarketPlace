@@ -263,30 +263,33 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            final Dialog dialog = new Dialog(BottomNav.this);
+            int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
+            if (backStackEntryCount == 0) {
+                final Dialog dialog = new Dialog(BottomNav.this);
 
-            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.exit_dialog, null);
-            dialog.setContentView(view);
+                View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.exit_dialog, null);
+                dialog.setContentView(view);
 
-            dialog.show();
+                dialog.show();
 
-            Button yes = dialog.findViewById(R.id.exit_yes);
-            Button no = dialog.findViewById(R.id.exit_no);
+                Button yes = dialog.findViewById(R.id.exit_yes);
+                Button no = dialog.findViewById(R.id.exit_no);
 
-            yes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    onBackPressed();
-                }
-            });
+                        onBackPressed();
+                    }
+                });
 
-            no.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+            }
         }
         return true;
     }

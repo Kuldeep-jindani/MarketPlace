@@ -66,7 +66,7 @@ FragmentManager fragmentManager;
         public void onClick(View v) {
             PreviewProducts newFragment = new PreviewProducts();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.addToBackStack("dashboard paginator");
+            transaction.addToBackStack(null);
             transaction.replace(R.id.viewpager, newFragment);
             Bundle bundle = new Bundle();
             bundle.putString("id",grid_model.getId());
