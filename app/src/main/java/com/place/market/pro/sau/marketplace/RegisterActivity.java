@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 else {
-                    String url = " http://kisanunnati.com/market_place/registration?" +
+                    String url = "http://kisanunnati.com/marketplace/registration?" +
                             "name=" +edt_uname.getText().toString()+
                             "&email="+ "k@gmail.com"+
                             "&password="+edt_pwd.getText().toString()+

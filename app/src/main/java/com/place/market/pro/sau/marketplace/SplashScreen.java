@@ -75,7 +75,7 @@ public class SplashScreen extends AppCompatActivity {
                                 SharedPreferences preferences = SplashScreen.this.getSharedPreferences("status", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 if (preferences.contains("email") && preferences.contains("password")) {
-                                    String url = "http://kisanunnati.com/market_place/userlogin?contact=" + preferences.getString("contact", "") + "&password=" + preferences.getString("password", "");
+                                    String url = "http://kisanunnati.com/marketplace/userlogin?contact=" + preferences.getString("contact", "") + "&password=" + preferences.getString("password", "");
                                     final KProgressHUD hud = KProgressHUD.create(SplashScreen.this)
                                             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                                             .setCancellable(false)

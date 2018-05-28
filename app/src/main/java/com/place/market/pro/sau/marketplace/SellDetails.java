@@ -74,7 +74,7 @@ public class SellDetails extends AppCompatActivity {
             }
         });
 
-        String url="http://kisanunnati.com/market_place/getCategoryData";
+        String url="http://kisanunnati.com/marketplace/getCategoryData";
         Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -145,7 +145,7 @@ public class SellDetails extends AppCompatActivity {
                 }else {
                     SharedPreferences preferences=getSharedPreferences("image",MODE_PRIVATE);
                     SharedPreferences preference=getSharedPreferences("status", MODE_PRIVATE);
-                    final String url="http://kisanunnati.com/market_place/Product_Upload?uploader_id="+preference.getString("id","") +
+                    final String url="http://kisanunnati.com/marketplace/Product_Upload?uploader_id="+preference.getString("id","") +
                             "&categorymanagement_id="+cate_id +
                             "&name="+edt_name.getText().toString().replace(" ","%20") +
                             "&description="+edt_decr.getText().toString() .replace(" ","%20")+
@@ -214,7 +214,7 @@ public class SellDetails extends AppCompatActivity {
             }
         });
 
-        String url="http://kisanunnati.com/market_place/getCategoryData";
+        String url="http://kisanunnati.com/marketplace/getCategoryData";
         Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -285,7 +285,7 @@ public class SellDetails extends AppCompatActivity {
                 }else {
                     SharedPreferences preferences=getSharedPreferences("image",MODE_PRIVATE);
                     SharedPreferences preference=getSharedPreferences("status", MODE_PRIVATE);
-                    final String url="http://kisanunnati.com/market_place/Product_Upload?uploader_id="+preference.getString("id","") +
+                    final String url="http://kisanunnati.com/marketplace/Product_Upload?uploader_id="+preference.getString("id","") +
                             "&categorymanagement_id="+cate_id +
                             "&name="+edt_name.getText().toString().replace(" ","%20") +
                             "&description="+edt_decr.getText().toString() .replace(" ","%20")+

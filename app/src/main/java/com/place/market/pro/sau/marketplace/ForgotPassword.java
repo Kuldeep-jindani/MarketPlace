@@ -55,7 +55,7 @@ Button btn_send_email;
                             .setAnimationSpeed(2)
                             .setDimAmount(0.5f)
                             .show();
-                    String url = "http://kisanunnati.com/market_place/ForgotPassword?contact="+email.getText().toString();
+                    String url = "http://kisanunnati.com/marketplace/ForgotPassword?contact="+email.getText().toString();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

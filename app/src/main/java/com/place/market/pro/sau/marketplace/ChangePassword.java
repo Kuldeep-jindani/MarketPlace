@@ -53,7 +53,7 @@ public class ChangePassword extends android.support.v4.app.Fragment {
                 }
                 else {
                     SharedPreferences preference=getActivity().getSharedPreferences("status", MODE_PRIVATE);
-                    String url="http://kisanunnati.com/market_place/change_password?id="+preference.getString("id","")
+                    String url="http://kisanunnati.com/marketplace/change_password?id="+preference.getString("id","")
                             +"&current_password="+curr_pwd.getText().toString()+"&new_password="+new_pwd.getText().toString();
 
                     Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

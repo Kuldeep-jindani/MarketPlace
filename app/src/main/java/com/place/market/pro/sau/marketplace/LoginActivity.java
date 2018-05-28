@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 else {
 
-                    String url = "http://kisanunnati.com/market_place/userlogin?"+
+                    String url = "http://kisanunnati.com/marketplace/userlogin?"+
                              "contact=" +edt_email.getText().toString()+
                             "&password="+ edt_pwd.getText().toString();
                     final KProgressHUD hud = KProgressHUD.create(LoginActivity.this)

@@ -69,7 +69,7 @@ public class ContractFragment extends Fragment {
                 dialog.setContentView(R.layout.list);
                 lv = dialog.findViewById(R.id.lv);
                 dialog.setCancelable(true);
-                String url = "http://kisanunnati.com/market_place/district_list";
+                String url = "http://kisanunnati.com/marketplace/district_list";
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -154,7 +154,7 @@ public class ContractFragment extends Fragment {
                     dialog.setContentView(R.layout.list);
                     lv = dialog.findViewById(R.id.lv);
                     dialog.setCancelable(true);
-                    String url = "http://kisanunnati.com/market_place/taluka_list?districts_id=" + txt_id.getText().toString();
+                    String url = "http://kisanunnati.com/marketplace/taluka_list?districts_id=" + txt_id.getText().toString();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -240,7 +240,7 @@ public class ContractFragment extends Fragment {
                     dialog.setContentView(R.layout.list);
                     lv = dialog.findViewById(R.id.lv);
                     dialog.setCancelable(true);
-                    String url = "http://kisanunnati.com/market_place/village_list?talukas_id=" + txt_id1.getText().toString();
+                    String url = "http://kisanunnati.com/marketplace/village_list?talukas_id=" + txt_id1.getText().toString();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -325,7 +325,7 @@ public class ContractFragment extends Fragment {
                 Toast.makeText(getContext(), R.string.toast_contract, Toast.LENGTH_SHORT).show();
             }
             else {
-                String url = "http://kisanunnati.com/market_place/form_contract?"+
+                String url = "http://kisanunnati.com/marketplace/form_contract?"+
                 "&name="+edt_name.getText().toString()+
                         "&address="+edt_address.getText().toString().replace(" ","%20")+
                         "&phone_number="+edt_pnum.getText().toString()+

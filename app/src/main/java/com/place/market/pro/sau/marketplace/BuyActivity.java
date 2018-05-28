@@ -184,7 +184,7 @@ TextView txt_selected_category;
         gujarati = String.valueOf(editor.putString("lang","fr"));
        /* if (hindi == null){
 
-            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            String url = "http://kisanunnati.com/marketplace/getCategoryData";
             Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -236,7 +236,7 @@ TextView txt_selected_category;
         }
        else if (gujarati!= null){
 
-            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            String url = "http://kisanunnati.com/marketplace/getCategoryData";
             Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -287,7 +287,7 @@ TextView txt_selected_category;
             }));
         }
         else {*/
-            String url = "http://kisanunnati.com/market_place/getCategoryData";
+            String url = "http://kisanunnati.com/marketplace/getCategoryData";
             Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

@@ -213,7 +213,7 @@ public class ProfileActivity extends Fragment {
                     edt_bdate.setFocusable(false);
                     edt_gender.setFocusable(false);
 
-        String url = "http://kisanunnati.com/market_place/edit_profile?id="+preferences.getString("id","") +
+        String url = "http://kisanunnati.com/marketplace/edit_profile?id="+preferences.getString("id","") +
         "&name=" +edt_name.getText().toString()+
         "&email=" +edt_email.getText().toString()+
         "&gender=" +radioButtong.getText().toString()+
@@ -401,7 +401,7 @@ public class ProfileActivity extends Fragment {
 
         //our custom volley request
 
-        String uploadURL = "http://kisanunnati.com/market_place/profilePicUpload";
+        String uploadURL = "http://kisanunnati.com/marketplace/profilePicUpload";
 
 
         if (!uploadURL.equals("")) {

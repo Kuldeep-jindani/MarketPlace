@@ -89,7 +89,7 @@ public class PreviewProducts extends Fragment {
         similarProd.setLayoutManager(linearLayoutManager1);
 
 
-        String similarProdUrl = "http://kisanunnati.com/market_place/similar_product?prod_id=" + bundle.getString("id");
+        String similarProdUrl = "http://kisanunnati.com/marketplace/similar_product?prod_id=" + bundle.getString("id");
         Volley.newRequestQueue(getContext()).add(new StringRequest(Request.Method.POST, similarProdUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

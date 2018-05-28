@@ -170,10 +170,10 @@ public class Paginator {
                 String URL = "";
                 if (editText.equals("")) {
                  if (cat_id==0)
-                    URL = "http://kisanunnati.com/market_place/Product_list?user_id=" + pre.getString("id", "") + "&category_id=&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
-                else URL = "http://kisanunnati.com/market_place/Product_list?user_id=" + pre.getString("id", "") + "&category_id="+cat_id+"&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
+                    URL = "http://kisanunnati.com/marketplace/Product_list?user_id=" + pre.getString("id", "") + "&category_id=&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
+                else URL = "http://kisanunnati.com/marketplace/Product_list?user_id=" + pre.getString("id", "") + "&category_id="+cat_id+"&last_product_id=" + page * 10 + "&price_filter=" + prizebit;
                 }
-                else URL = "http://kisanunnati.com/market_place/Search?name=" + editText;
+                else URL = "http://kisanunnati.com/marketplace/Search?name=" + editText;
                 Log.e("Grid service url", URL);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
