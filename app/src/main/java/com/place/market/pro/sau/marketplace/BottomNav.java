@@ -265,7 +265,6 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
-            if (backStackEntryCount == 0) {
                 final Dialog dialog = new Dialog(BottomNav.this);
 
                 View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.exit_dialog, null);
@@ -290,10 +289,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                         dialog.dismiss();
                     }
                 });
-            }
-            else{
-                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            }
+
         }
         return true;
     }

@@ -66,8 +66,7 @@ FragmentManager fragmentManager;
         public void onClick(View v) {
             PreviewProducts newFragment = new PreviewProducts();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.addToBackStack(null);
-            transaction.replace(R.id.viewpager, newFragment);
+
             Bundle bundle = new Bundle();
             bundle.putString("id",grid_model.getId());
             bundle.putString("uploader_id",grid_model.getUploader_id());
@@ -85,17 +84,20 @@ FragmentManager fragmentManager;
             bundle.putString("created_at",grid_model.getTime());
 
 
-
 //            Toast.makeText(context, "from "+grid_model.getFrom(), Toast.LENGTH_SHORT).show();
             if (grid_model.getFrom().equalsIgnoreCase("history")){
                 bundle.putString("from","history");
+                transaction.addToBackStack("history");
             }
             else {
                 bundle.putString("from", "dashboard");
                 holder.txt_contacted.setVisibility(GONE);
+                transaction.addToBackStack("Dashboard");
             }
+
             newFragment.setArguments(bundle);
 
+            transaction.replace(R.id.viewpager, newFragment,"preview");
             transaction.commit();
             }
     });
