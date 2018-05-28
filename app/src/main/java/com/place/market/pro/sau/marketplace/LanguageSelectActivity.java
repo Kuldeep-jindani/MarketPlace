@@ -32,7 +32,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
                 config.locale = Locale.ENGLISH;
                 getResources().updateConfiguration(config, getResources().getDisplayMetrics());
                 Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "en");
-                Intent i=new Intent(context,BottomNav.class);
+                Intent i=new Intent(context,LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
@@ -47,7 +47,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
                 config.locale = Locale.GERMANY;
                 getResources().updateConfiguration(config, getResources().getDisplayMetrics());
                 Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "de");
-                Intent i=new Intent(context,BottomNav.class);
+                Intent i=new Intent(context,LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
@@ -62,7 +62,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
                 config.locale = Locale.FRANCE;
                 getResources().updateConfiguration(config, getResources().getDisplayMetrics());
                 Context context = LocaleHelper.setLocale(LanguageSelectActivity.this, "fr");
-                Intent i=new Intent(context,BottomNav.class);
+                Intent i=new Intent(context,LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
