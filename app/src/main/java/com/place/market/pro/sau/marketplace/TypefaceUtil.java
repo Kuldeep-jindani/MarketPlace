@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.util.Log;
-
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
