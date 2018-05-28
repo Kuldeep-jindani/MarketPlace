@@ -59,7 +59,7 @@ public class SellDetails extends AppCompatActivity {
         SharedPreferences langPref=getSharedPreferences("langPref",MODE_PRIVATE);
         LocaleHelper.setLocale(getApplicationContext(), langPref.getString("lang","en"));
 
-        dialog = new Dialog(getApplicationContext());
+        dialog = new Dialog(SellDetails.this);
 
         dialog.setContentView(R.layout.list);
         lv = dialog.findViewById(R.id.lv);
@@ -156,7 +156,7 @@ public class SellDetails extends AppCompatActivity {
                             "&image3="+preferences.getString("image3","") +
                             "&image4="+preferences.getString("image4","") +
                             "&image5="+preferences.getString("image5","");
-                    final KProgressHUD hud = KProgressHUD.create(getApplicationContext())
+                    final KProgressHUD hud = KProgressHUD.create(SellDetails.this)
                             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                             .setCancellable(false)
                             .setAnimationSpeed(2)
